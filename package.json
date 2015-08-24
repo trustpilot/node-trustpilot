@@ -1,0 +1,24 @@
+{
+  "name": "trustpilot",
+  "version": "0.0.1",
+  "description": "node module for Trustpilot api",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "mocha test",
+    "compile": "babel -d lib/ src/",
+    "prepublish": "npm run compile"
+  },
+  "author": "Trustpilot",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-babel": "^5.1.0",
+    "gulp-jscs": "^1.6.0",
+    "gulp-jshint": "^1.11.0",
+    "gulp-sourcemaps": "^1.5.2"
+  },
+  "dependencies": {
+    "request": "^2.61.0"
+  }
+}
