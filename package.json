@@ -2,9 +2,9 @@
   "name": "trustpilot",
   "version": "0.0.1",
   "description": "node module for Trustpilot api",
-  "main": "index.js",
+  "main": "./lib/client.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node lib/client.js",
     "test": "mocha test",
     "compile": "babel -d lib/ src/",
     "prepublish": "npm run compile"
