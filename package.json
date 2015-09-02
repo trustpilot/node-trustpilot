@@ -19,6 +19,6 @@
     "gulp-sourcemaps": "^1.5.2"
   },
   "dependencies": {
-    "request": "^2.61.0"
+    "request-promise": "^0.4.3"
   }
 }
