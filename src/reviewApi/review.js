@@ -7,11 +7,7 @@ export default class Review {
     this.host = host;
   }
 
-  latest (lang, callback) {
-    if (!lang) {
-      lang = 'en';
-    }
-
+  async latest (lang = 'en') {
     let options = {
       qs: {
         language: lang
