@@ -1,6 +1,5 @@
 'use strict';
-
-let request = require('request');
+let rp = require('request-promise');
 
 export default class Review {
   constructor (apiKey, host) {
@@ -22,13 +21,8 @@ export default class Review {
       }
     };
 
-    return request(`${this.host}/v1/reviews/latest`, options, function (err, resp, body) {
-      if (err) {
-        return callback(err);
-      }
-
-      callback(JSON.parse(body));
-    });
-
+    let data = await rp(`${this.host}/v1/reviews/latest`, options);
+    return JSON.parse(data);
   }
+
 }
