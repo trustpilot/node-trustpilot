@@ -1,24 +1,31 @@
 'use strict';
 let rp = require('request-promise');
 
-export default class Review {
+class Review {
   constructor (apiKey, host) {
     this.apiKey = apiKey;
     this.host = host;
   }
 
-  async latest (lang = 'en') {
-    let options = {
-      qs: {
-        language: lang
-      },
-      headers: {
-        apiKey: this.apiKey
-      }
-    };
+  latest (lang) {
+    return new Promise((resolve, reject) => {
 
-    let data = await rp(`${this.host}/v1/reviews/latest`, options);
-    return JSON.parse(data);
+      let options = {
+        qs: {
+          language: lang || 'en'
+        },
+        headers: {
+          apiKey: this.apiKey
+        }
+      };
+
+      rp(`${this.host}v1/reviews/latest`, options).then(function (data) {
+        resolve(JSON.parse(data));
+      });
+
+    });
+
   }
-
 }
+
+module.exports = Review;
