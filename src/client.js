@@ -1,8 +1,8 @@
 'use strict';
 
-import Review from './reviewApi/review';
+let Review = require('./reviewApi/review');
 
-export default class Client {
+class Client {
   constructor (apiKey) {
     this.apiKey = apiKey;
     this.host = 'https://api.tp-staging.com/';
@@ -10,3 +10,5 @@ export default class Client {
   }
 
 }
+
+module.exports = Client;
