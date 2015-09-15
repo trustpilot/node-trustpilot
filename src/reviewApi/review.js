@@ -26,6 +26,20 @@ class Review {
     });
 
   }
+
+  single (reviewId) {
+    return new Promise((resolve, reject) => {
+      let options = {
+        headers: {
+          apiKey: this.apiKey
+        }
+      };
+
+      rp(`${this.host}v1/reviews/${reviewId}`, options).then(function (data) {
+        resolve(JSON.parse(data));
+      });
+    });
+  }
 }
 
 module.exports = Review;
