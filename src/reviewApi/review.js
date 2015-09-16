@@ -1,5 +1,4 @@
 'use strict';
-let rp = require('request-promise');
 let Request = require('../requestHelper');
 class Review {
 
