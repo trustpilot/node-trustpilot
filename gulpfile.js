@@ -1,10 +1,9 @@
 'use strict';
 
 var gulp = require('gulp');
-var babel = require('gulp-babel');
-var sourcemaps = require('gulp-sourcemaps');
 var jscs = require('gulp-jscs');
 var jshint = require('gulp-jshint');
+var mocha = require('gulp-mocha');
 
 gulp.task('node-lint', function () {
   return gulp.src(['src/*.js'])
@@ -19,14 +18,13 @@ gulp.task('jscs', function () {
     }));
 });
 
-gulp.task('watch', ['default'], function () {
-  gulp.watch(['index.js', 'src/**/*.js'], ['jscs', 'node-lint', 'default']);
+gulp.task('watch', function () {
+  gulp.watch(['index.js', 'src/**/*.js', 'spec/**/*.spec.js'], ['jscs', 'node-lint', 'test']);
 });
 
-gulp.task('default', function () {
-  return gulp.src(['src/**/*.js'])
-    .pipe(sourcemaps.init())
-    .pipe(babel())
-    .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('lib'));
+gulp.task('test', function () {
+  return gulp.src('spec/**/*.spec.js')
+    .pipe(mocha({ ui: 'bdd', reporter: 'spec'}));
 });
+
+gulp.task('default', ['watch'], function () {});
