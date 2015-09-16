@@ -3,8 +3,9 @@
 let rp = require('request-promise');
 
 class Request {
-  constructor (apiKey) {
+  constructor (apiKey, host) {
     this.apiKey = apiKey;
+    this.host = host;
   }
 
   createRequestOptions (obj) {
@@ -22,7 +23,7 @@ class Request {
   get (endpoint, options) {
     let params = this.createRequestOptions(options);
 
-    return rp(endpoint, params).then(function (response) {
+    return rp(`${this.host}${endpoint}`, params).then(function (response) {
       return JSON.parse(response);
     });
   }

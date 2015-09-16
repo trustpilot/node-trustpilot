@@ -5,7 +5,7 @@ class Review {
   constructor (apiKey, host) {
     this.apiKey = apiKey;
     this.host = host;
-    this.request = new Request(this.apiKey);
+    this.request = new Request(this.apiKey, this.host);
   }
 
   /**
@@ -20,7 +20,7 @@ class Review {
       }
     };
 
-    return this.request.get(`${this.host}v1/reviews/latest`, options);
+    return this.request.get(`/v1/reviews/latest`, options);
 
   }
 
@@ -30,7 +30,7 @@ class Review {
    * @return {[array]}          [array which holds an object of the review]
    */
   single (reviewId) {
-    return this.request.get(`${this.host}v1/reviews/${reviewId}`);
+    return this.request.get(`/v1/reviews/${reviewId}`);
   }
 
 }
