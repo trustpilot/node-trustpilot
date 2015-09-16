@@ -1,45 +1,39 @@
 'use strict';
 let rp = require('request-promise');
-
+let Request = require('../requestHelper');
 class Review {
+
   constructor (apiKey, host) {
     this.apiKey = apiKey;
     this.host = host;
+    this.request = new Request(this.apiKey);
   }
 
+  /**
+   * [returns all the latest reviews]
+   * @param  {[string]} lang [string for the language of reviews]
+   * @return {[arry]}      [returns an array of review objects]
+   */
   latest (lang) {
-    return new Promise((resolve, reject) => {
+    let options = {
+      qs: {
+        language: lang || 'en'
+      }
+    };
 
-      let options = {
-        qs: {
-          language: lang || 'en'
-        },
-        headers: {
-          apiKey: this.apiKey
-        }
-      };
-
-      rp(`${this.host}v1/reviews/latest`, options).then(function (data) {
-        resolve(JSON.parse(data));
-      });
-
-    });
+    return this.request.get(`${this.host}v1/reviews/latest`, options);
 
   }
 
+  /**
+   * [get a single review by reviewsId]
+   * @param  {[string]} reviewId [the reviewId of the review you wish to get]
+   * @return {[array]}          [array which holds an object of the review]
+   */
   single (reviewId) {
-    return new Promise((resolve, reject) => {
-      let options = {
-        headers: {
-          apiKey: this.apiKey
-        }
-      };
-
-      rp(`${this.host}v1/reviews/${reviewId}`, options).then(function (data) {
-        resolve(JSON.parse(data));
-      });
-    });
+    return this.request.get(`${this.host}v1/reviews/${reviewId}`);
   }
+
 }
 
 module.exports = Review;
