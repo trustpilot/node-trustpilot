@@ -37,6 +37,23 @@ class Review {
     return this.request.get(`/v1/reviews/${reviewId}`);
   }
 
+  /**
+   * [Gets the links to a review's public page on Trustpilot]
+   * @param {[string]} reviewId [The id of the review]
+   * @param {[Object]} options [options object]
+   * @param {[string]} options.locale [the Locale to use when generating web links]
+   * @return {[object]}
+   */
+  singleWebLinks (reviewId, options) {
+
+    let queryOptions = {
+      qs: {
+        locale: options.locale || 'en-US'
+      }
+    };
+
+    return this.request.get(`/v1/reviews/${reviewId}/web-links`, queryOptions);
+  }
 }
 
 module.exports = Review;
