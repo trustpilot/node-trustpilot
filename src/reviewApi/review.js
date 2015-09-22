@@ -54,6 +54,16 @@ class Review {
 
     return this.request.get(`/v1/reviews/${reviewId}/web-links`, queryOptions);
   }
+
+  /**
+   * [This method gets a review's likes information]
+   * @param {[string]} reviewId [The id of the review]
+   * @return {[object]} [a likes object]
+   */
+  singleLikes (reviewId) {
+    return this.request.get(`/v1/reviews/${reviewId}/likes`);
+  }
+
 }
 
 module.exports = Review;
