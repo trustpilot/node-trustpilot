@@ -10,18 +10,22 @@ class Review {
 
   /**
    * [returns all the latest reviews]
-   * @param  {[string]} lang [string for the language of reviews]
-   * @return {[arry]}      [returns an array of review objects]
+   * @param  {[string]} lang [required string for the language of reviews]
+   * @param {[Object]} options [options object]
+   * @param {[string]} options.locale [used to create links using this locale]
+   * @param {[number]} options.count [The number of reviews to retrieve]
+   * @param {[boolean]} options.filterUsersWithoutImages [Used to filter reviews with users that they do not have an image.]
+   * @return {[Object]}      [returns a reviews object]
    */
-  latest (lang) {
-    let options = {
-      qs: {
-        language: lang || 'en'
-      }
+  latest (lang, options) {
+
+    let queryOptions = {
+      qs: options || {}
     };
 
-    return this.request.get(`/v1/reviews/latest`, options);
+    queryOptions.qs.language = lang || 'en';
 
+    return this.request.get(`/v1/reviews/latest`, queryOptions);
   }
 
   /**
