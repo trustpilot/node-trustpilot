@@ -2,10 +2,9 @@
 let Request = require('../requestHelper');
 class Review {
 
-  constructor (apiKey, host) {
-    this.apiKey = apiKey;
-    this.host = host;
-    this.request = new Request(this.apiKey, this.host);
+  constructor (accessProvider) {
+    this.accessProvider = accessProvider;
+    this.request = new Request(this.accessProvider.apiKey, this.accessProvider.host);
   }
 
   /**
@@ -62,6 +61,12 @@ class Review {
    */
   singleLikes (reviewId) {
     return this.request.get(`/v1/reviews/${reviewId}/likes`);
+  }
+
+  tags (reviewId) {
+    return this.accessProvider.getToken.then((tokenResponse) => {
+      return this.request.get(`/v1/private/reviews/${reviewId}/tags`, {token: tokenResponse});
+    });
   }
 
 }
