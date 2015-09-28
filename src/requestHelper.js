@@ -15,6 +15,11 @@ class Request {
       }
     };
 
+    if (obj.token) {
+      options.headers.authorization = `Bearer ${obj.token}`;
+      delete obj.token;
+    }
+
     let newOptions = Object.assign(options, obj);
 
     return newOptions;
