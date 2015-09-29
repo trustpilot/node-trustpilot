@@ -7,7 +7,6 @@ class AccessProvider {
     this.apiKey = apiKey;
     this.host = host;
     this.secret = secret;
-    this.getToken = this.generateToken();
   }
 
   generateToken () {
