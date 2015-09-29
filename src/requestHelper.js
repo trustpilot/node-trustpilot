@@ -28,14 +28,14 @@ class Request {
   }
 
   getPrivate (endpoint, options) {
-    let params = this.createRequestOptions(options);
+    options = options || {};
 
     return this.accessProvider.generateToken().then((responseToken) => {
-      params.headers.authorization = `Bearer ${responseToken}`;
+      options.headers = {
+        authorization: `Bearer ${responseToken}`
+      };
 
-      return rp(`${this.accessProvider.host}${endpoint}`, params).then((response) => {
-        return JSON.parse(response);
-      });
+      return this.get(endpoint, options);
     });
   }
 }
