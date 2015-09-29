@@ -1,11 +1,7 @@
 'use strict';
-let Request = require('../requestHelper');
 class Review {
-
-  constructor (apiKey, host) {
-    this.apiKey = apiKey;
-    this.host = host;
-    this.request = new Request(this.apiKey, this.host);
+  constructor (request) {
+    this.request = request;
   }
 
   /**
@@ -62,6 +58,10 @@ class Review {
    */
   singleLikes (reviewId) {
     return this.request.get(`/v1/reviews/${reviewId}/likes`);
+  }
+
+  tags (reviewId) {
+    return this.request.getPrivate(`/v1/private/reviews/${reviewId}/tags`);
   }
 
 }
