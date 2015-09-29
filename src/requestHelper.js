@@ -3,22 +3,16 @@
 let rp = require('request-promise');
 
 class Request {
-  constructor (apiKey, host) {
-    this.apiKey = apiKey;
-    this.host = host;
+  constructor (accessProvider) {
+    this.accessProvider = accessProvider;
   }
 
   createRequestOptions (obj) {
     let options = {
       headers: {
-        apiKey: this.apiKey
+        apiKey: this.accessProvider.apiKey
       }
     };
-
-    if (obj.token) {
-      options.headers.authorization = `Bearer ${obj.token}`;
-      delete obj.token;
-    }
 
     let newOptions = Object.assign(options, obj);
 
@@ -28,8 +22,20 @@ class Request {
   get (endpoint, options) {
     let params = this.createRequestOptions(options);
 
-    return rp(`${this.host}${endpoint}`, params).then(function (response) {
+    return rp(`${this.accessProvider.host}${endpoint}`, params).then(function (response) {
       return JSON.parse(response);
+    });
+  }
+
+  getPrivate (endpoint, options) {
+    let params = this.createRequestOptions(options);
+
+    return this.accessProvider.generateToken().then((responseToken) => {
+      params.headers.authorization = `Bearer ${responseToken}`;
+
+      return rp(`${this.accessProvider.host}${endpoint}`, params).then((response) => {
+        return JSON.parse(response);
+      });
     });
   }
 }
