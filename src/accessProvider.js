@@ -36,6 +36,30 @@ class AccessProvider {
 
     return this.generateTokenPromise;
   }
+
+  getToken () {
+    return new Promise((resolve, reject) => {
+
+      //auth token isn't set
+      if (!this.authorization) {
+        this.generateToken().then((responseToken) => {
+          resolve(responseToken);
+
+        });
+
+        //about to expire - clear promise and get new one
+      } else if (this.authorization.expires_in < 5) {
+        delete this.generateTokenPromise;
+
+        this.generateToken().then((responseToken) => {
+          resolve(responseToken);
+        });
+
+        //auth token is available so resolve with the token
+      } else {
+        resolve(this.authorization.access_token);
+      }
+
     });
   }
 }
