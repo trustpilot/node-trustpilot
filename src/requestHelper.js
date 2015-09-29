@@ -7,6 +7,7 @@ class Request {
     this.accessProvider = accessProvider;
   }
 
+  //creates options {obj} to append to every request. Adds an apikey and then any additional params to request
   createRequestOptions (obj) {
     let options = {
       headers: {
@@ -19,6 +20,7 @@ class Request {
     return newOptions;
   }
 
+  //makes a get request to the given enpoint
   get (endpoint, options) {
     let params = this.createRequestOptions(options);
 
@@ -27,6 +29,7 @@ class Request {
     });
   }
 
+  //get request to the private apis, so an OAuth token is added to the request
   getPrivate (endpoint, options) {
     options = options || {};
 
