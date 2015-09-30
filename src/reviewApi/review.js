@@ -60,6 +60,11 @@ class Review {
     return this.request.get(`/v1/reviews/${reviewId}/likes`);
   }
 
+  /**
+   * [This method gets a review's likes information]
+   * @param {[string]} reviewId [The id of the review]
+   * @return {[object]} [a likes object]
+   */
   tags (reviewId) {
     return this.request.getPrivate(`/v1/private/reviews/${reviewId}/tags`);
   }
