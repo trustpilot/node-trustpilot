@@ -1,6 +1,6 @@
 'use strict';
 
-let Review = require('./reviewApi/review');
+let Review = require('./reviewApi/reviewApi');
 let AccessProvider = require('./AccessProvider');
 let Request = require('./requestHelper');
 

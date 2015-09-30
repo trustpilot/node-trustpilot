@@ -1,5 +1,6 @@
 'use strict';
-class Review {
+
+class ReviewGetEndpoints {
   constructor (request) {
     this.request = request;
   }
@@ -14,7 +15,6 @@ class Review {
    * @return {[Object]}      [returns a reviews object]
    */
   latest (lang, options) {
-
     let queryOptions = {
       qs: options || {}
     };
@@ -27,10 +27,20 @@ class Review {
   /**
    * [get a single review by reviewsId]
    * @param  {[string]} reviewId [the reviewId of the review you wish to get]
-   * @return {[array]}          [array which holds an object of the review]
+   * @return {[object]}          [object of the review]
    */
   single (reviewId) {
     return this.request.get(`/v1/reviews/${reviewId}`);
+  }
+
+  /**
+   * [This method gets the reviews's basic public information but also some private information
+   * (referenceEmail and referenceId) and status as either 'active' or 'reported'.]
+   * @param {[string]} reviewId [the reviewId of the review you wish to get]
+   * @return {[object]} [object of the review]
+   */
+  singlePrivate (reviewId) {
+    return this.request.getPrivate(`/v1/private/reviews/${reviewId}`);
   }
 
   /**
@@ -63,7 +73,6 @@ class Review {
   tags (reviewId) {
     return this.request.getPrivate(`/v1/private/reviews/${reviewId}/tags`);
   }
-
 }
 
-module.exports = Review;
+module.exports = ReviewGetEndpoints;
