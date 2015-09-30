@@ -30,6 +30,8 @@ class AccessProvider {
         body: 'grant_type=client_credentials'
       }).then((response) => {
         this.authorization = response;
+
+        this.authorization.refreshToken = this.refreshToken(this.authorization.expires_in);
         return response.access_token;
       });
     }
@@ -61,6 +63,13 @@ class AccessProvider {
       }
 
     });
+  }
+
+  refreshToken (waitTime) {
+    setTimeout(() => {
+      delete this.generateTokenPromise;
+      this.generateToken();
+    }, waitTime);
   }
 }
 
