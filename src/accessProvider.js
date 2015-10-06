@@ -29,28 +29,20 @@ class AccessProvider {
       });
     }
 
-
-  getToken () {
+  //returns the access_token -> if not present, it asks for a new token and returns the access_token
+  getAccessToken () {
     return new Promise((resolve, reject) => {
 
-      //auth token isn't set
-      if (!this.authorization) {
-        this.generateToken().then((responseToken) => {
-          resolve(responseToken);
-
-        });
-
-        //about to expire - clear promise and get new one
-      } else if (this.authorization.expires_in < 5) {
-        delete this.generateTokenPromise;
-
-        this.generateToken().then((responseToken) => {
-          resolve(responseToken);
-        });
-
-        //auth token is available so resolve with the token
-      } else {
+      if (this.isTokenValid()) {
         resolve(this.authorization.access_token);
+      } else {
+        this.generateTokenObject().then((response) => {
+          resolve(response.access_token);
+        });
+      }
+        });
+  }
+
       }
 
     });
