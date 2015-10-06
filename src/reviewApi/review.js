@@ -13,7 +13,7 @@ class Review {
    * @param {[boolean]} options.filterUsersWithoutImages [Used to filter reviews with users that they do not have an image.]
    * @return {[Object]}      [returns a reviews object]
    */
-  latest (lang, options) {
+  getLatest (lang, options) {
 
     let queryOptions = {
       qs: options || {}
@@ -29,7 +29,7 @@ class Review {
    * @param  {[string]} reviewId [the reviewId of the review you wish to get]
    * @return {[array]}          [array which holds an object of the review]
    */
-  single (reviewId) {
+  getSingle (reviewId) {
     return this.request.get(`/v1/reviews/${reviewId}`);
   }
 
@@ -40,7 +40,7 @@ class Review {
    * @param {[string]} options.locale [the Locale to use when generating web links]
    * @return {[object]}
    */
-  singleWebLinks (reviewId, options) {
+  getSingleWebLinks (reviewId, options) {
 
     let queryOptions = {
       qs: {
@@ -56,11 +56,16 @@ class Review {
    * @param {[string]} reviewId [The id of the review]
    * @return {[object]} [a likes object]
    */
-  singleLikes (reviewId) {
+  getSingleLikes (reviewId) {
     return this.request.get(`/v1/reviews/${reviewId}/likes`);
   }
 
-  tags (reviewId) {
+  /**
+   * [This method gets a review's likes information]
+   * @param {[string]} reviewId [The id of the review]
+   * @return {[object]} [a likes object]
+   */
+  getTags (reviewId) {
     return this.request.getPrivate(`/v1/private/reviews/${reviewId}/tags`);
   }
 

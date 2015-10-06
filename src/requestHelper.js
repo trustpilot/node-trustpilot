@@ -32,8 +32,7 @@ class Request {
   //get request to the private apis, so an OAuth token is added to the request
   getPrivate (endpoint, options) {
     options = options || {};
-
-    return this.accessProvider.generateToken().then((responseToken) => {
+    return this.accessProvider.getAccessToken().then((responseToken) => {
       options.headers = {
         authorization: `Bearer ${responseToken}`
       };
