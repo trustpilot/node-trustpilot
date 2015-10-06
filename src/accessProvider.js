@@ -7,17 +7,12 @@ class AccessProvider {
     this.apiKey = apiKey;
     this.host = host;
     this.secret = secret;
-
-    //holds the token promise so we don't generate many
-    let generateTokenPromise;
   }
 
   //generates a new new oauth token object only if there is no generateTokenPromise set
   //returns just the access_token
-  generateToken () {
-    if (!this.generateTokenPromise) {
-
-      this.generateTokenPromise = request({
+  generateTokenObject () {
+    return request({
         baseUrl: this.host,
         uri: '/v1/oauth/system-users/token',
         method: 'POST',
@@ -30,14 +25,10 @@ class AccessProvider {
         body: 'grant_type=client_credentials'
       }).then((response) => {
         this.authorization = response;
-
-        this.authorization.refreshToken = this.refreshToken(this.authorization.expires_in);
-        return response.access_token;
+      return this.authorization;
       });
     }
 
-    return this.generateTokenPromise;
-  }
 
   getToken () {
     return new Promise((resolve, reject) => {
