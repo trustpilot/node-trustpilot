@@ -30,12 +30,6 @@ class Request {
               requestOptions.body = queryObj;
   }
 
-  //makes a get request to the given enpoint
-  get (endpoint, options) {
-    let params = this.createRequestOptions(options);
-
-    return rp(`${this.accessProvider.host}${endpoint}`, params).then(function (response) {
-      return JSON.parse(response);
             resolve(requestOptions);
           })
           .catch((error) => {
@@ -53,13 +47,6 @@ class Request {
     });
   }
 
-  //get request to the private apis, so an OAuth token is added to the request
-  getPrivate (endpoint, options) {
-    options = options || {};
-    return this.accessProvider.getAccessToken().then((responseToken) => {
-      options.headers = {
-        authorization: `Bearer ${responseToken}`
-      };
   //makes a request to the given enpoint with options.
   request (endpoint, requiresToken, options, method) {
     return this.buildRequestOptions(requiresToken, options, method)
@@ -68,8 +55,10 @@ class Request {
       .catch(error => { throw new Error(error); });
   }
 
-      return this.get(endpoint, options);
-    });
+  //makes a get request to the given enpoint
+  get (endpoint, requiresToken, options) {
+    return this.request(endpoint, requiresToken, options, 'GET');
+  }
   }
 }
 
