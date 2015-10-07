@@ -88,6 +88,10 @@ class Request {
   post (endpoint, postData) {
     return this.request(endpoint, true, postData, 'POST');
   }
+
+  delete (endpoint) {
+    return this.request(endpoint, true, {}, 'DELETE');
+  }
 }
 
 module.exports = Request;
