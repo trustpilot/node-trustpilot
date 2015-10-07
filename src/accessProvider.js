@@ -9,8 +9,10 @@ class AccessProvider {
     this.secret = secret;
   }
 
-  //generates a new new oauth token object only if there is no generateTokenPromise set
-  //returns just the access_token
+  /**
+   * [generates an Oauth object]
+   * @return {[Object]}  [Oauth authorization object]
+   */
   generateTokenObject () {
     return request({
       baseUrl: this.host,
@@ -23,13 +25,20 @@ class AccessProvider {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       body: 'grant_type=client_credentials'
-    }).then((response) => {
+    })
+    .then((response) => {
       this.authorization = response;
       return this.authorization;
+    })
+    .catch(function (error) {
+      throw new Error(error);
     });
   }
 
-  //returns the access_token -> if not present, it asks for a new token and returns the access_token
+  /**
+   * [get the access_token -> if not present, it asks for a new token and returns the access_token]
+   * @return {[string]} [Oauth access token]
+   */
   getAccessToken () {
     return new Promise((resolve, reject) => {
 
@@ -43,7 +52,10 @@ class AccessProvider {
     });
   }
 
-  //check if token obj exists
+  /**
+   * [checks if the current access_token is valid]
+   * @return {[boolean]} [boolean as to whether current access_token is valid]
+   */
   isTokenValid () {
     if (!this.authorization) {
       return false;

@@ -7,38 +7,86 @@ class Request {
     this.accessProvider = accessProvider;
   }
 
-  //creates options {obj} to append to every request. Adds an apikey and then any additional params to request
-  createRequestOptions (obj) {
-    let options = {
-      headers: {
-        apiKey: this.accessProvider.apiKey
+  /**
+   * [returns all the promise, fulfilled with object of request options to use]
+   * @param  {[boolean]} requiresToken [required boolean if the request needs an Oauth access token]
+   * @param {[Object]} queryObj [options object]
+   * @param {[string]} methodType [type of the request e.g. 'GET', 'POST']
+   * @return {[Object]}      [returns a options object]
+   */
+  buildRequestOptions (requiresToken, queryObj, methodType) {
+    return new Promise((resolve, reject) => {
+
+      //if requiresToken, then get an acccessToken before resolving - else resolve with apiKey
+      if (requiresToken) {
+        this.accessProvider.getAccessToken()
+          .then(responseToken => {
+            let requestOptions = {
+              headers: {
+                authorization: `Bearer ${responseToken}`
+              },
+              method: methodType,
+              json: true
+            };
+
+            //set queryString or request body depending on method type
+            if (methodType === 'GET') {
+              requestOptions.qs = queryObj;
+            } else {
+              requestOptions.body = queryObj;
+            }
+
+            resolve(requestOptions);
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      } else {
+        resolve({
+          headers: {
+            apiKey: this.accessProvider.apiKey
+          },
+          json: true,
+          qs: queryObj
+        });
       }
-    };
-
-    let newOptions = Object.assign(options, obj);
-
-    return newOptions;
-  }
-
-  //makes a get request to the given enpoint
-  get (endpoint, options) {
-    let params = this.createRequestOptions(options);
-
-    return rp(`${this.accessProvider.host}${endpoint}`, params).then(function (response) {
-      return JSON.parse(response);
     });
   }
 
-  //get request to the private apis, so an OAuth token is added to the request
-  getPrivate (endpoint, options) {
-    options = options || {};
-    return this.accessProvider.getAccessToken().then((responseToken) => {
-      options.headers = {
-        authorization: `Bearer ${responseToken}`
-      };
+  /**
+   * [makes a request to the given enpoint with options.]
+   * @param  {[string]} endpoint      [endpoint to hit - no need for the host]
+   * @param  {[boolean]} requiresToken [boolean if the request needs an Oauth token]
+   * @param  {[object]} options       [object of additional query options or post body]
+   * @param  {[string]} method        [type of method e.g. 'GET', 'POST', 'PUT']
+   * @return {[object]}               [returns the api response object]
+   */
+  request (endpoint, requiresToken, options, method) {
+    return this.buildRequestOptions(requiresToken, options, method)
+      .then(requestOptions => rp(`${this.accessProvider.host}${endpoint}`, requestOptions))
+      .then(responseBody => responseBody)
+      .catch(error => { throw new Error(error); });
+  }
 
-      return this.get(endpoint, options);
-    });
+  /**
+   * [makes a GET request to the given enpoint with options.]
+   * @param  {[string]} endpoint      [endpoint to hit - no need for the host]
+   * @param  {[boolean]} requiresToken [boolean if the request needs an Oauth token]
+   * @param  {[object]} options       [object of additional query options or post body]
+   * @return {[object]}               [returns the request promise]
+   */
+  get (endpoint, requiresToken, options) {
+    return this.request(endpoint, requiresToken, options, 'GET');
+  }
+
+  /**
+    * [makes a POST request to the given enpoint with options.]
+    * @param  {[string]} endpoint      [endpoint to hit - no need for the host]
+    * @param  {[object]} postData       [object of post body]
+    * @return {[object]}               [returns the request promise]
+   */
+  post (endpoint, postData) {
+    return this.request(endpoint, true, postData, 'POST');
   }
 }
 
