@@ -16,19 +16,19 @@ class Request {
         this.accessProvider.getAccessToken()
           .then(responseToken => {
             let requestOptions = {
-      headers: {
+              headers: {
                 authorization: `Bearer ${responseToken}`
               },
               method: methodType,
               json: true
-    };
+            };
 
             //set queryString or request body depending on method type
             if (methodType === 'GET') {
               requestOptions.qs = queryObj;
             } else {
               requestOptions.body = queryObj;
-  }
+            }
 
             resolve(requestOptions);
           })
@@ -59,6 +59,10 @@ class Request {
   get (endpoint, requiresToken, options) {
     return this.request(endpoint, requiresToken, options, 'GET');
   }
+
+  //does a 'POST' to the given endpoint with options object
+  post (endpoint, postData) {
+    return this.request(endpoint, true, postData, 'POST');
   }
 }
 

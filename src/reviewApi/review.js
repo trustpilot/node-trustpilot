@@ -75,6 +75,23 @@ class Review {
   getTags (reviewId) {
     return this.request.get(`/v1/private/reviews/${reviewId}/tags`, true);
   }
+
+/**
+ * [This method will set the tags of a service review.]
+ * @param {[string]} reviewId [The id of the review]
+ * @param {[Object]} options [options object]
+ * @example
+ * {
+      tags: [
+        {
+          group: 'ProductGroup',
+          value: 'Computers'
+        }
+      ]
+    }
+ */
+  saveTags (reviewId, postData) {
+    return this.request.post(`/v1/private/reviews/${reviewId}/tags`, postData);
   }
 
 }
