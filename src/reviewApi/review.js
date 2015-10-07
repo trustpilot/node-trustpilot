@@ -79,7 +79,7 @@ class Review {
 /**
  * [This method will set the tags of a service review.]
  * @param {[string]} reviewId [The id of the review]
- * @param {[Object]} options [options object]
+ * @param {[Object]} postData [object of post data]
  * @example
  * {
       tags: [
@@ -92,6 +92,27 @@ class Review {
  */
   saveTags (reviewId, postData) {
     return this.request.post(`/v1/private/reviews/${reviewId}/tags`, postData);
+  }
+
+  /**
+   * [This method will post a reply to a review.]
+   * @param {[string]} reviewId [The if of the review]
+   * @param {[object]} postData [object containing the reply message]
+   * @example
+   * {
+      message: 'Reply message'
+      }
+   */
+  reply (reviewId, postData) {
+    return this.request.post(`/v1/private/reviews/${reviewId}/reply`, postData);
+  }
+
+  /**
+   * [This method will delete a reply to a review.]
+   * @param {[string]} reviewId [The if of the review]
+   */
+  deleteReply (reviewId) {
+    return this.request.delete(`/v1/private/reviews/${reviewId}/reply`);
   }
 
 }
