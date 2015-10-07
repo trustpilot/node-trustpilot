@@ -60,6 +60,13 @@ class Request {
       options.headers = {
         authorization: `Bearer ${responseToken}`
       };
+  //makes a request to the given enpoint with options.
+  request (endpoint, requiresToken, options, method) {
+    return this.buildRequestOptions(requiresToken, options, method)
+      .then(requestOptions => rp(`${this.accessProvider.host}${endpoint}`, requestOptions))
+      .then(responseBody => responseBody)
+      .catch(error => { throw new Error(error); });
+  }
 
       return this.get(endpoint, options);
     });
