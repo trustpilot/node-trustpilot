@@ -23,9 +23,13 @@ class AccessProvider {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       body: 'grant_type=client_credentials'
-    }).then((response) => {
+    })
+    .then((response) => {
       this.authorization = response;
       return this.authorization;
+    })
+    .catch(function (error) {
+      throw new Error(error);
     });
   }
 
