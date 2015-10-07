@@ -79,7 +79,7 @@ class Review {
 /**
  * [This method will set the tags of a service review.]
  * @param {[string]} reviewId [The id of the review]
- * @param {[Object]} options [options object]
+ * @param {[Object]} postData [object of post data]
  * @example
  * {
       tags: [
