@@ -7,7 +7,13 @@ class Request {
     this.accessProvider = accessProvider;
   }
 
-  //creates options {obj} to append to every request. Adds an apikey and then any additional params to request
+  /**
+   * [returns all the promise, fulfilled with object of request options to use]
+   * @param  {[boolean]} requiresToken [required boolean if the request needs an Oauth access token]
+   * @param {[Object]} queryObj [options object]
+   * @param {[string]} methodType [type of the request e.g. 'GET', 'POST']
+   * @return {[Object]}      [returns a options object]
+   */
   buildRequestOptions (requiresToken, queryObj, methodType) {
     return new Promise((resolve, reject) => {
 
@@ -47,7 +53,14 @@ class Request {
     });
   }
 
-  //makes a request to the given enpoint with options.
+  /**
+   * [makes a request to the given enpoint with options.]
+   * @param  {[string]} endpoint      [endpoint to hit - no need for the host]
+   * @param  {[boolean]} requiresToken [boolean if the request needs an Oauth token]
+   * @param  {[object]} options       [object of additional query options or post body]
+   * @param  {[string]} method        [type of method e.g. 'GET', 'POST', 'PUT']
+   * @return {[object]}               [returns the api response object]
+   */
   request (endpoint, requiresToken, options, method) {
     return this.buildRequestOptions(requiresToken, options, method)
       .then(requestOptions => rp(`${this.accessProvider.host}${endpoint}`, requestOptions))
@@ -55,12 +68,23 @@ class Request {
       .catch(error => { throw new Error(error); });
   }
 
-  //makes a get request to the given enpoint
+  /**
+   * [makes a GET request to the given enpoint with options.]
+   * @param  {[string]} endpoint      [endpoint to hit - no need for the host]
+   * @param  {[boolean]} requiresToken [boolean if the request needs an Oauth token]
+   * @param  {[object]} options       [object of additional query options or post body]
+   * @return {[object]}               [returns the request promise]
+   */
   get (endpoint, requiresToken, options) {
     return this.request(endpoint, requiresToken, options, 'GET');
   }
 
-  //does a 'POST' to the given endpoint with options object
+  /**
+    * [makes a POST request to the given enpoint with options.]
+    * @param  {[string]} endpoint      [endpoint to hit - no need for the host]
+    * @param  {[object]} postData       [object of post body]
+    * @return {[object]}               [returns the request promise]
+   */
   post (endpoint, postData) {
     return this.request(endpoint, true, postData, 'POST');
   }
