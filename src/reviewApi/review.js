@@ -94,6 +94,18 @@ class Review {
     return this.request.post(`/v1/private/reviews/${reviewId}/tags`, postData);
   }
 
+  /**
+   * [This method will post a reply to a review.]
+   * @param {[string]} reviewId [The if of the review]
+   * @param {[object]} postData [object containing the reply message]
+   * @example
+   * {
+      message: 'Reply message'
+      }
+   */
+  reply (reviewId, postData) {
+    return this.request.post(`/v1/private/reviews/${reviewId}/reply`, postData);
+  }
 }
 
 module.exports = Review;
