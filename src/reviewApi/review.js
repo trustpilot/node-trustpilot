@@ -29,7 +29,7 @@ class Review {
    * @param  {[string]} reviewId [the reviewId of the review you wish to get]
    * @return {[array]}          [array which holds an object of the review]
    */
-  getSingle (reviewId) {
+  get (reviewId) {
     return this.request.get(`/v1/reviews/${reviewId}`);
   }
 
@@ -40,7 +40,7 @@ class Review {
    * @param {[string]} options.locale [the Locale to use when generating web links]
    * @return {[object]}
    */
-  getSingleWebLinks (reviewId, options) {
+  getWebLinks (reviewId, options) {
 
     let queryOptions = {
       qs: {
@@ -56,7 +56,7 @@ class Review {
    * @param {[string]} reviewId [The id of the review]
    * @return {[object]} [a likes object]
    */
-  getSingleLikes (reviewId) {
+  getLikes (reviewId) {
     return this.request.get(`/v1/reviews/${reviewId}/likes`);
   }
 
