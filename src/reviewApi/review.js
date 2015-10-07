@@ -15,13 +15,12 @@ class Review {
    */
   getLatest (lang, options) {
 
-    let queryOptions = {
-      qs: options || {}
-    };
+    let queryOptions = options || {};
 
-    queryOptions.qs.language = lang || 'en';
+    //set default language if not provided
+    queryOptions.language = lang || 'en';
 
-    return this.request.get(`/v1/reviews/latest`, queryOptions);
+    return this.request.get(`/v1/reviews/latest`, false, queryOptions);
   }
 
   /**
@@ -30,7 +29,16 @@ class Review {
    * @return {[array]}          [array which holds an object of the review]
    */
   get (reviewId) {
-    return this.request.get(`/v1/reviews/${reviewId}`);
+    return this.request.get(`/v1/reviews/${reviewId}`, false);
+  }
+
+  /**
+   * [get a single review by reviewsId]
+   * @param  {[string]} reviewId [the reviewId of the review you wish to get]
+   * @return {[array]}          [array which holds an object of the review]
+   */
+  getPrivate (reviewId) {
+    return this.request.get(`/v1/private/reviews/${reviewId}`, true);
   }
 
   /**
@@ -40,15 +48,14 @@ class Review {
    * @param {[string]} options.locale [the Locale to use when generating web links]
    * @return {[object]}
    */
-  getWebLinks (reviewId, options) {
+  getWebLinks (reviewId, locale) {
 
+    //set locale
     let queryOptions = {
-      qs: {
-        locale: options.locale || 'en-US'
-      }
+      locale: locale || 'en-US'
     };
 
-    return this.request.get(`/v1/reviews/${reviewId}/web-links`, queryOptions);
+    return this.request.get(`/v1/reviews/${reviewId}/web-links`, false, queryOptions);
   }
 
   /**
@@ -57,7 +64,7 @@ class Review {
    * @return {[object]} [a likes object]
    */
   getLikes (reviewId) {
-    return this.request.get(`/v1/reviews/${reviewId}/likes`);
+    return this.request.get(`/v1/reviews/${reviewId}/likes`, false);
   }
 
   /**
@@ -66,7 +73,8 @@ class Review {
    * @return {[object]} [a likes object]
    */
   getTags (reviewId) {
-    return this.request.getPrivate(`/v1/private/reviews/${reviewId}/tags`);
+    return this.request.get(`/v1/private/reviews/${reviewId}/tags`, true);
+  }
   }
 
 }
