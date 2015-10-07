@@ -8,7 +8,7 @@ class Request {
   }
 
   //creates options {obj} to append to every request. Adds an apikey and then any additional params to request
-  buildRequestOptions (requiresToken, queryObj, method) {
+  buildRequestOptions (requiresToken, queryObj, methodType) {
     return new Promise((resolve, reject) => {
 
       //if requiresToken, then get an acccessToken before resolving - else resolve with apiKey
@@ -19,12 +19,12 @@ class Request {
       headers: {
                 authorization: `Bearer ${responseToken}`
               },
-              method: method,
+              method: methodType,
               json: true
     };
 
             //set queryString or request body depending on method type
-            if (method === 'GET') {
+            if (methodType === 'GET') {
               requestOptions.qs = queryObj;
             } else {
               requestOptions.body = queryObj;
