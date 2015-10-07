@@ -106,6 +106,15 @@ class Review {
   reply (reviewId, postData) {
     return this.request.post(`/v1/private/reviews/${reviewId}/reply`, postData);
   }
+
+  /**
+   * [This method will delete a reply to a review.]
+   * @param {[string]} reviewId [The if of the review]
+   */
+  deleteReply (reviewId) {
+    return this.request.delete(`/v1/private/reviews/${reviewId}/reply`);
+  }
+
 }
 
 module.exports = Review;
