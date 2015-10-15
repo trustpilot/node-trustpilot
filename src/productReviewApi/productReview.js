@@ -75,7 +75,7 @@ class ProductReview {
   /**
    * [Gets a single private product review. This method includes private information such as consumer e-mail and reference id.]
    * {@link https://developers.trustpilot.com/product-reviews-api#Get private product review}
-   * @param {[string]} reviewId [the Id of the specific product review]
+   * @param {[string]} reviewId [required. the Id of the specific product review]
    * @return {[object]} [object containing the product review]
    */
   getPrivateSingle (reviewId) {
@@ -131,7 +131,7 @@ class ProductReview {
   /**
    * [Get a public conversation and related comments by id.]
    * {@link https://developers.trustpilot.com/product-reviews-api#Get public conversation}
-   * @param {[string]} conversationId [The ID of the conversation to retrieve ]
+   * @param {[string]} conversationId [required. The ID of the conversation to retrieve ]
    * @return {[object]} [object containing information about a product review conversation]
    */
   getConversation (conversationId) {
@@ -141,7 +141,7 @@ class ProductReview {
   /**
    * [Create a new comment for a given conversation. The comment is appended to the list of existing comments.]
    * {@link https://developers.trustpilot.com/product-reviews-api#Create comment}
-   * @param {[string]} conversationId [The ID of the conversation to create a comment for ]
+   * @param {[string]} conversationId [required. The ID of the conversation to create a comment for ]
    * @param {[object]} options [object containing the information to create a comment]
    * @param {[string]} options.content [the string of the comment]
    * @return {[object]} [object containing some meta-data about the comment and the comment itself]
@@ -153,7 +153,7 @@ class ProductReview {
   /**
    *[Get a private conversation and related comments by id.]
    * {@link https://developers.trustpilot.com/product-reviews-api#Get conversation}
-   *@param {[string]} conversationId [the ID of the conversation to retrieve]
+   *@param {[string]} conversationId [required. the ID of the conversation to retrieve]
    *@return {[object]} [object containing conversation]
    */
   getPrivateConversation (conversationId) {
@@ -163,7 +163,7 @@ class ProductReview {
   /**
    * [Set the conversation state to either public or private. If set to private no third parties will see the conversation.]
    * {@link https://developers.trustpilot.com/product-reviews-api#Set conversation state}
-   * @param {[string]} conversationId [The ID of the conversation to get]
+   * @param {[string]} conversationId [required. The ID of the conversation to get]
    * @param {[object]} options [options object]
    * @param {[string]} options.state [state to set the conversion to. e.g. `public` or `private`]
    */
@@ -174,8 +174,8 @@ class ProductReview {
   /**
    * [Get a single comment by id.]
    * {@link https://developers.trustpilot.com/product-reviews-api#Get comment}
-   * @param {[string]} conversationId [The ID of the conversation]
-   * @param {[string]} commentId [the ID of the specific comment to retrieve]
+   * @param {[string]} conversationId [required. The ID of the conversation]
+   * @param {[string]} commentId [required. the ID of the specific comment to retrieve]
    * @return {[object]} [object containing information about the comment]
    */
   getComment (conversationId, commentId) {
