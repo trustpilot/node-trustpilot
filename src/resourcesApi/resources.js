@@ -7,6 +7,7 @@ class Resources {
 
   /**
    * [This resource gives navigational links to all the image resources that are available.]
+   * {@link https://developers.trustpilot.com/resources-api#Contains navigational links to all image resources}
    * @return {[object]} [object containing all the navigational inks]
    */
   getImageNavigationalLinks () {
@@ -15,6 +16,7 @@ class Resources {
 
   /**
    * [This resource shows you the different sizes that are available, as well as the URLs for the images. Use this resource to get the Trustpilot stars]
+   * {@link https://developers.trustpilot.com/resources-api#Get the star image resources}
    * @param {[number]} [optional number - gets the star images for that star - allowed values are 0, 1, 2, 3, 4, 5 ]
    * @return {[object]} [object containing links to the individual stars or a certain star's image links ]
    */
@@ -25,6 +27,7 @@ class Resources {
 
   /**
    * [This resource shows you the different sizes that are available, as well as the URLs for the images. Use this resource to get the Trustpilot logo.]
+   * {@link https://developers.trustpilot.com/resources-api#Get the Trustpilot logo images}
    * @return {[object]} [links to all the different Trustpilot logos]
    */
   getLogoImages () {
@@ -33,6 +36,7 @@ class Resources {
 
   /**
    * [This resource shows you the different sizes that are available, as well as the URLs for the images. Use this resource to get the Trustpilot icon (checkbox).]
+   * {@link https://developers.trustpilot.com/resources-api#Get the Trustpilot icon images}
    * @return {[object]} [links to all the different Trustpilot icon images]
    */
   getTrustpilotIconImages () {
@@ -41,6 +45,7 @@ class Resources {
 
   /**
    * [This resource will output all supported locales of the Trustpilot system, including URLs to the different Trustpilot sites.]
+   * {@link https://developers.trustpilot.com/resources-api#Get Trustpilot supported locales}
    * @return {[object]} [object of all supported locales and their links]
    */
   getSupportedLocales () {
@@ -49,6 +54,7 @@ class Resources {
 
   /**
    * [This resource will output all countries known to Trustpilot, including the name of the country (in English).]
+   * {@link https://developers.trustpilot.com/resources-api#Get all countries known to Trustpilot}
    * @return {[object]} [object containing array of all the countries known to Trustpilot]
    */
   getKnownCountries () {
@@ -58,6 +64,7 @@ class Resources {
   /**
    * [This resource gives the text representation of the stars used to represent the TrustScore as Text. For example: 'Excellent'
    * defaults to English if no locale is provided]
+   * {@link https://developers.trustpilot.com/resources-api#Get the string representation of the stars}
    * @param {[object]} [optional object containing locale and/or star value]
    * @param {[string]} options.locale [locale for translation e.g. 'da-DK']
    * @param {[number]} options.stars [star value to return e.g. 4]

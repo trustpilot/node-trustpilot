@@ -4,6 +4,7 @@ let Review = require('./reviewApi/review');
 let Resources = require('./resourcesApi/resources');
 let AccessProvider = require('./AccessProvider');
 let Request = require('./requestHelper');
+let ProductReview = require('./productReviewApi/productReview');
 
 class Client {
   constructor (apiKey, secret) {
@@ -14,7 +15,7 @@ class Client {
     this.request = new Request(this.accessProvider);
     this.review = new Review(this.request);
     this.resources = new Resources(this.request);
-
+    this.productReview = new ProductReview(this.request);
   }
 }
 
