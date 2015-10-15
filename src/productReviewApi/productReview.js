@@ -121,6 +121,59 @@ class ProductReview {
     return this.request.get(`/v1/product-reviews/business-units/${businessUnitId}/reviews`, false, options);
   }
 
+  /**
+   * [Get a public conversation and related comments by id.]
+   * {@link https://developers.trustpilot.com/product-reviews-api#Get public conversation}
+   * @param {[string]} conversationId [The ID of the conversation to retrieve ]
+   * @return {[object]} [object containing information about a product review conversation]
+   */
+  getConversation (conversationId) {
+    return this.request.get(`/v1/conversations/${conversationId}`, false);
+  }
+
+  /**
+   * [Create a new comment for a given conversation. The comment is appended to the list of existing comments.]
+   * {@link https://developers.trustpilot.com/product-reviews-api#Create comment}
+   * @param {[string]} conversationId [The ID of the conversation to create a comment for ]
+   * @param {[object]} options [object containing the information to create a comment]
+   * @param {[string]} options.content [the string of the comment]
+   * @return {[object]} [object containing some meta-data about the comment and the comment itself]
+   */
+  createComment (conversationId, options) {
+    return this.request.post(`/v1/private/conversations/${conversationId}/comments`, options);
+  }
+
+  /**
+   *[Get a private conversation and related comments by id.]
+   * {@link https://developers.trustpilot.com/product-reviews-api#Get conversation}
+   *@param {[string]} conversationId [the ID of the conversation to retrieve]
+   *@return {[object]} [object containing conversation]
+   */
+  getPrivateConversation (conversationId) {
+    return this.request.get(`/v1/private/conversations/${conversationId}`, true);
+  }
+
+  /**
+   * [Set the conversation state to either public or private. If set to private no third parties will see the conversation.]
+   * {@link https://developers.trustpilot.com/product-reviews-api#Set conversation state}
+   * @param {[string]} conversationId [The ID of the conversation to get]
+   * @param {[object]} options [options object]
+   * @param {[string]} options.state [state to set the conversion to. e.g. `public` or `private`]
+   */
+  saveCoversationState (conversationId, options) {
+    return this.request.post(`/v1/private/conversations/${conversationId}/state`, options);
+  }
+
+  /**
+   * [Get a single comment by id.]
+   * {@link https://developers.trustpilot.com/product-reviews-api#Get comment}
+   * @param {[string]} conversationId [The ID of the conversation]
+   * @param {[string]} commentId [the ID of the specific comment to retrieve]
+   * @return {[object]} [object containing information about the comment]
+   */
+  getComment (conversationId, commentId) {
+    return this.request.get(`/v1/private/conversations/${conversationId}/comments/${commentId}`, true);
+  }
 }
 
 module.exports = ProductReview;
