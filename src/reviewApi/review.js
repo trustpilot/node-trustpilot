@@ -6,6 +6,7 @@ class Review {
 
   /**
    * [returns all the latest reviews]
+   * {@link https://developers.trustpilot.com/review-api#Get latest reviews by language}
    * @param  {[string]} lang [required string for the language of reviews]
    * @param {[Object]} options [options object]
    * @param {[string]} options.locale [used to create links using this locale]
@@ -25,6 +26,7 @@ class Review {
 
   /**
    * [get a single review by reviewsId]
+   * {@link https://developers.trustpilot.com/review-api#Get a review}
    * @param  {[string]} reviewId [the reviewId of the review you wish to get]
    * @return {[array]}          [array which holds an object of the review]
    */
@@ -34,6 +36,7 @@ class Review {
 
   /**
    * [get a single review by reviewsId]
+   * {@link https://developers.trustpilot.com/review-api#Get private review}
    * @param  {[string]} reviewId [the reviewId of the review you wish to get]
    * @return {[array]}          [array which holds an object of the review]
    */
@@ -43,6 +46,7 @@ class Review {
 
   /**
    * [Gets the links to a review's public page on Trustpilot]
+   * {@link https://developers.trustpilot.com/review-api#Get a review's web links}
    * @param {[string]} reviewId [The id of the review]
    * @param {[Object]} options [options object]
    * @param {[string]} options.locale [the Locale to use when generating web links]
@@ -60,6 +64,7 @@ class Review {
 
   /**
    * [This method gets a review's likes information]
+   * {@link https://developers.trustpilot.com/review-api#Get a review's likes}
    * @param {[string]} reviewId [The id of the review]
    * @return {[object]} [a likes object]
    */
@@ -69,6 +74,7 @@ class Review {
 
   /**
    * [This method gets a review's likes information]
+   * {@link https://developers.trustpilot.com/review-api#Get tags on review}
    * @param {[string]} reviewId [The id of the review]
    * @return {[object]} [a likes object]
    */
@@ -78,6 +84,7 @@ class Review {
 
 /**
  * [This method will set the tags of a service review.]
+ * {@link https://developers.trustpilot.com/review-api#Set tags on review}
  * @param {[string]} reviewId [The id of the review]
  * @param {[Object]} postData [object of post data]
  * @example
@@ -96,6 +103,7 @@ class Review {
 
   /**
    * [This method will post a reply to a review.]
+   * {@link https://developers.trustpilot.com/review-api#Reply to a review.}
    * @param {[string]} reviewId [The if of the review]
    * @param {[object]} postData [object containing the reply message]
    * @example
@@ -109,6 +117,7 @@ class Review {
 
   /**
    * [This method will delete a reply to a review.]
+   * {@link https://developers.trustpilot.com/review-api#Delete a reply to a review.}
    * @param {[string]} reviewId [The if of the review]
    */
   deleteReply (reviewId) {
