@@ -7,6 +7,7 @@ class ProductReview {
 
   /**
    * [Given information about the consumer and the product(s) purchased, get a link that can be sent to the consumer to request reviews.]
+   * {@link https://developers.trustpilot.com/product-reviews-api#Create product review invitation link}
    * @param {[string]} businessUnitId [required string of the business Unit Id ]
    * @param {[object]} options [post data to be sent to create an invitation link]
    * @example
@@ -40,6 +41,7 @@ class ProductReview {
    * [Given a list of SKUs or product urls return a list of product reviews. This method includes private information
    * such as consumer e-mail and reference id. By default only published reviews are returned. To get reviews with
    * other states, provide a list in the state field. Pagination is used to retrieve all results.]
+   * {@link https://developers.trustpilot.com/product-reviews-api#Get private product reviews}
    * @param {[string]} businessUnitId [required string of the Business Unit Id]
    * @param {[object]} options [optional. Options object]
    * @param {[number]} options.perPage [optional. of the page to recieve. If the page number requested is higher than
@@ -58,6 +60,7 @@ class ProductReview {
   /**
    * [Get a list of summaries of product reviews for a business unit. The summary contains information about stars
    *  average, distribution and count. Pagination is used to retrieve all results.]
+   * {@link https://developers.trustpilot.com/product-reviews-api#Get product reviews summaries list}
    * @param {[string]} businessUnitId [required. string of the Business Unit Id]
    * @param {[object]} options [optional. Options Object]
    * @param {[number]} options.page [optional. The page to retrieve. If the page number requested is higher than the
@@ -71,6 +74,7 @@ class ProductReview {
 
   /**
    * [Gets a single private product review. This method includes private information such as consumer e-mail and reference id.]
+   * {@link https://developers.trustpilot.com/product-reviews-api#Get private product review}
    * @param {[string]} reviewId [the Id of the specific product review]
    * @return {[object]} [object containing the product review]
    */
@@ -80,6 +84,7 @@ class ProductReview {
 
   /**
    * [Prepares the review for participating in a conversation by issuing a conversation ID]
+   * {@link https://developers.trustpilot.com/product-reviews-api#Create product review conversation}
    * @param {[string]} reviewId [Required. The id of the product review]
    * @return {[object]} [object containing the conversationId]
    */
@@ -92,6 +97,7 @@ class ProductReview {
    *  and sku are listed as optional parameters at least one of them must be specified. If both sku and productUrl are
    *  specified the productUrl is ignored and a search will be made only on the basis of the sku. The summary contains
    *  information about stars average, distribution and count.]
+   * {@link https://developers.trustpilot.com/product-reviews-api#Get product reviews summary}
    *  @param {[businessUnitId]} string [Required. The id of the business unit. ]
    *  @param {[object]} options [optional options object]
    *  @param {[string]} options.productUrl [The url of the product. Mandatory only if no sku is provided, else ignored. ]
@@ -107,6 +113,7 @@ class ProductReview {
    *  productUrl and sku are listed as optional parameters at least one of them must be specified. It includes review
    *  content, date of creation of review, individual star rating, id and display name of the consumer who wrote the review.
    *  Pagination and filtering reviews by language is also possible.]
+   * {@link https://developers.trustpilot.com/product-reviews-api#Get product reviews}
    * @param  {[string]} businessUnitId [ Required string.]
    * @param {[object]} options [optional options object]
    * @param {[number]} options.page [The page to retrieve. If the page number requested is higher than the available
