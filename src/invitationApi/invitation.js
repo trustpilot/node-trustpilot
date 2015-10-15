@@ -8,7 +8,7 @@ class Invitation {
   /**
    * [This API endpoint triggers an email invitation. Use the redirect parameter to pass in a product review invitation link. preferredSendTime must be in UTC if specified.]
    * {@link https://developers.trustpilot.com/invitation-api#Create new invitation}
-   * @param {[string]} businessUnitId [The ID of the business unit. ]
+   * @param {[string]} businessUnitId [required. The ID of the business unit. ]
    * @param {[object]} options [request data]
    * @example request options
    * {
@@ -36,7 +36,7 @@ class Invitation {
   /**
    * [Returns a list of ID and Names of the templates available to be used in invitations. Includes both standard and custom templates.]
    * {@link https://developers.trustpilot.com/invitation-api#Get list of invitation templates}
-   * @param {[string]} [The ID of the business unit.]
+   * @param {[string]} [required. The ID of the business unit.]
    * @return {[object]} [object containing information about all the invitation templates]
    */
   getTemplates (businessUnitId) {
@@ -47,7 +47,7 @@ class Invitation {
    * [Generate a unique invitation link that can be sent to a consumer by email or website. Use the request parameter
    * called redirectURI to take the user to a product review link after the user has left a service review.]
    * {@link https://developers.trustpilot.com/invitation-api#Generate service review invitation link}
-   *@param {[string]} businessUnitId [ID of the businessUnit]
+   *@param {[string]} businessUnitId [required. ID of the businessUnit]
    *@param {[object]} options [post body object]
    *@example post body
    {
