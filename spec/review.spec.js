@@ -1,18 +1,20 @@
 'use strict';
 
-// var Review = require('../src/reviewApi/review');
+var Trustpilot = require('../src/client');
+var Review = require('../src/reviewApi/review');
 var mockery = require('mockery');
 var fs = require('fs');
-var chaiAsPromised = require('chai-as-promised');
 var Bluebird = require('bluebird');
-var sinon = require('sinon');
+var chai = require('chai');
+var should = chai.should();
+var expect = chai.expect;
+var chaiAsPromised = require('chai-as-promised');
 
+chai.use(chaiAsPromised);
 
 describe('app', function () {
-  console.log('something');
-  beforeEach(function (done) {
-    console.log('something');
-    var filename = 'testResponse.txt';
+  before(function (done) {
+    var filename = 'testResponse.json';
     mockery.enable({
       warnOnReplace: false,
       warnOnUnregistered: false,
@@ -21,26 +23,34 @@ describe('app', function () {
 
     mockery.registerMock('request-promise', function () {
       var response = fs.readFileSync(__dirname + '/' + filename, 'utf8');
-      console.log(response);
       return Bluebird.resolve(response);
     });
 
     done();
   });
 
-  afterEach(function (done) {
+  after(function (done) {
     mockery.disable();
     mockery.deregisterAll();
     done();
   });
 
   describe('custom test case', function () {
+    //var request = require('request-promise');
+    var request = {
+      get: function () {
+        return Promise.resolve({message: 'something'});
+      }
+    };
+
+    var review = new Review(request);
 
     it('does soemthing', function () {
-      var rp = require('request-promise');
-      rp('http://www.e-try.com/black.html').then(function (data) {
-        console.log(data);
-      });
+      return review.getLatest().should.eventually.deep.equal({message: 'somdsafdsaething'});
+
+      // rp('http://www.e-try.com/black.html').then(function (data) {
+      //   console.log(data);
+      // });
     });
   });
 
