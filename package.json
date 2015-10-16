@@ -19,6 +19,6 @@
     "mocha": "^2.3.2"
   },
   "dependencies": {
-    "request-promise": "^0.4.3"
+    "request-promise": "^1.0.1"
   }
 }
