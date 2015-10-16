@@ -64,8 +64,7 @@ class Request {
   request (endpoint, requiresToken, options, method) {
     return this.buildRequestOptions(requiresToken, options, method)
       .then(requestOptions => rp(`${this.accessProvider.host}${endpoint}`, requestOptions))
-      .then(responseBody => responseBody)
-      .catch(error => { throw new Error(error); });
+      .then(responseBody => responseBody);
   }
 
   /**
@@ -96,8 +95,7 @@ class Request {
 
     return this.buildRequestOptions(requiresToken, options, method)
       .then(requestOptions => rp(`${invitationsHost}${endpoint}`, requestOptions))
-      .then(responseBody => responseBody)
-      .catch(error => { throw new Error(error); });
+      .then(responseBody => responseBody);
   }
 
   delete (endpoint) {
