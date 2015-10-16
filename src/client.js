@@ -8,6 +8,7 @@ let ProductReview = require('./productReviewApi/productReview');
 let Invitation = require('./invitationApi/invitation');
 let Consumer = require('./consumerApi/consumer');
 let Categories = require('./categoriesApi/categories');
+let BusinessUnit = require('./businessUnitApi/businessUnit');
 
 class Client {
   constructor (apiKey, secret) {
@@ -22,6 +23,7 @@ class Client {
     this.invitation = new Invitation(this.request);
     this.consumer = new Consumer(this.request);
     this.categories = new Categories(this.request);
+    this.businessUnit = new BusinessUnit(this.request);
   }
 }
 
