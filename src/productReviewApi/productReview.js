@@ -34,6 +34,8 @@ class ProductReview {
    *@return {[object]} [object containing the reviewLinkId and reviewUrl]
    */
   createInvitationLink (businessUnitId, options) {
+    if (!businessUnitId) { throw new Error('businessUnitId is not present'); }
+
     return this.request.post(`/v1/private/product-reviews/business-units/${businessUnitId}/invitation-links`, options);
   }
 
@@ -54,6 +56,8 @@ class ProductReview {
    *  @return {[Object]}      [returns a object containing product reviews]
    */
   getPrivate (businessUnitId, options) {
+    if (!businessUnitId) { throw new Error('businessUnitId is not present'); }
+
     return this.request.get(`/v1/private/product-reviews/business-units/${businessUnitId}/reviews`, true, options);
   }
 
@@ -69,6 +73,8 @@ class ProductReview {
    * @return {[object]} [object containging a overall product reviews summery report]
    */
   getSummariesList (businessUnitId, options) {
+    if (!businessUnitId) { throw new Error('businessUnitId is not present'); }
+
     return this.request.get(`/v1/private/product-reviews/business-units/${businessUnitId}/summaries`, true, options);
   }
 
@@ -79,6 +85,8 @@ class ProductReview {
    * @return {[object]} [object containing the product review]
    */
   getPrivateSingle (reviewId) {
+    if (!reviewId) { throw new Error('reviewId is not present'); }
+
     return this.request.get(`/v1/private/product-reviews/${reviewId}`, true);
   }
 
@@ -89,6 +97,8 @@ class ProductReview {
    * @return {[object]} [object containing the conversationId]
    */
   createConversation (reviewId) {
+    if (!reviewId) { throw new Error('reviewId is not present'); }
+
     return this.request.get(`/v1/private/product-reviews/${reviewId}/create-conversation`, true);
   }
 
@@ -105,6 +115,8 @@ class ProductReview {
    *  @return {[object]} [object containing product reviews summary]
    */
   getSummary (businessUnitId, options) {
+    if (!businessUnitId) { throw new Error('businessUnitId is not present'); }
+
     return this.request.get(`/v1/product-reviews/business-units/${businessUnitId}`, false, options);
   }
 
@@ -125,6 +137,8 @@ class ProductReview {
    * @return {[object]}                [object containing product reviews]
    */
   getProductReviews (businessUnitId, options) {
+    if (!businessUnitId) { throw new Error('businessUnitId is not present'); }
+
     return this.request.get(`/v1/product-reviews/business-units/${businessUnitId}/reviews`, false, options);
   }
 
@@ -135,6 +149,8 @@ class ProductReview {
    * @return {[object]} [object containing information about a product review conversation]
    */
   getConversation (conversationId) {
+    if (!conversationId) { throw new Error('conversationId is not present'); }
+
     return this.request.get(`/v1/conversations/${conversationId}`, false);
   }
 
@@ -147,6 +163,8 @@ class ProductReview {
    * @return {[object]} [object containing some meta-data about the comment and the comment itself]
    */
   createComment (conversationId, options) {
+    if (!conversationId) { throw new Error('conversationId is not present'); }
+
     return this.request.post(`/v1/private/conversations/${conversationId}/comments`, options);
   }
 
@@ -157,6 +175,8 @@ class ProductReview {
    *@return {[object]} [object containing conversation]
    */
   getPrivateConversation (conversationId) {
+    if (!conversationId) { throw new Error('conversationId is not present'); }
+
     return this.request.get(`/v1/private/conversations/${conversationId}`, true);
   }
 
@@ -168,6 +188,8 @@ class ProductReview {
    * @param {[string]} options.state [state to set the conversion to. e.g. `public` or `private`]
    */
   saveCoversationState (conversationId, options) {
+    if (!conversationId) { throw new Error('conversationId is not present'); }
+
     return this.request.post(`/v1/private/conversations/${conversationId}/state`, options);
   }
 
@@ -179,6 +201,10 @@ class ProductReview {
    * @return {[object]} [object containing information about the comment]
    */
   getComment (conversationId, commentId) {
+    if (!conversationId) { throw new Error('conversationId is not present'); }
+
+    if (!commentId) { throw new Error('commentId is not present'); }
+
     return this.request.get(`/v1/private/conversations/${conversationId}/comments/${commentId}`, true);
   }
 }
