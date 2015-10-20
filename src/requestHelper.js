@@ -8,7 +8,7 @@ class Request {
   }
 
   /**
-   * [returns all the promise, fulfilled with object of request options to use]
+   * [returns a promise, fulfilled with object of request options to use]
    * @param  {[boolean]} requiresToken [required boolean if the request needs an Oauth access token]
    * @param {[Object]} queryObj [options object]
    * @param {[string]} methodType [type of the request e.g. 'GET', 'POST']
