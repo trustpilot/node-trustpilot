@@ -26,11 +26,11 @@ class AccessProvider {
       },
       body: 'grant_type=client_credentials'
     })
-    .then((response) => {
+    .then(response => {
       this.authorization = response;
       return this.authorization;
     })
-    .catch(function (error) {
+    .catch(error => {
       throw new Error(error);
     });
   }
@@ -45,9 +45,13 @@ class AccessProvider {
       if (this.isTokenValid()) {
         resolve(this.authorization.access_token);
       } else {
-        this.generateTokenObject().then((response) => {
-          resolve(response.access_token);
-        });
+        this.generateTokenObject()
+          .then((response) => {
+            resolve(response.access_token);
+          })
+          .catch(error => {
+            reject(error);
+          });
       }
     });
   }
