@@ -10,7 +10,7 @@ let Consumer = require('./consumerApi/consumer');
 let Categories = require('./categoriesApi/categories');
 let BusinessUnit = require('./businessUnitApi/businessUnit');
 
-class Client {
+class Trustpilot {
   constructor (apiKey, secret) {
     this.apiKey = apiKey;
     this.host = 'https://api.tp-staging.com';
@@ -27,4 +27,4 @@ class Client {
   }
 }
 
-module.exports = Client;
+module.exports = Trustpilot;

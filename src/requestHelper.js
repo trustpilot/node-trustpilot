@@ -8,7 +8,7 @@ class Request {
   }
 
   /**
-   * [returns all the promise, fulfilled with object of request options to use]
+   * [returns a promise, fulfilled with object of request options to use]
    * @param  {[boolean]} requiresToken [required boolean if the request needs an Oauth access token]
    * @param {[Object]} queryObj [options object]
    * @param {[string]} methodType [type of the request e.g. 'GET', 'POST']
@@ -64,8 +64,7 @@ class Request {
   request (endpoint, requiresToken, options, method) {
     return this.buildRequestOptions(requiresToken, options, method)
       .then(requestOptions => rp(`${this.accessProvider.host}${endpoint}`, requestOptions))
-      .then(responseBody => responseBody)
-      .catch(error => { throw new Error(error); });
+      .then(responseBody => responseBody);
   }
 
   /**
@@ -96,8 +95,7 @@ class Request {
 
     return this.buildRequestOptions(requiresToken, options, method)
       .then(requestOptions => rp(`${invitationsHost}${endpoint}`, requestOptions))
-      .then(responseBody => responseBody)
-      .catch(error => { throw new Error(error); });
+      .then(responseBody => responseBody);
   }
 
   delete (endpoint) {
