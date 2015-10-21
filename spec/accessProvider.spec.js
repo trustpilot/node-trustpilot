@@ -1,36 +1,16 @@
 'use strict';
 
 var AccessProvider = require('../src/accessProvider');
-var mockery = require('mockery');
-var fs = require('fs');
-var Bluebird = require('bluebird');
 var chai = require('chai');
-var assert = chai.assert;
-var should = chai.should();
 var expect = chai.expect;
 var chaiAsPromised = require('chai-as-promised');
 
-var rejectOrResolve;
 var accessProvider;
 
 chai.use(chaiAsPromised);
 
-describe.only('Acesss Provider Api ', function () {
+describe('Acesss Provider Api ', function () {
   beforeEach(function (done) {
-    var filename = 'testResponse.json';
-
-    mockery.enable({
-      warnOnReplace: false,
-      warnOnUnregistered: false,
-      useCleanCache: true
-    });
-
-    mockery.registerMock('request-promise', function () {
-      var response = fs.readFileSync(__dirname + '/' + filename, 'utf8');
-
-      //resolve or reject the request-promise promise depend on the need of the test
-      return Bluebird.resolve(response);
-    });
 
     accessProvider = new AccessProvider('fakeKey', 'http://fakeHost.com', 'fakeSecret');
 
@@ -38,11 +18,6 @@ describe.only('Acesss Provider Api ', function () {
   });
 
   afterEach(function (done) {
-    mockery.disable();
-    mockery.deregisterAll();
-
-    rejectOrResolve = '';
-
     accessProvider = {};
 
     done();
@@ -64,7 +39,7 @@ describe.only('Acesss Provider Api ', function () {
     });
 
     describe('when the authorization token does not exist', function () {
-      it('should resolve with a token', function () {
+      it('should resolve with a token because one is made', function () {
         accessProvider.generateTokenObject = function () {
           return Promise.resolve({
             access_token: 68465341496
