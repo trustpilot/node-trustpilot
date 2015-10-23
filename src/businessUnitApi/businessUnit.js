@@ -42,6 +42,8 @@ class BusinessUnit {
    * @return {[object]} [object containing public information about a business unit]
    */
   get (businessUnitId) {
+    if (!businessUnitId) { throw new Error('businessUnitId is not present'); }
+
     return this.request.get(`/v1/business-units/${businessUnitId}`, false);
   }
 
@@ -53,6 +55,8 @@ class BusinessUnit {
    * @return {[object]} [object containing the web links for a specific buisiness unit]
    */
   getWebLinks (businessUnitId, locale) {
+    if (!businessUnitId) { throw new Error('businessUnitId is not present'); }
+
     let options = {
       locale: locale || 'en-US'
     };
@@ -84,6 +88,8 @@ class BusinessUnit {
    * @return {[object]} [object containing reviews]
    */
   getReviews (businessUnitId, queryOptions) {
+    if (!businessUnitId) { throw new Error('businessUnitId is not present'); }
+
     return this.request.get(`/v1/business-units/${businessUnitId}/reviews`, false, queryOptions);
   }
 
@@ -119,6 +125,8 @@ class BusinessUnit {
    * @return {[object]} [object containing reviews]
    */
   getPrivateReviews (businessUnitId, queryOptions) {
+    if (!businessUnitId) { throw new Error('businessUnitId is not present'); }
+
     return this.request.get(`/v1/private/business-units/${businessUnitId}/reviews`, true, queryOptions);
   }
 
@@ -129,6 +137,8 @@ class BusinessUnit {
    * @return {[object]} [object containing tags]
    */
   getPrivateTags (businessUnitId) {
+    if (!businessUnitId) { throw new Error('businessUnitId is not present'); }
+
     return this.request.get(`/v1/private/business-units/${businessUnitId}/tags`, true);
   }
 
@@ -139,6 +149,8 @@ class BusinessUnit {
    * @return {[object]} [object list of categories]
    */
   listCategories (businessUnitId) {
+    if (!businessUnitId) { throw new Error('businessUnitId is not present'); }
+
     return this.request.get(`/v1/business-units/${businessUnitId}/categories`, false);
   }
 }
