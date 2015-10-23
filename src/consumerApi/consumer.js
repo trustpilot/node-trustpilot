@@ -12,6 +12,8 @@ class Consumer {
    * @return {[object]} [object containing all sorts of info about a specific consumer]
    */
   getConsumer (consumerId) {
+    if (!consumerId) { throw new Error('consumerId is not present'); }
+
     return this.request.get(`/v1/consumers/${consumerId}`, false);
   }
 
@@ -32,6 +34,8 @@ class Consumer {
    * @return {[object]} [object containing the reviews of a specific consumer]
    */
   getConsumerReviews (consumerId, queryOptions) {
+    if (!consumerId) { throw new Error('consumerId is not present'); }
+
     return this.request.get(`/v1/consumers/${consumerId}/reviews`, false, queryOptions);
   }
 
@@ -43,6 +47,8 @@ class Consumer {
    * @return {[object]} [object containing consumer's web links]
    */
   getConsumerWebLinks (consumerId, locale) {
+    if (!consumerId) { throw new Error('consumerId is not present'); }
+
     //set locale just in case they didn't even though its required
     let queryOptions = {
       locale: locale || 'en-US'
