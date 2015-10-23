@@ -7,6 +7,17 @@
     "start": "node src/client.js",
     "test": "gulp test"
   },
+  "repository" :
+  { "type" : "git",
+    "url" : "git@github.com:trustpilot/trustpilot-node-sdk.git"
+  },
+  "keywords": [
+    "API",
+    "Trustpiot",
+    "reviews"
+    "review"
+  ],
+  "homepage": "https://github.com/trustpilot/trustpilot-node-sdk",
   "author": "Trustpilot",
   "license": "ISC",
   "devDependencies": {
@@ -20,5 +31,8 @@
   },
   "dependencies": {
     "request-promise": "^1.0.1"
-  }
+  },
+  "contributors": [
+     "Luke Pommersheim <lpommers@noreply.users.github.com>",
+  ]
 }
