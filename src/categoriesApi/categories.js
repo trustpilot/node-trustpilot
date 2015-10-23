@@ -35,6 +35,8 @@ class Categories {
    * @return {[object]} [object with information about the specific category]
    */
   get (categoryId, country, queryOptions) {
+    if (!categoryId) { throw new Error('categoryId is not present'); }
+
     let options = queryOptions || {};
 
     options.country = country || 'US';
@@ -75,6 +77,8 @@ class Categories {
    * @return {[object]} [object of all the businesUnits with specific category]
    */
   listBusinessUnits (categoryId, country, queryOptions) {
+    if (!categoryId) { throw new Error('categoryId is not present'); }
+
     let options = queryOptions || {};
 
     options.country = country || 'US';
