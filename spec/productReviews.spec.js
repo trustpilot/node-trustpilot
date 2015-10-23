@@ -39,6 +39,10 @@ describe('ProductReview Api', function () {
       done();
     });
 
+    afterEach(function () {
+      productReview = {};
+    });
+
     describe('createInvitationLink function', function () {
       it('is fulfilled', function () {
         return productReview.createInvitationLink('123456').should.be.fulfilled;
@@ -309,67 +313,97 @@ describe('ProductReview Api', function () {
     var productReview = new ProductReview('unnecessary for this test');
     describe('when createInvitationLink() is called without a businessUnitId', function () {
       it('throws a new Error', function () {
-        expect(productReview.createInvitationLink).to.throw(Error);
+        expect(function () {
+          productReview.createInvitationLink();
+        }).to.throw('businessUnitId is not present');
       });
     });
 
     describe('when getSummariesList() is called without a businessUnitId', function () {
       it('throws a new Error', function () {
-        expect(productReview.getSummariesList).to.throw(Error);
+        expect(function () {
+          productReview.getSummariesList();
+        }).to.throw('businessUnitId is not present');
       });
     });
 
     describe('when getPrivateSingle() is called without a reviewId', function () {
       it('throws a new Error', function () {
-        expect(productReview.getPrivateSingle).to.throw(Error);
+        expect(function () {
+          productReview.getPrivateSingle();
+        }).to.throw('reviewId is not present');
       });
     });
 
     describe('when createConversation() is called without a reviewId', function () {
       it('throws a new Error', function () {
-        expect(productReview.createConversation).to.throw(Error);
+        expect(function () {
+          productReview.createConversation();
+        }).to.throw('reviewId is not present');
       });
     });
 
     describe('when getSummary() is called without a businessUnitId', function () {
       it('throws a new Error', function () {
-        expect(productReview.getSummary).to.throw(Error);
+        expect(function () {
+          productReview.getSummary();
+        }).to.throw('businessUnitId is not present');
       });
     });
 
     describe('when getProductReviews() is called without a businessUnitId', function () {
       it('throws a new Error', function () {
-        expect(productReview.getProductReviews).to.throw(Error);
+        expect(function () {
+          productReview.getProductReviews();
+        }).to.throw('businessUnitId is not present');
       });
     });
 
     describe('when getConversation() is called without a conversationId', function () {
       it('throws a new Error', function () {
-        expect(productReview.getConversation).to.throw(Error);
+        expect(function () {
+          productReview.getConversation();
+        }).to.throw('conversationId is not present');
       });
     });
 
     describe('when createComment() is called without a conversationId', function () {
       it('throws a new Error', function () {
-        expect(productReview.createComment).to.throw(Error);
+        expect(function () {
+          productReview.createComment();
+        }).to.throw('conversationId is not present');
       });
     });
 
     describe('when getPrivateConversation() is called without a conversationId', function () {
       it('throws a new Error', function () {
-        expect(productReview.getPrivateConversation).to.throw(Error);
+        expect(function () {
+          productReview.getPrivateConversation();
+        }).to.throw('conversationId is not present');
       });
     });
 
     describe('when saveCoversationState() is called without a conversationId', function () {
       it('throws a new Error', function () {
-        expect(productReview.saveCoversationState).to.throw(Error);
+        expect(function () {
+          productReview.saveCoversationState();
+        }).to.throw('conversationId is not present');
       });
     });
 
-    describe('when getComment() is called without a conversationId or commentId', function () {
+    describe('when getComment() is called without a conversationId', function () {
       it('throws a new Error', function () {
-        expect(productReview.getComment).to.throw(Error);
+        expect(function () {
+          productReview.getComment();
+        }).to.throw('conversationId is not present');
+      });
+    });
+
+    describe('when getComment() is called without a commentId', function () {
+      it('throws a new Error', function () {
+        expect(function () {
+          productReview.getComment('123465789');
+        }).to.throw('commentId is not present');
       });
     });
   });

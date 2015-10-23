@@ -11,10 +11,10 @@ let Categories = require('./categoriesApi/categories');
 let BusinessUnit = require('./businessUnitApi/businessUnit');
 
 class Trustpilot {
-  constructor (apiKey, secret) {
-    this.apiKey = apiKey;
-    this.host = 'https://api.tp-staging.com';
-    this.secret = secret;
+  constructor (config) {
+    this.apiKey = config.apiKey;
+    this.host = config.dev || 'https://api.trustpilot.com';
+    this.secret = config.secret || '';
     this.accessProvider = new AccessProvider(this.apiKey, this.host, this.secret);
     this.request = new Request(this.accessProvider);
     this.review = new Review(this.request);

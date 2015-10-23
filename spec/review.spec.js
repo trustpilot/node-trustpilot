@@ -253,49 +253,65 @@ describe('Reviews Api ', function () {
     var review = new Review('unnecessary for this test');
     describe('when get() is called without a reviewId', function () {
       it('throws a new Error', function () {
-        expect(review.get).to.throw(Error);
+        expect(function () {
+          review.get();
+        }).to.throw('reviewId is not present');
       });
     });
 
     describe('when getPrivate() is called without a reviewId', function () {
       it('throws a new Error', function () {
-        expect(review.getPrivate).to.throw(Error);
+        expect(function () {
+          review.getPrivate();
+        }).to.throw('reviewId is not present');
       });
     });
 
     describe('when getWebLinks() is called without a reviewId', function () {
       it('throws a new Error', function () {
-        expect(review.getWebLinks).to.throw(Error);
+        expect(function () {
+          review.getWebLinks();
+        }).to.throw('reviewId is not present');
       });
     });
 
     describe('when getLikes() is called without a reviewId', function () {
       it('throws a new Error', function () {
-        expect(review.getLikes).to.throw(Error);
+        expect(function () {
+          review.getLikes();
+        }).to.throw('reviewId is not present');
       });
     });
 
     describe('when getTags() is called without a reviewId', function () {
       it('throws a new Error', function () {
-        expect(review.getTags).to.throw(Error);
+        expect(function () {
+          review.getTags();
+        }).to.throw('reviewId is not present');
       });
     });
 
     describe('when saveTags() is called without a reviewId', function () {
       it('throws a new Error', function () {
-        expect(review.saveTags).to.throw(Error);
+        expect(function () {
+          review.saveTags();
+        }).to.throw('reviewId is not present');
       });
     });
 
     describe('when reply() is called without a reviewId', function () {
       it('throws a new Error', function () {
-        expect(review.reply).to.throw(Error);
+        expect(function () {
+          review.reply();
+        }).to.throw('reviewId is not present');
       });
     });
 
     describe('when deleteReply() is called without a reviewId', function () {
       it('throws a new Error', function () {
-        expect(review.deleteReply).to.throw(Error);
+        expect(function () {
+          review.deleteReply();
+        }).to.throw('reviewId is not present');
       });
     });
   });
