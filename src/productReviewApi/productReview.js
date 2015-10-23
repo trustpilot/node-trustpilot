@@ -187,7 +187,7 @@ class ProductReview {
    * @param {[object]} options [options object]
    * @param {[string]} options.state [state to set the conversion to. e.g. `public` or `private`]
    */
-  saveCoversationState (conversationId, options) {
+  saveConversationState (conversationId, options) {
     if (!conversationId) { throw new Error('conversationId is not present'); }
 
     return this.request.post(`/v1/private/conversations/${conversationId}/state`, options);
