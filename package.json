@@ -33,6 +33,6 @@
     "request-promise": "^1.0.1"
   },
   "contributors": [
-     "Luke Pommersheim <lpommers@noreply.users.github.com>",
+     "Luke Pommersheim <lpommers@noreply.users.github.com>"
   ]
 }
