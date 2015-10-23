@@ -27,8 +27,6 @@ describe('Invitations Api ', function () {
       done();
     });
 
-    //var request = require('request-promise');
-
     describe('new invitation function', function () {
       it('is fulfilled', function () {
         return invitation.newInvitation('123456').should.be.fulfilled;

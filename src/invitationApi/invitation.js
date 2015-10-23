@@ -30,6 +30,8 @@ class Invitation {
    *@return {[object]} [object containing invitation information]
    */
   newInvitation (businessUnitId, options) {
+    if (!businessUnitId) { throw new Error('businessUnitId is not present'); }
+
     return this.request.invitationsRequest(`/v1/private/business-units/${businessUnitId}/invitations`, true, options, 'POST');
   }
 
@@ -40,6 +42,8 @@ class Invitation {
    * @return {[object]} [object containing information about all the invitation templates]
    */
   getTemplates (businessUnitId) {
+    if (!businessUnitId) { throw new Error('businessUnitId is not present'); }
+
     return this.request.invitationsRequest(`/v1/private/business-units/${businessUnitId}/templates`, true, {}, 'GET');
   }
 
@@ -64,6 +68,8 @@ class Invitation {
    *@return {[object]} [object containing service review inviration link id and url]
    */
   generateServiceReviewLink (businessUnitId, options) {
+    if (!businessUnitId) { throw new Error('businessUnitId is not present'); }
+
     return this.request.invitationsRequest(`/v1/private/business-units/${businessUnitId}/invitation-links`, true, options, 'POST');
   }
 }
