@@ -145,11 +145,11 @@ describe('ProductReview Api', function () {
 
     describe('saveCoversationState function', function () {
       it('is fulfilled', function () {
-        return productReview.saveCoversationState('123456').should.be.fulfilled;
+        return productReview.saveConversationState('123456').should.be.fulfilled;
       });
 
       it('contains the proper response object', function () {
-        return productReview.saveCoversationState('123456').should.eventually.deep.equal({statusCode: '200 OK'});
+        return productReview.saveConversationState('123456').should.eventually.deep.equal({statusCode: '200 OK'});
       });
     });
 
@@ -290,11 +290,11 @@ describe('ProductReview Api', function () {
 
     describe('saveCoversationState function', function () {
       it('is rejected', function () {
-        return productReview.saveCoversationState('123456').should.be.rejected;
+        return productReview.saveConversationState('123456').should.be.rejected;
       });
 
       it('contains the proper response object', function () {
-        return productReview.saveCoversationState('123456').should.be.rejectedWith(Error);
+        return productReview.saveConversationState('123456').should.be.rejectedWith(Error);
       });
     });
 
@@ -386,7 +386,7 @@ describe('ProductReview Api', function () {
     describe('when saveCoversationState() is called without a conversationId', function () {
       it('throws a new Error', function () {
         expect(function () {
-          productReview.saveCoversationState();
+          productReview.saveConversationState();
         }).to.throw('conversationId is not present');
       });
     });
