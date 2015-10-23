@@ -8,7 +8,7 @@ var chaiAsPromised = require('chai-as-promised');
 
 chai.use(chaiAsPromised);
 
-describe.only('BusinessUnit Api ', function () {
+describe('BusinessUnit Api ', function () {
   describe('when the promises are fulfilled', function () {
     var businessUnit;
     var request;
