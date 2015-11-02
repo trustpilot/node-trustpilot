@@ -1,6 +1,6 @@
 {
   "name": "trustpilot",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "node module for Trustpilot api",
   "main": "./src/client.js",
   "scripts": {
