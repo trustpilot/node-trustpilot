@@ -19,7 +19,7 @@ class ProductReview {
       referenceId: '123ABC',
       locale: 'en-US',
       redirectUri: 'https://www.example.com',
-      'roducts: [
+      products: [
         {
           productUrl: 'http://www.mycompanystore.com/products/12345.htm',
           imageUrl: 'http://www.mycompanystore.com/products/images/12345.jpg',
