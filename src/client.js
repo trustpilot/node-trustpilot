@@ -15,7 +15,9 @@ class Trustpilot {
     this.apiKey = config.apiKey;
     this.host = config.dev || 'https://api.trustpilot.com';
     this.secret = config.secret || '';
-    this.accessProvider = new AccessProvider(this.apiKey, this.host, this.secret);
+    this.username = config.username;
+    this.password = config.password;
+    this.accessProvider = new AccessProvider(this.apiKey, this.secret, this.username, this.password, this.host);
     this.request = new Request(this.accessProvider);
     this.review = new Review(this.request);
     this.resources = new Resources(this.request);

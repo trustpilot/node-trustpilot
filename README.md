@@ -20,7 +20,9 @@ let Trustpilot = require('trustpilot');
 let client = new Trustpilot(
   {
     apiKey: YOUR-API-KEY-HERE,
-    secret: YOUR-SECRET-HERE
+    secret: YOUR-SECRET-HERE,
+    username: YOUR-TRUSTPILOT-B2B-LOGIN-EMAIL,
+    password: YOUR-TRUSTPILOT-B2B-LOGIN-PASSWORD
   )};
 
 client.getLogoImages()

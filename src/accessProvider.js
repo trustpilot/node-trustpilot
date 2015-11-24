@@ -1,12 +1,13 @@
 'use strict';
-
 let request = require('request-promise');
 
 class AccessProvider {
-  constructor (apiKey, host, secret) {
+  constructor (apiKey, secret, username, password, host) {
     this.apiKey = apiKey;
-    this.host = host;
     this.secret = secret;
+    this.username = username;
+    this.password = password;
+    this.host = host;
   }
 
   /**
@@ -16,15 +17,18 @@ class AccessProvider {
   generateTokenObject () {
     return request({
       baseUrl: this.host,
-      uri: '/v1/oauth/system-users/token',
+      uri: '/v1/oauth/oauth-business-users-for-applications/accesstoken',
       method: 'POST',
       json: true,
       headers: {
         Authorization: 'Basic ' + new Buffer(this.apiKey + ':' + this.secret).toString('base64'),
-        'X-Access': new Buffer('{type: "Full"}').toString('base64'),
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      body: 'grant_type=client_credentials'
+      form: {
+        grant_type: 'password',
+        username: this.username,
+        password: this.password
+      }
     })
     .then(response => {
       this.authorization = response;
