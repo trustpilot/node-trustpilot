@@ -115,16 +115,16 @@ client.businessUnit.getWebLinks('YOUR-BUSINESS-UNIT-ID', 'en-US')
   - [getKnownCountries](https://developers.trustpilot.com/resources-api#Get all countries known to Trustpilot) `resources.getKnownCountries()`
   - [getStringRepresentationOfStars](https://developers.trustpilot.com/resources-api#Get the string representation of the stars) `resources.getStringRepresentationOfStars(options)`
 
-## Review Api
-  - [getLatest](https://developers.trustpilot.com/review-api#Get latest reviews by language) `review.getLatest(lang, options)`
-  - [get](https://developers.trustpilot.com/review-api#Get a review) `review.get(reviewId)`
-  - [getPrivate](https://developers.trustpilot.com/review-api#Get private review) `review.getPrivate(reviewId)`
-  - [getWebLinks](https://developers.trustpilot.com/review-api#Get a review's web links) `review.getWebLinks(reviewId, locale)`
-  - [getLikes](https://developers.trustpilot.com/review-api#Get a review's likes) `review.getLikes(reviewId)`
-  - [getTags](https://developers.trustpilot.com/review-api#Get tags on review) `review.getTags(reviewId)`
-  - [saveTags](https://developers.trustpilot.com/review-api#Set tags on review) `review.saveTags(reviewId, postObject)`
-  - [reply](https://developers.trustpilot.com/review-api#Reply to a review.) `review.reply(reviewId, postObject)`
-  - [deleteReply](https://developers.trustpilot.com/review-api#Delete a reply to a review.) `review.deleteReply(reviewId)`
+## Service Review Api
+  - [getLatest](https://developers.trustpilot.com/service-reviews-api#Get latest reviews by language) `review.getLatest(lang, options)`
+  - [get](https://developers.trustpilot.com/service-reviews-api#Get a review) `review.get(reviewId)`
+  - [getPrivate](https://developers.trustpilot.com/service-reviews-api#Get private review) `review.getPrivate(reviewId)`
+  - [getWebLinks](https://developers.trustpilot.com/service-reviews-api#Get a review's web links) `review.getWebLinks(reviewId, locale)`
+  - [getLikes](https://developers.trustpilot.com/service-reviews-api#Get a review's likes) `review.getLikes(reviewId)`
+  - [getTags](https://developers.trustpilot.com/service-reviews-api#Get tags on review) `review.getTags(reviewId)`
+  - [saveTags](https://developers.trustpilot.com/service-reviews-api#Set tags on review) `review.saveTags(reviewId, postObject)`
+  - [reply](https://developers.trustpilot.com/service-reviews-api#Reply to a review) `review.reply(reviewId, postObject)`
+  - [deleteReply](https://developers.trustpilot.com/service-reviews-api#Delete a reply to a review) `review.deleteReply(reviewId)`
 
 
 
