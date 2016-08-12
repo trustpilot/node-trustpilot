@@ -1,14 +1,14 @@
 {
   "name": "trustpilot",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "node module for Trustpilot api",
   "main": "./src/client.js",
   "scripts": {
     "start": "node src/client.js",
     "test": "gulp test"
   },
-  "repository" :
-  { "type" : "git",
+  "repository" : {
+    "type" : "git",
     "url" : "git@github.com:trustpilot/trustpilot-node-sdk.git"
   },
   "keywords": [
@@ -33,6 +33,9 @@
     "request-promise": "^1.0.1"
   },
   "contributors": [
-     "Luke Pommersheim <lpommers@noreply.users.github.com>"
+     "Luke Pommersheim <lpommers@noreply.users.github.com>",
+     "Bardur Pihl <b-dur@noreply.users.github.com>",
+     "bassjobsen <bassjobsen@noreply.users.github.com>",
+     "kjvarley <kjvarley@noreply.users.github.com>"
   ]
 }
