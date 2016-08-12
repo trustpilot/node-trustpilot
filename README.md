@@ -23,7 +23,7 @@ let client = new Trustpilot(
     secret: YOUR-SECRET-HERE,
     username: YOUR-TRUSTPILOT-B2B-LOGIN-EMAIL,
     password: YOUR-TRUSTPILOT-B2B-LOGIN-PASSWORD
-  )};
+  });
 
 client.getLogoImages()
   .then(response => {
