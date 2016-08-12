@@ -2,7 +2,7 @@
 
 let Review = require('./reviewApi/review');
 let Resources = require('./resourcesApi/resources');
-let AccessProvider = require('./AccessProvider');
+let AccessProvider = require('./accessProvider');
 let Request = require('./requestHelper');
 let ProductReview = require('./productReviewApi/productReview');
 let Invitation = require('./invitationApi/invitation');
