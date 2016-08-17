@@ -113,6 +113,16 @@ describe('ProductReview Api', function () {
       });
     });
 
+    describe('getImportedProductReviews function', function () {
+      it('is fulfilled', function () {
+        return productReview.getImportedProductReviews('123456').should.be.fulfilled;
+      });
+
+      it('contains the proper response object', function () {
+        return productReview.getImportedProductReviews('123456').should.eventually.deep.equal({somedata: 'some data that is returned by the api'});
+      });
+    });
+
     describe('getConversation function', function () {
       it('is fulfilled', function () {
         return productReview.getConversation('123456').should.be.fulfilled;
@@ -258,6 +268,16 @@ describe('ProductReview Api', function () {
       });
     });
 
+    describe('getImported ProductReviews function', function () {
+      it('is rejected', function () {
+        return productReview.getImportedProductReviews('123456').should.be.rejected;
+      });
+
+      it('contains the proper response object', function () {
+        return productReview.getImportedProductReviews('123456').should.be.rejectedWith(Error);
+      });
+    });
+
     describe('getConversation function', function () {
       it('is rejected', function () {
         return productReview.getConversation('123456').should.be.rejected;
@@ -356,6 +376,22 @@ describe('ProductReview Api', function () {
         expect(function () {
           productReview.getProductReviews();
         }).to.throw('businessUnitId is not present');
+      });
+    });
+
+    describe('when getImportedProductReviews() is called without a businessUnitId', function () {
+      it('throws a new Error', function () {
+        expect(function () {
+          productReview.getImportedProductReviews();
+        }).to.throw('businessUnitId is not present');
+      });
+    });
+
+    describe('when getImportedProductReviews() is called without a sku', function () {
+      it('throws a new Error', function () {
+        expect(function () {
+          productReview.getImportedProductReviews('123456', {});
+        }).to.throw('sku is not present');
       });
     });
 
