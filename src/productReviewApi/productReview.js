@@ -143,6 +143,27 @@ class ProductReview {
   }
 
   /**
+   * [This method allows you to get business unit imported product reviews for a given SKU. It includes review
+   *  content, date of creation of review, individual star rating and display name of the consumer who wrote the review.
+   *  Pagination and filtering reviews by language is also possible.]
+   * {@link https://developers.trustpilot.com/product-reviews-api#get-imported-product-reviews}
+   * @param  {[string]} businessUnitId [ Required string.]
+   * @param {[object]} options [optional options object]
+   * @param {[number]} options.page [The page to retrieve. If the page number requested is higher than the available
+   * number of pages an empty array will be returned. Constraints: The allowed range is minimum: 1, maximum: 2147483647 ]
+   * @param {[number]} options.perPage [The number of reviews to retrieve per page. Constraints: The allowed range is minimum: 1, maximum: 100 Default value: 20 ]
+   * @param {[string]} options.sku [The sku of the product. Required string.]
+   * @param {[string]} options.language [Filter reviews by language]
+   * @return {[object]}                [object containing product reviews]
+   */
+  getImportedProductReviews (businessUnitId, options) {
+    if (!businessUnitId) { throw new Error('businessUnitId is not present'); }
+    if (options && !options.sku) { throw new Error('sku is not present'); }
+
+    return this.request.get(`/v1/product-reviews/business-units/${businessUnitId}/imported-reviews`, false, options);
+  }
+
+  /**
    * [Get a public conversation and related comments by id.]
    * {@link https://developers.trustpilot.com/product-reviews-api#Get public conversation}
    * @param {[string]} conversationId [required. The ID of the conversation to retrieve ]
