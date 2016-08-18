@@ -65,66 +65,66 @@ client.businessUnit.getWebLinks('YOUR-BUSINESS-UNIT-ID', 'en-US')
   Each method listed below will link you to the official [documentation](https://developers.trustpilot.com/) for that method.
 
 ## Business Unit Api
-  - [listBusinessUnits](https://developers.trustpilot.com/business-unit-api#Get a list of business units) `businessUnit.listBusinessUnits(options)`
-  - [find](https://developers.trustpilot.com/business-unit-api#Find a business unit) `businessUnit.find(name)`
-  - [get](https://developers.trustpilot.com/business-unit-api#Get a business unit) `businessUnit.get(businessUnitId)`
-  - [getWebLinks](https://developers.trustpilot.com/business-unit-api#Get a business unit's web links) `businessUnit.getWebLinks(businessUnitId, locale)`
-  - [getReviews](https://developers.trustpilot.com/business-unit-api#Get a business unit's reviews) `businessUnit.getReviews(businessUnitId, options)`
-  - [getPrivateReviews](https://developers.trustpilot.com/business-unit-api#Business unit private reviews) `businessUnit.getPrivateReviews(businessUnitId, options)`
-  - [getPrivateTags](https://developers.trustpilot.com/business-unit-api#Get all business unit private tags) `businessUnit.getPrivateTags(businessUnitId)`
-  - [listCategories](https://developers.trustpilot.com/business-unit-api#List categories for business unit) `businessUnit.listCategories(businessUnitId)`
+  - [listBusinessUnits](https://developers.trustpilot.com/business-unit-api#get-a-list-of-business-units) `businessUnit.listBusinessUnits(options)`
+  - [find](https://developers.trustpilot.com/business-unit-api#find-a-business-unit) `businessUnit.find(name)`
+  - [get](https://developers.trustpilot.com/business-unit-api#get-a-business-unit) `businessUnit.get(businessUnitId)`
+  - [getWebLinks](https://developers.trustpilot.com/business-unit-api#get-a-business-unit's-web-links) `businessUnit.getWebLinks(businessUnitId, locale)`
+  - [getReviews](https://developers.trustpilot.com/business-unit-api#get-a-business-unit's-reviews) `businessUnit.getReviews(businessUnitId, options)`
+  - [getPrivateReviews](https://developers.trustpilot.com/business-unit-api#business-unit-private-reviews) `businessUnit.getPrivateReviews(businessUnitId, options)`
+  - [getPrivateTags](https://developers.trustpilot.com/business-unit-api#get-all-business-unit-private-tags) `businessUnit.getPrivateTags(businessUnitId)`
+  - [listCategories](https://developers.trustpilot.com/business-unit-api#list-categories-for-business-unit) `businessUnit.listCategories(businessUnitId)`
 
 ## Categories Api
-  - [listCategories](https://developers.trustpilot.com/categories-api#List categories) `categories.listCategories(country, options)`
-  - [get](https://developers.trustpilot.com/categories-api#Get category) `categories.get(categoryId, country, options)`
-  - [find](https://developers.trustpilot.com/categories-api#Find category) `categories.find(name, country, options)`
-  - [listBusinessUnits](https://developers.trustpilot.com/categories-api#List business units in category) `categories.listBusinessUnits(categoryId, country, options)`
-  - [search](https://developers.trustpilot.com/categories-api#Search category) `categories.search(earchQuery, country, queryOptions)`
+  - [listCategories](https://developers.trustpilot.com/categories-api#list-categories) `categories.listCategories(country, options)`
+  - [get](https://developers.trustpilot.com/categories-api#get-category) `categories.get(categoryId, country, options)`
+  - [find](https://developers.trustpilot.com/categories-api#find-category) `categories.find(name, country, options)`
+  - [listBusinessUnits](https://developers.trustpilot.com/categories-api#list-business-units-in-category) `categories.listBusinessUnits(categoryId, country, options)`
+  - [search](https://developers.trustpilot.com/categories-api#search-category) `categories.search(earchQuery, country, queryOptions)`
 
 ## Consumer Api
-  - [getConsumer](https://developers.trustpilot.com/consumer-api#Get a consumer) `consumer.getConsumer(consumerId)`
-  - [getConsumerReviews](https://developers.trustpilot.com/consumer-api#Get a consumer's reviews) `consumer.getConsumerReviews(consumerId, options)`
-  - [getConsumerWebLinks](https://developers.trustpilot.com/consumer-api#Get a consumer's web links) `consumer.getConsumerWebLinks(consumerId, locale)`
+  - [getConsumer](https://developers.trustpilot.com/consumer-api#get-a-consumer) `consumer.getConsumer(consumerId)`
+  - [getConsumerReviews](https://developers.trustpilot.com/consumer-api#get-a-consumer's-reviews) `consumer.getConsumerReviews(consumerId, options)`
+  - [getConsumerWebLinks](https://developers.trustpilot.com/consumer-api#get-a-consumer's-web-links) `consumer.getConsumerWebLinks(consumerId, locale)`
 
 
 ## Invitation Api
-  - [newInvitation](https://developers.trustpilot.com/invitation-api#Create new invitation) `invitation.newInvitation(businessUnitId, options)`
-  - [getTemplates](https://developers.trustpilot.com/invitation-api#Get list of invitation templates) `invitation.getTemplates(businessUnitId)`
-  - [generateServiceReviewLink](https://developers.trustpilot.com/invitation-api#Generate service review invitation link) `invitation.generateServiceReviewLink(businessUnitId, options)`
+  - [newInvitation](https://developers.trustpilot.com/invitation-api#create-new-invitation) `invitation.newInvitation(businessUnitId, options)`
+  - [getTemplates](https://developers.trustpilot.com/invitation-api#get-list-of-invitation-templates) `invitation.getTemplates(businessUnitId)`
+  - [generateServiceReviewLink](https://developers.trustpilot.com/invitation-api#generate-service-review-invitation-link) `invitation.generateServiceReviewLink(businessUnitId, options)`
 
 ## Product Reviews Api
-  - [createInvitationLink](https://developers.trustpilot.com/product-reviews-api#Create product review invitation link) `productReview.createInvitationLink(businessUnitId, options)`
-  - [getPrivate](https://developers.trustpilot.com/product-reviews-api#Get private product reviews) `productReview.getPrivate(businessUnitId, options)`
-  - [getSummariesList](https://developers.trustpilot.com/product-reviews-api#Get product reviews summaries list) `productReview.getSummariesList(businessUnitId, options)`
-  - [getPrivateSingle](https://developers.trustpilot.com/product-reviews-api#Get private product review) `productReview.getPrivateSingle(reviewId)`
-  - [createConversation](https://developers.trustpilot.com/product-reviews-api#Create product review conversation) `productReview.createConversation(reviewId)`
-  - [getSummary](https://developers.trustpilot.com/product-reviews-api#Get product reviews summary) `productReview.getSummary(businessUnitId, options)`
-  - [getProductReviews](https://developers.trustpilot.com/product-reviews-api#Get product reviews) `productReview.getProductReviews(businessUnitId, options)`
-  - [getConversation](https://developers.trustpilot.com/product-reviews-api#Get public conversation) `productReview.getConversation(conversationId)`
-  - [createComment](https://developers.trustpilot.com/product-reviews-api#Create comment) `productReview.createComment(conversationId, options)`
-  - [getPrivateConversation](https://developers.trustpilot.com/product-reviews-api#Get conversation) `productReview.getPrivateConversation(conversationId)`
-  - [saveConversationState](https://developers.trustpilot.com/product-reviews-api#Set conversation state) `productReview.saveConversationState(conversationId, options)`
-  - [getComment](https://developers.trustpilot.com/product-reviews-api#Get comment) `productReview.getComment(conversationId, commentId)`
+  - [createInvitationLink](https://developers.trustpilot.com/product-reviews-api#create-product-review-invitation-link) `productReview.createInvitationLink(businessUnitId, options)`
+  - [getPrivate](https://developers.trustpilot.com/product-reviews-api#get-private-product-reviews) `productReview.getPrivate(businessUnitId, options)`
+  - [getSummariesList](https://developers.trustpilot.com/product-reviews-api#get-product-reviews-summaries-list) `productReview.getSummariesList(businessUnitId, options)`
+  - [getPrivateSingle](https://developers.trustpilot.com/product-reviews-api#get-private-product-review) `productReview.getPrivateSingle(reviewId)`
+  - [createConversation](https://developers.trustpilot.com/product-reviews-api#create-product-review-conversation) `productReview.createConversation(reviewId)`
+  - [getSummary](https://developers.trustpilot.com/product-reviews-api#get-product-reviews-summary) `productReview.getSummary(businessUnitId, options)`
+  - [getProductReviews](https://developers.trustpilot.com/product-reviews-api#get-product-reviews) `productReview.getProductReviews(businessUnitId, options)`
+  - [getConversation](https://developers.trustpilot.com/product-reviews-api#get-public-conversation) `productReview.getConversation(conversationId)`
+  - [createComment](https://developers.trustpilot.com/product-reviews-api#create-comment) `productReview.createComment(conversationId, options)`
+  - [getPrivateConversation](https://developers.trustpilot.com/product-reviews-api#get-conversation) `productReview.getPrivateConversation(conversationId)`
+  - [saveConversationState](https://developers.trustpilot.com/product-reviews-api#set-conversation-state) `productReview.saveConversationState(conversationId, options)`
+  - [getComment](https://developers.trustpilot.com/product-reviews-api#get-comment) `productReview.getComment(conversationId, commentId)`
 
 ## Resources Api
-  - [getImageNavigationalLinks](https://developers.trustpilot.com/resources-api#Contains navigational links to all image resources) `resources.getImageNavigationalLinks()`
-  - [getStarImages](https://developers.trustpilot.com/resources-api#Get the star image resources) `resources.getStarImages(stars)`
-  - [getLogoImages](https://developers.trustpilot.com/resources-api#Get the Trustpilot logo images) `resources.getLogoImages()`
-  - [getTrustpilotIconImages](https://developers.trustpilot.com/invitation-api#Create new invitation) `resources.getTrustpilotIconImages()`
-  - [getSupportedLocales](https://developers.trustpilot.com/resources-api#Get Trustpilot supported locales) `resources.getSupportedLocales()`
-  - [getKnownCountries](https://developers.trustpilot.com/resources-api#Get all countries known to Trustpilot) `resources.getKnownCountries()`
-  - [getStringRepresentationOfStars](https://developers.trustpilot.com/resources-api#Get the string representation of the stars) `resources.getStringRepresentationOfStars(options)`
+  - [getImageNavigationalLinks](https://developers.trustpilot.com/resources-api#contains-navigational-links-to-all-image-resources) `resources.getImageNavigationalLinks()`
+  - [getStarImages](https://developers.trustpilot.com/resources-api#get-the-star-image-resources) `resources.getStarImages(stars)`
+  - [getLogoImages](https://developers.trustpilot.com/resources-api#get-the-trustpilot-logo-images) `resources.getLogoImages()`
+  - [getTrustpilotIconImages](https://developers.trustpilot.com/invitation-api#create-new-invitation) `resources.getTrustpilotIconImages()`
+  - [getSupportedLocales](https://developers.trustpilot.com/resources-api#get-trustpilot-supported-locales) `resources.getSupportedLocales()`
+  - [getKnownCountries](https://developers.trustpilot.com/resources-api#get-all-countries-known-to-trustpilot) `resources.getKnownCountries()`
+  - [getStringRepresentationOfStars](https://developers.trustpilot.com/resources-api#get-the-string-representation-of-the-stars) `resources.getStringRepresentationOfStars(options)`
 
 ## Service Review Api
-  - [getLatest](https://developers.trustpilot.com/service-reviews-api#Get latest reviews by language) `review.getLatest(lang, options)`
-  - [get](https://developers.trustpilot.com/service-reviews-api#Get a review) `review.get(reviewId)`
-  - [getPrivate](https://developers.trustpilot.com/service-reviews-api#Get private review) `review.getPrivate(reviewId)`
-  - [getWebLinks](https://developers.trustpilot.com/service-reviews-api#Get a review's web links) `review.getWebLinks(reviewId, locale)`
-  - [getLikes](https://developers.trustpilot.com/service-reviews-api#Get a review's likes) `review.getLikes(reviewId)`
-  - [getTags](https://developers.trustpilot.com/service-reviews-api#Get tags on review) `review.getTags(reviewId)`
-  - [saveTags](https://developers.trustpilot.com/service-reviews-api#Set tags on review) `review.saveTags(reviewId, postObject)`
-  - [reply](https://developers.trustpilot.com/service-reviews-api#Reply to a review) `review.reply(reviewId, postObject)`
-  - [deleteReply](https://developers.trustpilot.com/service-reviews-api#Delete a reply to a review) `review.deleteReply(reviewId)`
+  - [getLatest](https://developers.trustpilot.com/service-reviews-api#get-latest-reviews-by-language) `review.getLatest(lang, options)`
+  - [get](https://developers.trustpilot.com/service-reviews-api#get-a-review) `review.get(reviewId)`
+  - [getPrivate](https://developers.trustpilot.com/service-reviews-api#get-private-review) `review.getPrivate(reviewId)`
+  - [getWebLinks](https://developers.trustpilot.com/service-reviews-api#get-a-review's-web-links) `review.getWebLinks(reviewId, locale)`
+  - [getLikes](https://developers.trustpilot.com/service-reviews-api#get-a-review's-likes) `review.getLikes(reviewId)`
+  - [getTags](https://developers.trustpilot.com/service-reviews-api#get-tags-on-review) `review.getTags(reviewId)`
+  - [saveTags](https://developers.trustpilot.com/service-reviews-api#set-tags-on-review) `review.saveTags(reviewId, postObject)`
+  - [reply](https://developers.trustpilot.com/service-reviews-api#reply-to-a-review) `review.reply(reviewId, postObject)`
+  - [deleteReply](https://developers.trustpilot.com/service-reviews-api#delete-a-reply-to-a-review-) `review.deleteReply(reviewId)`
 
 
 

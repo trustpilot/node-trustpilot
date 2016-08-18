@@ -7,7 +7,7 @@ class Categories {
 
   /**
    * [Get a list of categories under a specific parent category.]
-   * {@link https://developers.trustpilot.com/categories-api#List categories}
+   * {@link https://developers.trustpilot.com/categories-api#list-categories}
    * @param {[string]} country [required. Specify country using ISO 3166-1-alpha-2. Example: 'DK']
    * @param {[object]} queryOptions [object of additional options]
    * @param {[string]} queryOptions.parentId [Optional id of a parent category to list children of. Example: '507f191e810c19729de860ea']
@@ -26,7 +26,7 @@ class Categories {
 
   /**
    * [Get details of a specific category.]
-   * {@link https://developers.trustpilot.com/categories-api#Get category}
+   * {@link https://developers.trustpilot.com/categories-api#get-category}
    * @param {[string]} categoryId [required. The id of the category to get details about. ]
    * @param {[country]} country [required. Specify country using ISO 3166-1-alpha-2. Example: 'US']
    * @param {[object]} queryOptions [optional options object]
@@ -46,7 +46,7 @@ class Categories {
 
   /**
    * [Get details of a specific category by its name.]
-   * {@link https://developers.trustpilot.com/categories-api#Find category}
+   * {@link https://developers.trustpilot.com/categories-api#find-category}
    * @param {[string]} name [required. The system name of the category to get details about. Example: 'art-supplies']
    * @param {[string]} country [required. Specify country using ISO 3166-1-alpha-2. Example: 'DK']
    * @param {[object]} queryOptions [optional options object]
@@ -65,7 +65,7 @@ class Categories {
 
   /**
    * [Get a ranked list of business units in a specific category.]
-   * {@link https://developers.trustpilot.com/categories-api#List business units in category}
+   * {@link https://developers.trustpilot.com/categories-api#list-business-units-in-category}
    * @param {[string]} categoryId [required. The id of the category to get business unit list for.]
    * @param {[string]} country [required. Specify country using ISO 3166-1-alpha-2. Example: 'DK']
    * @param {[object]} queryOptions [optional qeury options object]
@@ -88,7 +88,7 @@ class Categories {
 
   /**
    * [Get details of a specific category by its name.]
-   * {@link https://developers.trustpilot.com/categories-api#Search category}
+   * {@link https://developers.trustpilot.com/categories-api#search-category}
    * @param {[string]} searchQuery [required. The system name of the category to get details about. Example: 'art-supplies']
    * @param {[string]} country [required. Specify country using ISO 3166-1-alpha-2. Example: 'DK']
    * @param {[object]} queryOptions [optional options object]
