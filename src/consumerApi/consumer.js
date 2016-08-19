@@ -7,7 +7,7 @@ class Consumer {
 
   /**
    * [This method gets the consumer's public information (name, location, reviews written, etc.).]
-   * {@link https://developers.trustpilot.com/consumer-api#Get a consumer}
+   * {@link https://developers.trustpilot.com/consumer-api#get-a-consumer}
    * @param {[string]} consumerId [required The id of the consumer.]
    * @return {[object]} [object containing all sorts of info about a specific consumer]
    */
@@ -19,7 +19,7 @@ class Consumer {
 
   /**
    * [This method gets the reviews written by the individual consumer.]
-   * {@link https://developers.trustpilot.com/consumer-api#Get a consumer's reviews}
+   * {@link https://developers.trustpilot.com/consumer-api#get-a-consumer's-reviews}
    * @param {[string]} consumerId [required. the id of the consumer]
    * @param {[object]} queryOptions [object containing all the optional filter options]
    * @param {[string]} queryOptions.stars [Filter by reviews with a specific number of stars. Constraints: Allowed values are 1, 2, 3, 4, 5 ]
@@ -41,7 +41,7 @@ class Consumer {
 
   /**
    * [This method gets links to consumer's public page on Trustpilot.]
-   * {@link https://developers.trustpilot.com/consumer-api#Get a consumer's web links}
+   * {https://developers.trustpilot.com/consumer-api#get-the-web-links-of-the-consumer}
    * @param {[string]} consumerId [required. The id of the consumer. ]
    * @param {[string]} locale [required. The locale to use when generating web links. Example: 'da-DK']
    * @return {[object]} [object containing consumer's web links]

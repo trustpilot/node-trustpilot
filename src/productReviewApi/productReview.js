@@ -7,7 +7,7 @@ class ProductReview {
 
   /**
    * [Given information about the consumer and the product(s) purchased, get a link that can be sent to the consumer to request reviews.]
-   * {@link https://developers.trustpilot.com/product-reviews-api#Create product review invitation link}
+   * {@link https://developers.trustpilot.com/product-reviews-api#create-product-review-invitation-link}
    * @param {[string]} businessUnitId [required string of the business Unit Id ]
    * @param {[object]} options [post data to be sent to create an invitation link]
    * @example
@@ -43,7 +43,7 @@ class ProductReview {
    * [Given a list of SKUs or product urls return a list of product reviews. This method includes private information
    * such as consumer e-mail and reference id. By default only published reviews are returned. To get reviews with
    * other states, provide a list in the state field. Pagination is used to retrieve all results.]
-   * {@link https://developers.trustpilot.com/product-reviews-api#Get private product reviews}
+   * {@link https://developers.trustpilot.com/product-reviews-api#get-private-product-reviews}
    * @param {[string]} businessUnitId [required string of the Business Unit Id]
    * @param {[object]} options [optional. Options object]
    * @param {[number]} options.perPage [optional. of the page to recieve. If the page number requested is higher than

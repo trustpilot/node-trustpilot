@@ -7,7 +7,7 @@ class BusinessUnit {
 
   /**
    * [This method gets a list of all the business units with minimum one review.]
-   * {@link https://developers.trustpilot.com/business-unit-api#Get a list of business units}
+   * {@link https://developers.trustpilot.com/business-unit-api#get-a-list-of-business-units}
    * @param {[object]} queryOptions [optional options object]
    * @param {[string]} queryOptions.country [Filter by specific countries using ISO 3166-1-alpha-2. Example: country: 'DK']
    * @param {[number]} queryOptions.page [The page to retrieve. If the page number requested is higher than the available
@@ -23,7 +23,7 @@ class BusinessUnit {
 
   /**
    * [This method gets a business unit, if you know the exact name of the business unit.]
-   * {@link https://developers.trustpilot.com/business-unit-api#Find a business unit}
+   * {@link https://developers.trustpilot.com/business-unit-api#find-a-business-unit}
    * @param {[string]} name [required. The exact identifying or referring name of the business unit. Example: 'trustpilot.com']
    * @return {[object]} [object with information about a specific business unit]
    */
@@ -37,7 +37,7 @@ class BusinessUnit {
 
   /**
    * [This method gets the business unit's basic public information (name, URL, reviews, etc.).]
-   * {@link https://developers.trustpilot.com/business-unit-api#Get a business unit}
+   * {@link https://developers.trustpilot.com/business-unit-api#get-a-business-unit}
    * @param {[string]} businessUnitId [required. The id of the business unit. ]
    * @return {[object]} [object containing public information about a business unit]
    */
@@ -49,7 +49,7 @@ class BusinessUnit {
 
   /**
    * [This method gets links to the business unit's public profile page on Trustpilot.]
-   * {@link https://developers.trustpilot.com/business-unit-api#Get a business unit's web links}
+   * {@link https://developers.trustpilot.com/business-unit-api#get-a-business-unit's-web-links}
    * @param {[string]} businessUnitId [required. The id of the business unit. ]
    * @param {[string]} locale [required. The locale to use when generating web links. Example: 'en-US']
    * @return {[object]} [object containing the web links for a specific buisiness unit]
@@ -66,7 +66,7 @@ class BusinessUnit {
 
   /**
    * [This method gets all the reviews written about the business unit.]
-   * {@link https://developers.trustpilot.com/business-unit-api#Get a business unit's reviews}
+   * {@link https://developers.trustpilot.com/business-unit-api#get-a-business-unit's-reviews}
    * @param {[string]} businessUnitId [required. The id of the business unit. ]
    * @param {[object]} queryOptions [optional options object]
    * @param {[string]} queryOptions.stars [Filter by reviews with a specific number of stars.
@@ -95,7 +95,7 @@ class BusinessUnit {
 
   /**
    * [This method shows all the reviews written about the business unit, including consumer email and Order ID.]
-   * {@link https://developers.trustpilot.com/business-unit-api#Business unit private reviews}
+   * {@link https://developers.trustpilot.com/business-unit-api#business-unit-private-reviews}
    * @param {[string]} businessUnitId [required. The id of the business unit. ]
    * @param {[object]} queryOptions [optional options object]
    * @param {[string]} queryOptions.stars [Filter by reviews with a specific number of stars.
@@ -132,7 +132,7 @@ class BusinessUnit {
 
   /**
    * [This method gets all the tags used by a business unit. Tags in group 'generic' have been registered without a group.]
-   * {@link https://developers.trustpilot.com/business-unit-api#Get all business unit private tags}
+   * {@link https://developers.trustpilot.com/business-unit-api#get-all-business-unit-private-tags}
    * @param {[string]} businessUnitId [required. The id of the business unit. ]
    * @return {[object]} [object containing tags]
    */
@@ -144,7 +144,7 @@ class BusinessUnit {
 
   /**
    * [Get a list of categories for a business unit.]
-   * {@link https://developers.trustpilot.com/business-unit-api#List categories for business unit}
+   * {@link https://developers.trustpilot.com/business-unit-api#list-categories-for-business-unit}
    * @param {[string]} businessUnitId [required. The id of the business unit. ]
    * @return {[object]} [object list of categories]
    */
