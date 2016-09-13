@@ -15,7 +15,7 @@ class Invitation {
       recipientEmail: 'john.doe@trustpilot.com',
       recipientName: 'John Doe',
       referenceId: 'inv00001',
-      templateId: '507f191e810c19729de860ea',
+      templateId: '46d6a890000064000500e0c3',
       locale: 'en-US',
       senderEmail: 'john.doe@trustpilot.com',
       senderName: 'John Doe',
