@@ -10,7 +10,7 @@ class Categories {
    * {@link https://developers.trustpilot.com/categories-api#list-categories}
    * @param {[string]} country [required. Specify country using ISO 3166-1-alpha-2. Example: 'DK']
    * @param {[object]} queryOptions [object of additional options]
-   * @param {[string]} queryOptions.parentId [Optional id of a parent category to list children of. Example: '507f191e810c19729de860ea']
+   * @param {[string]} queryOptions.parentId [Optional id of a parent category to list children of. Example: '46d6a890000064000500e0c3']
    * @param {[string]} queryOptions.locale [The locale to get translated category names for. Default value: 'en-US'
    * Example: locale: 'da-DK']
    * @return {[object]} [object containing category information]
