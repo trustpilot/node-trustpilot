@@ -1,25 +1,25 @@
 {
   "name": "trustpilot",
-  "version": "1.0.2",
-  "description": "node module for Trustpilot api",
-  "main": "./src/client.js",
-  "scripts": {
-    "start": "node src/client.js",
-    "test": "gulp test"
-  },
-  "repository" : {
-    "type" : "git",
-    "url" : "git@github.com:trustpilot/trustpilot-node-sdk.git"
-  },
+  "version": "1.1.0",
+  "description": "HTTP client for Trustpilot",
+  "homepage": "https://github.com/trustpilot/node-trustpilot",
+  "repository": "https://github.com/trustpilot/node-trustpilot.git",
+  "author": "Trustpilot",
+  "license": "MIT",
   "keywords": [
     "API",
     "Trustpilot",
     "reviews",
     "review"
   ],
-  "homepage": "https://github.com/trustpilot/trustpilot-node-sdk",
-  "author": "Trustpilot",
-  "license": "MIT",
+  "main": "./src/client.js",
+  "scripts": {
+    "start": "node src/client.js",
+    "test": "gulp test"
+  },
+  "dependencies": {
+    "request-promise": "^1.0.1"
+  },
   "devDependencies": {
     "chai": "^3.2.0",
     "chai-as-promised": "^5.1.0",
@@ -28,14 +28,5 @@
     "gulp-jshint": "^1.11.2",
     "gulp-mocha": "^2.1.3",
     "mocha": "^2.3.2"
-  },
-  "dependencies": {
-    "request-promise": "^1.0.1"
-  },
-  "contributors": [
-     "Luke Pommersheim <lpommers@noreply.users.github.com>",
-     "Bardur Pihl <b-dur@noreply.users.github.com>",
-     "bassjobsen <bassjobsen@noreply.users.github.com>",
-     "kjvarley <kjvarley@noreply.users.github.com>"
-  ]
+  }
 }
