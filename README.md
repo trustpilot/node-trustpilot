@@ -1,4 +1,6 @@
-# Trustpilot node.js API  [![Build Status][travis-image]][travis-url] [![Dependency status][david-dm-image]][david-dm-url] [![Dev Dependency status][david-dm-dev-image]][david-dm-dev-url]
+# trustpilot
+
+[![Build Status](https://travis-ci.org/trustpilot/node-trustpilot.svg?branch=master)](https://travis-ci.org/trustpilot/node-trustpilot) [![npm](https://img.shields.io/npm/v/trustpilot.svg)](https://www.npmjs.com/package/trustpilot)
 
 This a node API wrapper for accessing the Trustpilot APIs. You can learn all about the Trustpilot API at [https://developers.trustpilot.com/](https://developers.trustpilot.com/).
 
@@ -125,12 +127,3 @@ client.businessUnit.getWebLinks('YOUR-BUSINESS-UNIT-ID', 'en-US')
   - [saveTags](https://developers.trustpilot.com/service-reviews-api#set-tags-on-review) `review.saveTags(reviewId, postObject)`
   - [reply](https://developers.trustpilot.com/service-reviews-api#reply-to-a-review) `review.reply(reviewId, postObject)`
   - [deleteReply](https://developers.trustpilot.com/service-reviews-api#delete-a-reply-to-a-review-) `review.deleteReply(reviewId)`
-
-
-
-[travis-url]: https://travis-ci.org/trustpilot/trustpilot-node-sdk
-[travis-image]: http://img.shields.io/travis/trustpilot/trustpilot-node-sdk.svg
-[david-dm-url]:https://david-dm.org/trustpilot/trustpilot-node-sdk
-[david-dm-image]:https://david-dm.org/trustpilot/trustpilot-node-sdk.svg
-[david-dm-dev-url]:https://david-dm.org/trustpilot/trustpilot-node-sdk#info=devDependencies
-[david-dm-dev-image]:https://david-dm.org/trustpilot/trustpilot-node-sdk/dev-status.svg
