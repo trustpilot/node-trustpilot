@@ -1,17 +1,17 @@
 'use strict';
 
-let Review = require('./reviewApi/review');
-let Resources = require('./resourcesApi/resources');
-let AccessProvider = require('./accessProvider');
-let Request = require('./requestHelper');
-let ProductReview = require('./productReviewApi/productReview');
-let Invitation = require('./invitationApi/invitation');
-let Consumer = require('./consumerApi/consumer');
-let Categories = require('./categoriesApi/categories');
-let BusinessUnit = require('./businessUnitApi/businessUnit');
+const Review = require('./reviewApi/review');
+const Resources = require('./resourcesApi/resources');
+const AccessProvider = require('./accessProvider');
+const Request = require('./requestHelper');
+const ProductReview = require('./productReviewApi/productReview');
+const Invitation = require('./invitationApi/invitation');
+const Consumer = require('./consumerApi/consumer');
+const Categories = require('./categoriesApi/categories');
+const BusinessUnit = require('./businessUnitApi/businessUnit');
 
 class Trustpilot {
-  constructor (config) {
+  constructor(config) {
     this.apiKey = config.apiKey;
     this.host = config.dev || 'https://api.trustpilot.com';
     this.secret = config.secret || '';

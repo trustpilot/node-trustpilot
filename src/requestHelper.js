@@ -1,9 +1,9 @@
 'use strict';
 
-let rp = require('request-promise');
+const rp = require('request-promise');
 
 class Request {
-  constructor (accessProvider) {
+  constructor(accessProvider) {
     this.accessProvider = accessProvider;
   }
 
@@ -14,14 +14,14 @@ class Request {
    * @param {[string]} methodType [type of the request e.g. 'GET', 'POST']
    * @return {[Object]}      [returns a options object]
    */
-  buildRequestOptions (requiresToken, queryObj, methodType) {
+  buildRequestOptions(requiresToken, queryObj, methodType) {
     return new Promise((resolve, reject) => {
 
-      //if requiresToken, then get an acccessToken before resolving - else resolve with apiKey
+      // if requiresToken, then get an acccessToken before resolving - else resolve with apiKey
       if (requiresToken) {
         this.accessProvider.getAccessToken()
-          .then(responseToken => {
-            let requestOptions = {
+          .then((responseToken) => {
+            const requestOptions = {
               headers: {
                 authorization: `Bearer ${responseToken}`
               },
@@ -29,7 +29,7 @@ class Request {
               json: true
             };
 
-            //set queryString or request body depending on method type
+            // set queryString or request body depending on method type
             if (methodType === 'GET') {
               requestOptions.qs = queryObj;
             } else {
@@ -61,10 +61,10 @@ class Request {
    * @param  {[string]} method        [type of method e.g. 'GET', 'POST', 'PUT']
    * @return {[object]}               [returns the api response object]
    */
-  request (endpoint, requiresToken, options, method) {
+  request(endpoint, requiresToken, options, method) {
     return this.buildRequestOptions(requiresToken, options, method)
-      .then(requestOptions => rp(`${this.accessProvider.host}${endpoint}`, requestOptions))
-      .then(responseBody => responseBody);
+      .then((requestOptions) => rp(`${this.accessProvider.host}${endpoint}`, requestOptions))
+      .then((responseBody) => responseBody);
   }
 
   /**
@@ -74,7 +74,7 @@ class Request {
    * @param  {[object]} options       [object of additional query options or post body]
    * @return {[object]}               [returns the request promise]
    */
-  get (endpoint, requiresToken, options) {
+  get(endpoint, requiresToken, options) {
     return this.request(endpoint, requiresToken, options, 'GET');
   }
 
@@ -84,21 +84,21 @@ class Request {
     * @param  {[object]} postData       [object of post body]
     * @return {[object]}               [returns the request promise]
    */
-  post (endpoint, postData) {
+  post(endpoint, postData) {
     return this.request(endpoint, true, postData, 'POST');
   }
 
-  //TODO: so the invitations api has a different host name than all the other endpoints. I didn't know this. This is a
-  //quick solution so as to move forward. REFACTOR this to work with  the current post request methods
-  invitationsRequest (endpoint, requiresToken, options, method) {
-    let invitationsHost = this.accessProvider.host.slice(0, 8) + 'invitations-' + this.accessProvider.host.slice(8);
+  // TODO: so the invitations api has a different host name than all the other endpoints. I didn't know this. This is a
+  // quick solution so as to move forward. REFACTOR this to work with  the current post request methods
+  invitationsRequest(endpoint, requiresToken, options, method) {
+    const invitationsHost = this.accessProvider.host.replace(/https:\/\/api/, 'https://invitations-api');
 
     return this.buildRequestOptions(requiresToken, options, method)
-      .then(requestOptions => rp(`${invitationsHost}${endpoint}`, requestOptions))
-      .then(responseBody => responseBody);
+      .then((requestOptions) => rp(`${invitationsHost}${endpoint}`, requestOptions))
+      .then((responseBody) => responseBody);
   }
 
-  delete (endpoint) {
+  delete(endpoint) {
     return this.request(endpoint, true, {}, 'DELETE');
   }
 }
