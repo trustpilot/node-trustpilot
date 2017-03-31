@@ -10,8 +10,14 @@ class Trustpilot {
     this.secret = config.secret || '';
     this.username = config.username;
     this.password = config.password;
-    this.accessProvider = new AccessProvider(this.apiKey, this.secret, this.username, this.password, this.baseUrl);
-    this.request = new RequestHelper(this.accessProvider);
+
+    const accessProvider = new AccessProvider(this.apiKey, this.secret, this.username, this.password, this.baseUrl);
+    const requestHelper = new RequestHelper(accessProvider);
+
+    this.apiRequest = requestHelper.apiRequest;
+    this.authenticate = () => {
+      return requestHelper.buildAuthenticatedRequest();
+    };
   }
 }
 
