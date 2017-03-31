@@ -2,7 +2,7 @@
 
 const rp = require('request-promise');
 
-class Request {
+class RequestHelper {
   constructor(accessProvider) {
     this.accessProvider = accessProvider;
   }
@@ -93,4 +93,4 @@ class Request {
   }
 }
 
-module.exports = Request;
+module.exports = RequestHelper;
