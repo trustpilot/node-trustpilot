@@ -88,16 +88,6 @@ class Request {
     return this.request(endpoint, true, postData, 'POST');
   }
 
-  // TODO: so the invitations api has a different host name than all the other endpoints. I didn't know this. This is a
-  // quick solution so as to move forward. REFACTOR this to work with  the current post request methods
-  invitationsRequest(endpoint, requiresToken, options, method) {
-    const invitationsHost = this.accessProvider.host.replace(/https:\/\/api/, 'https://invitations-api');
-
-    return this.buildRequestOptions(requiresToken, options, method)
-      .then((requestOptions) => rp(`${invitationsHost}${endpoint}`, requestOptions))
-      .then((responseBody) => responseBody);
-  }
-
   delete(endpoint) {
     return this.request(endpoint, true, {}, 'DELETE');
   }
