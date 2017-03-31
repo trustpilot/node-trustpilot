@@ -1,7 +1,7 @@
 'use strict';
 
 class Resources {
-  constructor (request) {
+  constructor(request) {
     this.request = request;
   }
 
@@ -10,7 +10,7 @@ class Resources {
    * {@link https://developers.trustpilot.com/resources-api#contains-navigational-links-to-all-image-resources}
    * @return {[object]} [object containing all the navigational inks]
    */
-  getImageNavigationalLinks () {
+  getImageNavigationalLinks() {
     return this.request.get('/v1/resources/images', false);
   }
 
@@ -20,8 +20,8 @@ class Resources {
    * @param {[number]} [optional number - gets the star images for that star - allowed values are 0, 1, 2, 3, 4, 5 ]
    * @return {[object]} [object containing links to the individual stars or a certain star's image links ]
    */
-  getStarImages (stars) {
-    let endpoint = stars ? `/v1/resources/images/stars/${stars}` : '/v1/resources/images/stars';
+  getStarImages(stars) {
+    const endpoint = stars ? `/v1/resources/images/stars/${stars}` : '/v1/resources/images/stars';
     return this.request.get(endpoint, false);
   }
 
@@ -30,7 +30,7 @@ class Resources {
    * {@link https://developers.trustpilot.com/resources-api#get-the-trustpilot-logo-images}
    * @return {[object]} [links to all the different Trustpilot logos]
    */
-  getLogoImages () {
+  getLogoImages() {
     return this.request.get('/v1/resources/images/logos', false);
   }
 
@@ -39,7 +39,7 @@ class Resources {
    * {@link https://developers.trustpilot.com/resources-api#get-the-trustpilot-icon-images}
    * @return {[object]} [links to all the different Trustpilot icon images]
    */
-  getTrustpilotIconImages () {
+  getTrustpilotIconImages() {
     return this.request.get('/v1/resources/images/icons', false);
   }
 
@@ -48,7 +48,7 @@ class Resources {
    * {@link https://developers.trustpilot.com/resources-api#get-trustpilot-supported-locales}
    * @return {[object]} [object of all supported locales and their links]
    */
-  getSupportedLocales () {
+  getSupportedLocales() {
     return this.request.get('/v1/resources/metadata/locales', false);
   }
 
@@ -57,7 +57,7 @@ class Resources {
    * {@link https://developers.trustpilot.com/resources-api#get-all-countries-known-to-trustpilot}
    * @return {[object]} [object containing array of all the countries known to Trustpilot]
    */
-  getKnownCountries () {
+  getKnownCountries() {
     return this.request.get('/v1/resources/metadata/countries', false);
   }
 
@@ -70,12 +70,12 @@ class Resources {
    * @param {[number]} options.stars [star value to return e.g. 4]
    * @return {[object]} [object containing links to string representation of stars or a certain star's string representation ]
    */
-  getStringRepresentationOfStars (options) {
+  getStringRepresentationOfStars(options) {
     options = options || {};
 
     options.locale = options.locale || 'en-US';
 
-    let endpoint = options.stars ? `/v1/resources/strings/stars/${options.stars}` : '/v1/resources/strings/stars';
+    const endpoint = options.stars ? `/v1/resources/strings/stars/${options.stars}` : '/v1/resources/strings/stars';
 
     return this.request.get(endpoint, false, options);
   }

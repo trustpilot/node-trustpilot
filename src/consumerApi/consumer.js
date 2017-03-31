@@ -1,7 +1,7 @@
 'use strict';
 
 class Consumer {
-  constructor (request) {
+  constructor(request) {
     this.request = request;
   }
 
@@ -11,8 +11,10 @@ class Consumer {
    * @param {[string]} consumerId [required The id of the consumer.]
    * @return {[object]} [object containing all sorts of info about a specific consumer]
    */
-  getConsumer (consumerId) {
-    if (!consumerId) { throw new Error('consumerId is not present'); }
+  getConsumer(consumerId) {
+    if (!consumerId) {
+      throw new Error('consumerId is not present');
+    }
 
     return this.request.get(`/v1/consumers/${consumerId}`, false);
   }
@@ -33,8 +35,10 @@ class Consumer {
    * @param {[boolean]} queryOptions.includeReportedReviews [Include reported reviews. Default value: false Example: includeReportedReviews: true]
    * @return {[object]} [object containing the reviews of a specific consumer]
    */
-  getConsumerReviews (consumerId, queryOptions) {
-    if (!consumerId) { throw new Error('consumerId is not present'); }
+  getConsumerReviews(consumerId, queryOptions) {
+    if (!consumerId) {
+      throw new Error('consumerId is not present');
+    }
 
     return this.request.get(`/v1/consumers/${consumerId}/reviews`, false, queryOptions);
   }
@@ -46,11 +50,13 @@ class Consumer {
    * @param {[string]} locale [required. The locale to use when generating web links. Example: 'da-DK']
    * @return {[object]} [object containing consumer's web links]
    */
-  getConsumerWebLinks (consumerId, locale) {
-    if (!consumerId) { throw new Error('consumerId is not present'); }
+  getConsumerWebLinks(consumerId, locale) {
+    if (!consumerId) {
+      throw new Error('consumerId is not present');
+    }
 
-    //set locale just in case they didn't even though its required
-    let queryOptions = {
+    // set locale just in case they didn't even though its required
+    const queryOptions = {
       locale: locale || 'en-US'
     };
 

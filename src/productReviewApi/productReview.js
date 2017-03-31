@@ -1,7 +1,7 @@
 'use strict';
 
 class ProductReview {
-  constructor (request) {
+  constructor(request) {
     this.request = request;
   }
 
@@ -33,8 +33,10 @@ class ProductReview {
     }
    *@return {[object]} [object containing the reviewLinkId and reviewUrl]
    */
-  createInvitationLink (businessUnitId, options) {
-    if (!businessUnitId) { throw new Error('businessUnitId is not present'); }
+  createInvitationLink(businessUnitId, options) {
+    if (!businessUnitId) {
+      throw new Error('businessUnitId is not present');
+    }
 
     return this.request.post(`/v1/private/product-reviews/business-units/${businessUnitId}/invitation-links`, options);
   }
@@ -55,8 +57,10 @@ class ProductReview {
    *  Default value: published (multiple values allowed by using comma separation (not an array!)) ]
    *  @return {[Object]}      [returns a object containing product reviews]
    */
-  getPrivate (businessUnitId, options) {
-    if (!businessUnitId) { throw new Error('businessUnitId is not present'); }
+  getPrivate(businessUnitId, options) {
+    if (!businessUnitId) {
+      throw new Error('businessUnitId is not present');
+    }
 
     return this.request.get(`/v1/private/product-reviews/business-units/${businessUnitId}/reviews`, true, options);
   }
@@ -72,8 +76,10 @@ class ProductReview {
    * @param {[number]} options.perPage [optional. The number of summaries to retrieve per page. Constraints: The allowed range is minimum: 1, maximum: 1000 ]
    * @return {[object]} [object containging a overall product reviews summery report]
    */
-  getSummariesList (businessUnitId, options) {
-    if (!businessUnitId) { throw new Error('businessUnitId is not present'); }
+  getSummariesList(businessUnitId, options) {
+    if (!businessUnitId) {
+      throw new Error('businessUnitId is not present');
+    }
 
     return this.request.get(`/v1/private/product-reviews/business-units/${businessUnitId}/summaries`, true, options);
   }
@@ -84,8 +90,10 @@ class ProductReview {
    * @param {[string]} reviewId [required. the Id of the specific product review]
    * @return {[object]} [object containing the product review]
    */
-  getPrivateSingle (reviewId) {
-    if (!reviewId) { throw new Error('reviewId is not present'); }
+  getPrivateSingle(reviewId) {
+    if (!reviewId) {
+      throw new Error('reviewId is not present');
+    }
 
     return this.request.get(`/v1/private/product-reviews/${reviewId}`, true);
   }
@@ -96,8 +104,10 @@ class ProductReview {
    * @param {[string]} reviewId [Required. The id of the product review]
    * @return {[object]} [object containing the conversationId]
    */
-  createConversation (reviewId) {
-    if (!reviewId) { throw new Error('reviewId is not present'); }
+  createConversation(reviewId) {
+    if (!reviewId) {
+      throw new Error('reviewId is not present');
+    }
 
     return this.request.get(`/v1/private/product-reviews/${reviewId}/create-conversation`, true);
   }
@@ -114,8 +124,10 @@ class ProductReview {
    *  @param {[string]} options.sku [A single or multiple comma-separated SKUs of the product(s). Optional only if productUrl is provided. ]
    *  @return {[object]} [object containing product reviews summary]
    */
-  getSummary (businessUnitId, options) {
-    if (!businessUnitId) { throw new Error('businessUnitId is not present'); }
+  getSummary(businessUnitId, options) {
+    if (!businessUnitId) {
+      throw new Error('businessUnitId is not present');
+    }
 
     return this.request.get(`/v1/product-reviews/business-units/${businessUnitId}`, false, options);
   }
@@ -136,8 +148,10 @@ class ProductReview {
    * @param {[string]} options.language [Filter reviews by language]
    * @return {[object]}                [object containing product reviews]
    */
-  getProductReviews (businessUnitId, options) {
-    if (!businessUnitId) { throw new Error('businessUnitId is not present'); }
+  getProductReviews(businessUnitId, options) {
+    if (!businessUnitId) {
+      throw new Error('businessUnitId is not present');
+    }
 
     return this.request.get(`/v1/product-reviews/business-units/${businessUnitId}/reviews`, false, options);
   }
@@ -156,9 +170,13 @@ class ProductReview {
    * @param {[string]} options.language [Filter reviews by language]
    * @return {[object]}                [object containing product reviews]
    */
-  getImportedProductReviews (businessUnitId, options) {
-    if (!businessUnitId) { throw new Error('businessUnitId is not present'); }
-    if (options && !options.sku) { throw new Error('sku is not present'); }
+  getImportedProductReviews(businessUnitId, options) {
+    if (!businessUnitId) {
+      throw new Error('businessUnitId is not present');
+    }
+    if (options && !options.sku) {
+      throw new Error('sku is not present');
+    }
 
     return this.request.get(`/v1/product-reviews/business-units/${businessUnitId}/imported-reviews`, false, options);
   }
@@ -169,8 +187,10 @@ class ProductReview {
    * @param {[string]} conversationId [required. The ID of the conversation to retrieve ]
    * @return {[object]} [object containing information about a product review conversation]
    */
-  getConversation (conversationId) {
-    if (!conversationId) { throw new Error('conversationId is not present'); }
+  getConversation(conversationId) {
+    if (!conversationId) {
+      throw new Error('conversationId is not present');
+    }
 
     return this.request.get(`/v1/conversations/${conversationId}`, false);
   }
@@ -183,8 +203,10 @@ class ProductReview {
    * @param {[string]} options.content [the string of the comment]
    * @return {[object]} [object containing some meta-data about the comment and the comment itself]
    */
-  createComment (conversationId, options) {
-    if (!conversationId) { throw new Error('conversationId is not present'); }
+  createComment(conversationId, options) {
+    if (!conversationId) {
+      throw new Error('conversationId is not present');
+    }
 
     return this.request.post(`/v1/private/conversations/${conversationId}/comments`, options);
   }
@@ -195,8 +217,10 @@ class ProductReview {
    *@param {[string]} conversationId [required. the ID of the conversation to retrieve]
    *@return {[object]} [object containing conversation]
    */
-  getPrivateConversation (conversationId) {
-    if (!conversationId) { throw new Error('conversationId is not present'); }
+  getPrivateConversation(conversationId) {
+    if (!conversationId) {
+      throw new Error('conversationId is not present');
+    }
 
     return this.request.get(`/v1/private/conversations/${conversationId}`, true);
   }
@@ -208,8 +232,10 @@ class ProductReview {
    * @param {[object]} options [options object]
    * @param {[string]} options.state [state to set the conversion to. e.g. `public` or `private`]
    */
-  saveConversationState (conversationId, options) {
-    if (!conversationId) { throw new Error('conversationId is not present'); }
+  saveConversationState(conversationId, options) {
+    if (!conversationId) {
+      throw new Error('conversationId is not present');
+    }
 
     return this.request.post(`/v1/private/conversations/${conversationId}/state`, options);
   }
@@ -221,10 +247,14 @@ class ProductReview {
    * @param {[string]} commentId [required. the ID of the specific comment to retrieve]
    * @return {[object]} [object containing information about the comment]
    */
-  getComment (conversationId, commentId) {
-    if (!conversationId) { throw new Error('conversationId is not present'); }
+  getComment(conversationId, commentId) {
+    if (!conversationId) {
+      throw new Error('conversationId is not present');
+    }
 
-    if (!commentId) { throw new Error('commentId is not present'); }
+    if (!commentId) {
+      throw new Error('commentId is not present');
+    }
 
     return this.request.get(`/v1/private/conversations/${conversationId}/comments/${commentId}`, true);
   }

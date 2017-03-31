@@ -1,7 +1,7 @@
 'use strict';
 
 class Categories {
-  constructor (request) {
+  constructor(request) {
     this.request = request;
   }
 
@@ -15,13 +15,13 @@ class Categories {
    * Example: locale: 'da-DK']
    * @return {[object]} [object containing category information]
    */
-  listCategories (country, queryOptions) {
-    let options = queryOptions || {};
+  listCategories(country, queryOptions) {
+    const options = queryOptions || {};
 
-    //default it to the US just in case they didn't set it.
+    // default it to the US just in case they didn't set it.
     options.country = country || 'US';
 
-    return this.request.get(`/v1/categories`, false, options);
+    return this.request.get('/v1/categories', false, options);
   }
 
   /**
@@ -34,10 +34,12 @@ class Categories {
    * 'en-US' Example: locale: 'da-DK']
    * @return {[object]} [object with information about the specific category]
    */
-  get (categoryId, country, queryOptions) {
-    if (!categoryId) { throw new Error('categoryId is not present'); }
+  get(categoryId, country, queryOptions) {
+    if (!categoryId) {
+      throw new Error('categoryId is not present');
+    }
 
-    let options = queryOptions || {};
+    const options = queryOptions || {};
 
     options.country = country || 'US';
 
@@ -54,13 +56,13 @@ class Categories {
    *  Example: locale: 'da-DK']
    *  @return {[object]} [object containing information about a given category]
    */
-  find (name, country, queryOptions) {
-    let options = queryOptions || {};
+  find(name, country, queryOptions) {
+    const options = queryOptions || {};
 
     options.name = name;
     options.country = country || 'US';
 
-    return this.request.get(`/v1/categories/find`, false, options);
+    return this.request.get('/v1/categories/find', false, options);
   }
 
   /**
@@ -76,10 +78,12 @@ class Categories {
    * Constraints: The allowed range is minimum: 1, maximum: 100 Default value: 20 Example: perPage: 3]
    * @return {[object]} [object of all the businesUnits with specific category]
    */
-  listBusinessUnits (categoryId, country, queryOptions) {
-    if (!categoryId) { throw new Error('categoryId is not present'); }
+  listBusinessUnits(categoryId, country, queryOptions) {
+    if (!categoryId) {
+      throw new Error('categoryId is not present');
+    }
 
-    let options = queryOptions || {};
+    const options = queryOptions || {};
 
     options.country = country || 'US';
 
@@ -96,13 +100,13 @@ class Categories {
    * Example: locale: 'da-DK']
    *@return {[object]} [object containing details about a specific category]
    */
-  search (searchQuery, country, queryOptions) {
-    let options = queryOptions || {};
+  search(searchQuery, country, queryOptions) {
+    const options = queryOptions || {};
 
     options.query = searchQuery;
     options.country = country || 'US';
 
-    return this.request.get(`/v1/categories/search`, false, options);
+    return this.request.get('/v1/categories/search', false, options);
   }
 }
 
