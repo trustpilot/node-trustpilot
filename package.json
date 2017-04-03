@@ -18,7 +18,7 @@
     "test": "gulp test"
   },
   "dependencies": {
-    "request-promise": "^1.0.1"
+    "request-promise": "1.0.1"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.1",
