@@ -1,6 +1,3 @@
 {
-  "extends": "trustpilot",
-  "rules": {
-    "no-console": "off"
-  }
+  "extends": "trustpilot"
 }
