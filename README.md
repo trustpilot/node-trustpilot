@@ -14,7 +14,7 @@ Install using `npm install trustpilot`
 
 ## Usage
 
-The trustpilot module is Promise based. Essentially, it provides [request-promise](https://github.com/request/request-promise) objects with sensible defaults.
+The trustpilot module is Promise based. It provides [request-promise](https://github.com/request/request-promise) objects with sane defaults.
 
 ### Basic Usage
 
@@ -23,19 +23,19 @@ let Trustpilot = require('trustpilot');
 
 let client = new Trustpilot(
   {
-    apiKey: YOUR-API-KEY-HERE,
-    secret: YOUR-SECRET-HERE,
-    username: YOUR-TRUSTPILOT-B2B-LOGIN-EMAIL,
-    password: YOUR-TRUSTPILOT-B2B-LOGIN-PASSWORD
+    apiKey: 'YOUR-API-KEY',
+    secret: 'YOUR-SECRET',
+    username: 'YOUR-TRUSTPILOT-B2B-USERNAME',
+    password: 'YOUR-TRUSTPILOT-B2B-PASSWORD'
   });
 
 // For basic calls authentified by API key, use client.apiRequest
 client.apiRequest('/v1/resources/images')
   .then((response) => {
-    //handle the response
+    // handle the response
   })
   .catch((error) => {
-      //handle the error
+    // handle the error
   });
 ```
 
@@ -49,10 +49,10 @@ client.authenticate((rp) => {
   return rp(`/v1/private/business-units/${YOUR_BUSINESS_UNIT_ID}/reviews`)
 })
   .then((response) => {
-    //handle the response
+    // handle the response
   })
   .catch((error) => {
-      //handle the error
+    // handle the error
   });
 ```
 
@@ -76,10 +76,10 @@ let Trustpilot = require('trustpilot');
 
 let client = new Trustpilot(
   {
-    apiKey: YOUR-API-KEY-HERE,
-    secret: YOUR-SECRET-HERE,
-    username: YOUR-TRUSTPILOT-B2B-LOGIN-EMAIL,
-    password: YOUR-TRUSTPILOT-B2B-LOGIN-PASSWORD,
+    apiKey: 'YOUR-API-KEY',
+    secret: 'YOUR-SECRET',
+    username: 'YOUR-TRUSTPILOT-B2B-USERNAME',
+    password: 'YOUR-TRUSTPILOT-B2B-PASSWORD'
     baseUrl: 'https://invitations-api.trustpilot.com'
   });
 ```
