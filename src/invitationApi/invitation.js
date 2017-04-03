@@ -1,7 +1,7 @@
 'use strict';
 
 class Invitation {
-  constructor (request) {
+  constructor(request) {
     this.request = request;
   }
 
@@ -29,10 +29,13 @@ class Invitation {
     }
    *@return {[object]} [object containing invitation information]
    */
-  newInvitation (businessUnitId, options) {
-    if (!businessUnitId) { throw new Error('businessUnitId is not present'); }
+  newInvitation(businessUnitId, options) {
+    if (!businessUnitId) {
+      throw new Error('businessUnitId is not present');
+    }
 
-    return this.request.invitationsRequest(`/v1/private/business-units/${businessUnitId}/invitations`, true, options, 'POST');
+    return this.request.invitationsRequest(`/v1/private/business-units/${businessUnitId}/invitations`,
+      true, options, 'POST');
   }
 
   /**
@@ -41,8 +44,10 @@ class Invitation {
    * @param {[string]} [required. The ID of the business unit.]
    * @return {[object]} [object containing information about all the invitation templates]
    */
-  getTemplates (businessUnitId) {
-    if (!businessUnitId) { throw new Error('businessUnitId is not present'); }
+  getTemplates(businessUnitId) {
+    if (!businessUnitId) {
+      throw new Error('businessUnitId is not present');
+    }
 
     return this.request.invitationsRequest(`/v1/private/business-units/${businessUnitId}/templates`, true, {}, 'GET');
   }
@@ -67,10 +72,13 @@ class Invitation {
    }
    *@return {[object]} [object containing service review inviration link id and url]
    */
-  generateServiceReviewLink (businessUnitId, options) {
-    if (!businessUnitId) { throw new Error('businessUnitId is not present'); }
+  generateServiceReviewLink(businessUnitId, options) {
+    if (!businessUnitId) {
+      throw new Error('businessUnitId is not present');
+    }
 
-    return this.request.invitationsRequest(`/v1/private/business-units/${businessUnitId}/invitation-links`, true, options, 'POST');
+    return this.request.invitationsRequest(`/v1/private/business-units/${businessUnitId}/invitation-links`,
+      true, options, 'POST');
   }
 }
 

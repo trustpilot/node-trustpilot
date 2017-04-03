@@ -1,7 +1,7 @@
 'use strict';
 
 class BusinessUnit {
-  constructor (request) {
+  constructor(request) {
     this.request = request;
   }
 
@@ -17,8 +17,8 @@ class BusinessUnit {
    * Constraints: The allowed range is minimum: 1, maximum: 1000 Default value: 1000 Example: perPage: 3]
    * @return {[object]} [object containing information about business units]
    */
-  listBusinessUnits (queryOptions) {
-    return this.request.get(`/v1/business-units`, false, queryOptions);
+  listBusinessUnits(queryOptions) {
+    return this.request.get('/v1/business-units', false, queryOptions);
   }
 
   /**
@@ -27,12 +27,12 @@ class BusinessUnit {
    * @param {[string]} name [required. The exact identifying or referring name of the business unit. Example: 'trustpilot.com']
    * @return {[object]} [object with information about a specific business unit]
    */
-  find (name) {
-    let options = {
+  find(name) {
+    const options = {
       name: name
     };
 
-    return this.request.get(`/v1/business-units/find`, false, options);
+    return this.request.get('/v1/business-units/find', false, options);
   }
 
   /**
@@ -41,8 +41,10 @@ class BusinessUnit {
    * @param {[string]} businessUnitId [required. The id of the business unit. ]
    * @return {[object]} [object containing public information about a business unit]
    */
-  get (businessUnitId) {
-    if (!businessUnitId) { throw new Error('businessUnitId is not present'); }
+  get(businessUnitId) {
+    if (!businessUnitId) {
+      throw new Error('businessUnitId is not present');
+    }
 
     return this.request.get(`/v1/business-units/${businessUnitId}`, false);
   }
@@ -54,10 +56,12 @@ class BusinessUnit {
    * @param {[string]} locale [required. The locale to use when generating web links. Example: 'en-US']
    * @return {[object]} [object containing the web links for a specific buisiness unit]
    */
-  getWebLinks (businessUnitId, locale) {
-    if (!businessUnitId) { throw new Error('businessUnitId is not present'); }
+  getWebLinks(businessUnitId, locale) {
+    if (!businessUnitId) {
+      throw new Error('businessUnitId is not present');
+    }
 
-    let options = {
+    const options = {
       locale: locale || 'en-US'
     };
 
@@ -87,8 +91,10 @@ class BusinessUnit {
    * Example: includeReportedReviews: true]
    * @return {[object]} [object containing reviews]
    */
-  getReviews (businessUnitId, queryOptions) {
-    if (!businessUnitId) { throw new Error('businessUnitId is not present'); }
+  getReviews(businessUnitId, queryOptions) {
+    if (!businessUnitId) {
+      throw new Error('businessUnitId is not present');
+    }
 
     return this.request.get(`/v1/business-units/${businessUnitId}/reviews`, false, queryOptions);
   }
@@ -124,8 +130,10 @@ class BusinessUnit {
    * @param {[string]} queryOptions.username [Filter reviews by user name. Example: username: 'Luke Skywalker']
    * @return {[object]} [object containing reviews]
    */
-  getPrivateReviews (businessUnitId, queryOptions) {
-    if (!businessUnitId) { throw new Error('businessUnitId is not present'); }
+  getPrivateReviews(businessUnitId, queryOptions) {
+    if (!businessUnitId) {
+      throw new Error('businessUnitId is not present');
+    }
 
     return this.request.get(`/v1/private/business-units/${businessUnitId}/reviews`, true, queryOptions);
   }
@@ -136,8 +144,10 @@ class BusinessUnit {
    * @param {[string]} businessUnitId [required. The id of the business unit. ]
    * @return {[object]} [object containing tags]
    */
-  getPrivateTags (businessUnitId) {
-    if (!businessUnitId) { throw new Error('businessUnitId is not present'); }
+  getPrivateTags(businessUnitId) {
+    if (!businessUnitId) {
+      throw new Error('businessUnitId is not present');
+    }
 
     return this.request.get(`/v1/private/business-units/${businessUnitId}/tags`, true);
   }
@@ -148,8 +158,10 @@ class BusinessUnit {
    * @param {[string]} businessUnitId [required. The id of the business unit. ]
    * @return {[object]} [object list of categories]
    */
-  listCategories (businessUnitId) {
-    if (!businessUnitId) { throw new Error('businessUnitId is not present'); }
+  listCategories(businessUnitId) {
+    if (!businessUnitId) {
+      throw new Error('businessUnitId is not present');
+    }
 
     return this.request.get(`/v1/business-units/${businessUnitId}/categories`, false);
   }

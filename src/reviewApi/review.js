@@ -1,6 +1,6 @@
 'use strict';
 class Review {
-  constructor (request) {
+  constructor(request) {
     this.request = request;
   }
 
@@ -14,14 +14,14 @@ class Review {
    * @param {[boolean]} options.filterUsersWithoutImages [Used to filter reviews with users that they do not have an image.]
    * @return {[Object]}      [returns a reviews object]
    */
-  getLatest (lang, options) {
+  getLatest(lang, options) {
 
-    let queryOptions = options || {};
+    const queryOptions = options || {};
 
-    //set default language if not provided
+    // set default language if not provided
     queryOptions.language = lang || 'en';
 
-    return this.request.get(`/v1/reviews/latest`, false, queryOptions);
+    return this.request.get('/v1/reviews/latest', false, queryOptions);
   }
 
   /**
@@ -30,8 +30,10 @@ class Review {
    * @param  {[string]} reviewId [the reviewId of the review you wish to get]
    * @return {[array]}          [array which holds an object of the review]
    */
-  get (reviewId) {
-    if (!reviewId) { throw new Error('reviewId is not present'); }
+  get(reviewId) {
+    if (!reviewId) {
+      throw new Error('reviewId is not present');
+    }
 
     return this.request.get(`/v1/reviews/${reviewId}`, false);
   }
@@ -42,8 +44,10 @@ class Review {
    * @param  {[string]} reviewId [required. the reviewId of the review you wish to get]
    * @return {[array]}          [array which holds an object of the review]
    */
-  getPrivate (reviewId) {
-    if (!reviewId) { throw new Error('reviewId is not present'); }
+  getPrivate(reviewId) {
+    if (!reviewId) {
+      throw new Error('reviewId is not present');
+    }
 
     return this.request.get(`/v1/private/reviews/${reviewId}`, true);
   }
@@ -56,11 +60,13 @@ class Review {
    * @param {[string]} options.locale [the Locale to use when generating web links]
    * @return {[object]}
    */
-  getWebLinks (reviewId, locale) {
-    if (!reviewId) { throw new Error('reviewId is not present'); }
+  getWebLinks(reviewId, locale) {
+    if (!reviewId) {
+      throw new Error('reviewId is not present');
+    }
 
-    //set locale
-    let queryOptions = {
+    // set locale
+    const queryOptions = {
       locale: locale || 'en-US'
     };
 
@@ -73,8 +79,10 @@ class Review {
    * @param {[string]} reviewId [required. The id of the review]
    * @return {[object]} [a likes object]
    */
-  getLikes (reviewId) {
-    if (!reviewId) { throw new Error('reviewId is not present'); }
+  getLikes(reviewId) {
+    if (!reviewId) {
+      throw new Error('reviewId is not present');
+    }
 
     return this.request.get(`/v1/reviews/${reviewId}/likes`, false);
   }
@@ -85,29 +93,33 @@ class Review {
    * @param {[string]} reviewId [required. The id of the review]
    * @return {[object]} [a likes object]
    */
-  getTags (reviewId) {
-    if (!reviewId) { throw new Error('reviewId is not present'); }
+  getTags(reviewId) {
+    if (!reviewId) {
+      throw new Error('reviewId is not present');
+    }
 
     return this.request.get(`/v1/private/reviews/${reviewId}/tags`, true);
   }
 
-/**
- * [This method will set the tags of a service review.]
- * {@link https://developers.trustpilot.com/review-api#set-tags-on-review}
- * @param {[string]} reviewId [The id of the review]
- * @param {[Object]} postData [object of post data]
- * @example
- * {
-      tags: [
-        {
-          group: 'ProductGroup',
-          value: 'Computers'
-        }
-      ]
+  /**
+   * [This method will set the tags of a service review.]
+   * {@link https://developers.trustpilot.com/review-api#set-tags-on-review}
+   * @param {[string]} reviewId [The id of the review]
+   * @param {[Object]} postData [object of post data]
+   * @example
+   * {
+        tags: [
+          {
+            group: 'ProductGroup',
+            value: 'Computers'
+          }
+        ]
+      }
+   */
+  saveTags(reviewId, postData) {
+    if (!reviewId) {
+      throw new Error('reviewId is not present');
     }
- */
-  saveTags (reviewId, postData) {
-    if (!reviewId) { throw new Error('reviewId is not present'); }
 
     return this.request.post(`/v1/private/reviews/${reviewId}/tags`, postData);
   }
@@ -122,8 +134,10 @@ class Review {
       message: 'Reply message'
       }
    */
-  reply (reviewId, postData) {
-    if (!reviewId) { throw new Error('reviewId is not present'); }
+  reply(reviewId, postData) {
+    if (!reviewId) {
+      throw new Error('reviewId is not present');
+    }
 
     return this.request.post(`/v1/private/reviews/${reviewId}/reply`, postData);
   }
@@ -133,8 +147,10 @@ class Review {
    * {@link https://developers.trustpilot.com/review-api#Delete a reply to a review.}
    * @param {[string]} reviewId [The if of the review]
    */
-  deleteReply (reviewId) {
-    if (!reviewId) { throw new Error('reviewId is not present'); }
+  deleteReply(reviewId) {
+    if (!reviewId) {
+      throw new Error('reviewId is not present');
+    }
 
     return this.request.delete(`/v1/private/reviews/${reviewId}/reply`);
   }
