@@ -1,13 +1,15 @@
 'use strict';
+
 const request = require('request-promise');
 
 class AccessProvider {
-  constructor(apiKey, secret, username, password, host) {
+  constructor(apiKey, secret, username, password, baseUrl) {
     this.apiKey = apiKey;
     this.secret = secret;
     this.username = username;
     this.password = password;
-    this.host = host;
+    this.host = baseUrl;
+    this.tokenHost = baseUrl && baseUrl.replace(/https:\/\/invitations-api\./, 'https://api.');
   }
 
   /**
@@ -16,7 +18,7 @@ class AccessProvider {
    */
   generateTokenObject() {
     return request({
-      baseUrl: this.host,
+      baseUrl: this.tokenHost,
       uri: '/v1/oauth/oauth-business-users-for-applications/accesstoken',
       method: 'POST',
       json: true,
