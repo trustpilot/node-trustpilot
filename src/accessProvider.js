@@ -51,7 +51,9 @@ class AccessProvider {
       if (this.isTokenValid()) {
         resolve(this.authorization.access_token);
       } else {
-        this.generateTokenObject()
+        // Make sure there's only ever one token request in flight
+        this.tokenPromise = this.tokenPromise || this.generateTokenObject();
+        this.tokenPromise
           .then((response) => {
             resolve(response.access_token);
           })
@@ -76,6 +78,7 @@ class AccessProvider {
 
     if (now > (shouldExpireBy - 3600)) {
       delete this.authorization;
+      delete this.tokenPromise;
       return false;
     }
 
