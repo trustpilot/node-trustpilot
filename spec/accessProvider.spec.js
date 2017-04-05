@@ -81,6 +81,28 @@ describe('Acesss Provider Api ', () => {
         });
       });
     });
+
+    describe('after a token expires', () => {
+      it('should make a new request to get a fresh token', () => {
+        accessProvider.generateTokenObject = () => {
+          return Promise.resolve({
+            'access_token': Math.random()
+          });
+        };
+
+        return accessProvider.getAccessToken().then((firstToken) => {
+          // Artificially expire our token
+          accessProvider.authorization = {
+            'issued_at': 592786800000, // Fri Oct 14 1988 00:00:00 GMT+0100 (CET)
+            'expires_in': 360000
+          };
+
+          return accessProvider.getAccessToken().then((secondToken) => {
+            expect(firstToken).to.not.equal(secondToken);
+          });
+        });
+      });
+    });
   });
 
   describe('the isTokenValid function is called', () => {
