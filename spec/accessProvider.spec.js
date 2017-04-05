@@ -60,6 +60,27 @@ describe('Acesss Provider Api ', () => {
         });
       });
     });
+
+    describe('when a token request is in flight', () => {
+      it('should re-use the same promise for all concurrent calls', () => {
+        accessProvider.generateTokenObject = () => {
+          return Promise.resolve({
+            'access_token': Math.random()
+          });
+        };
+
+        var x = accessProvider.getAccessToken();
+        var y = accessProvider.getAccessToken();
+        var z = accessProvider.getAccessToken();
+
+        return Promise.all([x, y, z]).then((results) => {
+          var tokenX = results[0];
+          var tokenY = results[1];
+          var tokenZ = results[2];
+          expect(tokenX).to.equal(tokenY).and.to.equal(tokenZ);
+        });
+      });
+    });
   });
 
   describe('the isTokenValid function is called', () => {
