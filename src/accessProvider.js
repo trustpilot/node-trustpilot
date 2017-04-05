@@ -1,15 +1,23 @@
 'use strict';
 
-const request = require('request-promise');
+const rp = require('request-promise');
 
 class AccessProvider {
-  constructor(apiKey, secret, username, password, baseUrl) {
+  constructor(apiKey, secret, username, password, baseUrl, tokenRequest) {
     this.apiKey = apiKey;
     this.secret = secret;
     this.username = username;
     this.password = password;
     this.host = baseUrl;
     this.tokenHost = baseUrl && baseUrl.replace(/https:\/\/invitations-api\./, 'https://api.');
+    this.tokenRequest = tokenRequest || {
+      uri: '/v1/oauth/oauth-business-users-for-applications/accesstoken',
+      form: {
+        'grant_type': 'password',
+        username: this.username,
+        password: this.password
+      }
+    };
   }
 
   /**
@@ -17,21 +25,14 @@ class AccessProvider {
    * @return {[Object]}  [Oauth authorization object]
    */
   generateTokenObject() {
-    return request({
+    return rp.defaults({
       baseUrl: this.tokenHost,
-      uri: '/v1/oauth/oauth-business-users-for-applications/accesstoken',
-      method: 'POST',
       json: true,
       auth: {
         user: this.apiKey,
         pass: this.secret
-      },
-      form: {
-        'grant_type': 'password',
-        username: this.username,
-        password: this.password
       }
-    })
+    }).post(this.tokenRequest)
     .then((response) => {
       this.authorization = response;
       return this.authorization;

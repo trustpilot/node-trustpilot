@@ -10,8 +10,10 @@ class Trustpilot {
     this.secret = config.secret || '';
     this.username = config.username;
     this.password = config.password;
+    this.tokenRequest = config.tokenRequest;
 
-    const accessProvider = new AccessProvider(this.apiKey, this.secret, this.username, this.password, this.baseUrl);
+    const accessProvider = new AccessProvider(this.apiKey, this.secret, this.username, this.password,
+      this.baseUrl, this.tokenRequest);
     const requestHelper = new RequestHelper(accessProvider);
 
     this.apiRequest = requestHelper.apiRequest;
