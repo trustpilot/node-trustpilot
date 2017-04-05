@@ -78,6 +78,7 @@ class AccessProvider {
 
     if (now > (shouldExpireBy - 3600)) {
       delete this.authorization;
+      delete this.tokenPromise;
       return false;
     }
 
