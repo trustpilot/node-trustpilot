@@ -14,7 +14,8 @@ class RequestHelper {
         .then((responseToken) => {
           return {
             headers: {
-              authorization: `Bearer ${responseToken}`
+              authorization: `Bearer ${responseToken}`,
+              apiKey: accessProvider.apiKey
             }
           };
         });
