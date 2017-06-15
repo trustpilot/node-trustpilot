@@ -15,7 +15,7 @@ class RequestHelper {
           return {
             headers: {
               authorization: `Bearer ${responseToken}`,
-              apiKey: accessProvider.apiKey
+              apikey: accessProvider.apiKey
             }
           };
         });
@@ -30,7 +30,7 @@ class RequestHelper {
 
     this.apiRequest = basicRequest.defaults({
       headers: {
-        apiKey: accessProvider.apiKey
+        apikey: accessProvider.apiKey
       }
     });
   }
