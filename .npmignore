@@ -1,0 +1,14 @@
+.vscode
+.editorconfig
+.eslintrc
+.travis.yml
+
+tslint.json
+tsconfig.json
+
+yarn.lock
+
+gulpfile.js
+
+src
+spec

@@ -12,15 +12,19 @@
     "reviews",
     "review"
   ],
-  "main": "./src/client.js",
+  "main": "./dist/client.js",
+  "types": "./dist/types/client.d.ts",
   "scripts": {
-    "start": "node src/client.js",
-    "test": "gulp test"
+    "tslint": "tslint -c tslint.json -p tsconfig.json",
+    "build": "npm run tslint && tsc",
+    "test": "gulp test",
+    "prepublishOnly": "npm run build && npm run test"
   },
   "dependencies": {
     "request-promise": "1.0.2"
   },
   "devDependencies": {
+    "@types/request-promise": "^4.1.36",
     "babel-eslint": "^7.2.1",
     "chai": "^3.2.0",
     "chai-as-promised": "^5.1.0",
@@ -29,6 +33,8 @@
     "gulp": "^3.9.0",
     "gulp-eslint": "^3.0.1",
     "gulp-mocha": "^2.1.3",
-    "mocha": "^2.3.2"
+    "mocha": "^2.3.2",
+    "tslint": "^5.5.0",
+    "typescript": "^2.4.1"
   }
 }

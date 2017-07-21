@@ -1,6 +1,6 @@
 'use strict';
 
-var AccessProvider = require('../src/accessProvider');
+var AccessProvider = require('../dist/accessProvider').default;
 var chai = require('chai');
 var expect = chai.expect;
 var chaiAsPromised = require('chai-as-promised');
