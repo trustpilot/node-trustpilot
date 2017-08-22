@@ -45,9 +45,10 @@ For calls authentified by OAuth token, use the `authenticate()` promise, which r
 object with everything you need.
 
 ```js
-client.authenticate((rp) => {
-  return rp(`/v1/private/business-units/${YOUR_BUSINESS_UNIT_ID}/reviews`)
-})
+client.authenticate()
+  .then((rp) => {
+    return rp(`/v1/private/business-units/${YOUR_BUSINESS_UNIT_ID}/reviews`)
+  })
   .then((response) => {
     // handle the response
   })
@@ -63,11 +64,12 @@ The Invitations API methods have a different base URL. Here are two ways you can
 1. Knowing that `authenticate()` promises you a `request-promise` object, you can use `.defaults()` to override the base URL.
 
 ```js
-client.authenticate((rp) => {
-  return rp.defaults({
-    baseUrl: 'https://invitations-api.trustpilot.com'
-  })(AN-INVITATIONS-API-ENDPOINT)
-})
+client.authenticate()
+  .then((rp) => {
+    return rp.defaults({
+      baseUrl: 'https://invitations-api.trustpilot.com'
+    })(AN-INVITATIONS-API-ENDPOINT)
+  });
 ```
 
 2. If you only need to access the Invitations API, just initialize your client with the Invitations API base URL.
