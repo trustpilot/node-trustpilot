@@ -21,6 +21,17 @@ describe('Acesss Provider Api ', () => {
   });
 
   describe('the getAccessToken function', () => {
+    describe('when access token is provided', () => {
+      var accessToken = 'XXXXxa12xxXxXXxXxXXxXXXXXXXXX';
+      var accessProviderWithToken = new AccessProvider('fakeKey', 'fakeSecret', 'user', 'pass', 'http://fakeHost.com', '', accessToken);
+      it('should resolve', (done) => {
+        return accessProviderWithToken.getAccessToken().then((data) => {
+          expect(data).to.equal(accessToken);
+          done();
+        });
+      });
+    });
+
     describe('when the authorization token exists and is valid', () => {
       it('should resolve', () => {
         accessProvider.authorization = {

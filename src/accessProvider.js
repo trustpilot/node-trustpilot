@@ -3,12 +3,13 @@
 const rp = require('request-promise');
 
 class AccessProvider {
-  constructor(apiKey, secret, username, password, baseUrl, tokenRequest) {
+  constructor(apiKey, secret, username, password, baseUrl, tokenRequest, accessToken) {
     this.apiKey = apiKey;
     this.secret = secret;
     this.username = username;
     this.password = password;
     this.host = baseUrl;
+    this.accessToken = accessToken || '';
     this.tokenHost = baseUrl && baseUrl.replace(/https:\/\/invitations-api\./, 'https://api.');
     this.tokenRequest = tokenRequest || {
       uri: '/v1/oauth/oauth-business-users-for-applications/accesstoken',
@@ -22,6 +23,7 @@ class AccessProvider {
 
   /**
    * [generates an Oauth object]
+   * If access token was given then return access token else generate
    * @return {[Object]}  [Oauth authorization object]
    */
   generateTokenObject() {
@@ -47,6 +49,9 @@ class AccessProvider {
    * @return {[string]} [Oauth access token]
    */
   getAccessToken() {
+    if (this.accessToken) {
+      return Promise.resolve(this.accessToken);
+    }
     return new Promise((resolve, reject) => {
 
       if (this.isTokenValid()) {
