@@ -9,11 +9,11 @@ export class TrustpilotApi {
     this.requestHelper = new RequestHelper(accessProvider);
   }
 
-  get apiRequest() {
+  get apiRequest(): Promise<any> {
     return this.requestHelper.apiRequest;
   }
 
-  authenticate() {
+  authenticate(): Promise<any> {
     return this.requestHelper.buildAuthenticatedRequest();
   }
 }
