@@ -5,8 +5,8 @@ import { RequestHelper } from './request-helper';
 export class TrustpilotApi {
   private requestHelper: RequestHelper;
 
-  constructor(clientConfig: Readonly<ITrustpilotApiConfig>) {
-    const accessProvider = new AccessProvider(Object.freeze(clientConfig));
+  constructor(config: Readonly<ITrustpilotApiConfig>) {
+    const accessProvider = new AccessProvider(Object.freeze(config));
     this.requestHelper = new RequestHelper(accessProvider);
   }
 
