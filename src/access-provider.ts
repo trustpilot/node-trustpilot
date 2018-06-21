@@ -1,37 +1,13 @@
 import * as rp from 'request-promise-native';
+import { ITrustpilotApiConfig } from './models';
 
 export class AccessProvider {
-  private apiAuthorization: any;
+  private apiAuthorization: any | undefined;
   private apiAccessTokenPromise: Promise<any> | undefined;
 
-  constructor(public trustpilotApiConfig: Readonly<ITrustpilotApiConfig>) {
-  }
+  constructor(public trustpilotApiConfig: Readonly<ITrustpilotApiConfig>) {}
 
-  private createApiTokenRequest(): any {
-    return this.trustpilotApiConfig.apiTokenRequest || {
-      uri: '/v1/oauth/oauth-business-users-for-applications/accesstoken',
-      form: {
-        'grant_type': 'password',
-        username: this.trustpilotApiConfig.apiUsername,
-        password: this.trustpilotApiConfig.apiPassword
-      }
-    };
-  }
-
-  private async createApiAccessToken(): Promise<any> {
-    this.apiAuthorization = await rp.defaults({
-      baseUrl: this.trustpilotApiConfig.apiBaseUrl,
-      json: true,
-      auth: {
-        user: this.trustpilotApiConfig.apiKey,
-        pass: this.trustpilotApiConfig.apiSecret
-      }
-    }).post(this.createApiTokenRequest());
-
-    return this.apiAuthorization;
-  }
-
-  async getApiAccessToken(): Promise<string> {
+  public async getApiAccessToken(): Promise<string> {
     if (this.trustpilotApiConfig.apiAccessToken && this.trustpilotApiConfig.apiAccessToken.trim().length > 0) {
       return this.trustpilotApiConfig.apiAccessToken;
     }
@@ -44,6 +20,30 @@ export class AccessProvider {
       const response = await this.apiAccessTokenPromise;
       return response.access_token;
     }
+  }
+
+  private createApiTokenRequest(): any {
+    return this.trustpilotApiConfig.apiTokenRequest || {
+      form: {
+        grant_type: 'password',
+        password: this.trustpilotApiConfig.apiPassword,
+        username: this.trustpilotApiConfig.apiUsername,
+      },
+      uri: '/v1/oauth/oauth-business-users-for-applications/accesstoken',
+    };
+  }
+
+  private async createApiAccessToken(): Promise<any> {
+    this.apiAuthorization = await rp.defaults({
+      auth: {
+        pass: this.trustpilotApiConfig.apiSecret,
+        user: this.trustpilotApiConfig.apiKey,
+      },
+      baseUrl: this.trustpilotApiConfig.apiBaseUrl,
+      json: true,
+    }).post(this.createApiTokenRequest());
+
+    return this.apiAuthorization;
   }
 
   private isTokenValid(): boolean {

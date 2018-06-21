@@ -6,7 +6,7 @@ This a node API wrapper for accessing the Trustpilot APIs. You can learn all abo
 
 ## Installation
 
-This module is built using Node.js `v4.0.x`.
+This module is built using Typescript and Node.js `v8.10.x`.
 
 If you are not using version 4 of Node, you'll have to transpile the code down to ES5 yourself.
 
@@ -14,74 +14,74 @@ Install using `npm install trustpilot`
 
 ## Usage
 
-The trustpilot module is Promise based. It provides [request-promise](https://github.com/request/request-promise) objects with sane defaults.
+The trustpilot module is async/await based. It provides [request-promise-native](https://github.com/request/request-promise-native) objects with sane defaults.
 
 ### Basic Usage
 
 ```js
-let Trustpilot = require('trustpilot');
+import { TrustpilotApi } from "./trustpilot-api";
+import { ITrustpilotApiConfig } from "./models";
 
-let client = new Trustpilot(
+const client = new TrustpilotApi(
   {
     apiKey: 'YOUR-API-KEY',
-    secret: 'YOUR-SECRET',
-    username: 'YOUR-TRUSTPILOT-B2B-USERNAME',
-    password: 'YOUR-TRUSTPILOT-B2B-PASSWORD'
+    apiSecret: 'YOUR-SECRET',
+    apiUsername: 'YOUR-TRUSTPILOT-B2B-USERNAME',
+    apiPassword: 'YOUR-TRUSTPILOT-B2B-PASSWORD'
   });
 
 // For basic calls authentified by API key, use client.apiRequest
-client.apiRequest('/v1/resources/images')
-  .then((response) => {
-    // handle the response
-  })
-  .catch((error) => {
-    // handle the error
-  });
+try {
+  const response = await client.apiRequest('/v1/resources/images');
+} catch(error) {
+  // handle the error
+});
 ```
 
 ### Usage with OAuth
 
-For calls authentified by OAuth token, use the `authenticate()` promise, which resolves with a `request-promise`
+For calls authentified by OAuth token, use the `authenticate()` promise, which resolves with a `request-promise-native`
 object with everything you need.
 
 ```js
-client.authenticate()
-  .then((rp) => {
-    return rp(`/v1/private/business-units/${YOUR_BUSINESS_UNIT_ID}/reviews`)
-  })
-  .then((response) => {
-    // handle the response
-  })
-  .catch((error) => {
-    // handle the error
-  });
-```
+import { TrustpilotApi } from "./trustpilot-api";
+import { ITrustpilotApiConfig } from "./models";
 
-### Invitations API
-
-The Invitations API methods have a different base URL. Here are two ways you can access them.
-
-1. Knowing that `authenticate()` promises you a `request-promise` object, you can use `.defaults()` to override the base URL.
-
-```js
-client.authenticate()
-  .then((rp) => {
-    return rp.defaults({
-      baseUrl: 'https://invitations-api.trustpilot.com'
-    })(AN-INVITATIONS-API-ENDPOINT)
-  });
-```
-
-2. If you only need to access the Invitations API, just initialize your client with the Invitations API base URL.
-```js
-let Trustpilot = require('trustpilot');
-
-let client = new Trustpilot(
+const client = await new TrustpilotApi(
   {
     apiKey: 'YOUR-API-KEY',
-    secret: 'YOUR-SECRET',
-    username: 'YOUR-TRUSTPILOT-B2B-USERNAME',
-    password: 'YOUR-TRUSTPILOT-B2B-PASSWORD'
-    baseUrl: 'https://invitations-api.trustpilot.com'
-  });
+    apiSecret: 'YOUR-SECRET',
+    apiUsername: 'YOUR-TRUSTPILOT-B2B-USERNAME',
+    apiPassword: 'YOUR-TRUSTPILOT-B2B-PASSWORD'
+  }).authenticate();
+
+try {
+  client(`/v1/private/business-units/${YOUR_BUSINESS_UNIT_ID}/reviews`);
+  // same as
+  client.get(`/v1/private/business-units/${YOUR_BUSINESS_UNIT_ID}/reviews`);
+
+  client(`/v1/private/business-units/${YOUR_BUSINESS_UNIT_ID}/reviews`);
+} catch(error) {
+  // handle the error
+});
+```
+
+### Override API Base URL
+
+The Invitations API methods have a different base URL. To override it, simply pass the `apiBaseUrl`.
+
+```js
+import { TrustpilotApi } from "./trustpilot-api";
+import { ITrustpilotApiConfig } from "./models";
+
+const client = await new TrustpilotApi(
+  {
+    apiKey: 'YOUR-API-KEY',
+    apiSecret: 'YOUR-SECRET',
+    apiUsername: 'YOUR-TRUSTPILOT-B2B-USERNAME',
+    apiPassword: 'YOUR-TRUSTPILOT-B2B-PASSWORD',
+    apiBaseUrl: 'https://invitations-api.trustpilot.com'
+  }).authenticate();
+
+// Use client
 ```

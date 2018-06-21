@@ -8,27 +8,27 @@ export class RequestHelper {
   constructor(private accessProvider: AccessProvider) {
     this.basicRequest = rp.defaults({
       baseUrl: this.accessProvider.trustpilotApiConfig.apiBaseUrl,
-      json: true
+      json: true,
     });
     this.apiRequest = this.basicRequest.defaults({
       headers: {
-        apikey: accessProvider.trustpilotApiConfig.apiKey
-      }
+        apikey: accessProvider.trustpilotApiConfig.apiKey,
+      },
     });
   }
 
-  private async createBearerTokenHeader () {
+  public async buildAuthenticatedRequest() {
+    return this.basicRequest.defaults(await this.createBearerTokenHeader());
+  }
+
+  private async createBearerTokenHeader() {
     const response = await this.accessProvider.getApiAccessToken();
 
     return {
       headers: {
+        apikey: this.accessProvider.trustpilotApiConfig.apiKey,
         authorization: `Bearer ${response}`,
-        apikey: this.accessProvider.trustpilotApiConfig.apiKey
-      }
+      },
     };
-  };
-
-  async buildAuthenticatedRequest() {
-    return this.basicRequest.defaults(await this.createBearerTokenHeader());
-  };
+  }
 }

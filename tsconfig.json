@@ -1,20 +1,16 @@
 {
-    "compileOnSave": true,
+    "compileOnSave": false,
     "compilerOptions": {
       "target": "es2017",
       "module": "commonjs",
       "moduleResolution": "node",
       "outDir": "dist",
       "strict": true,
-      "rootDir": "src",
       "removeComments": true,
       "sourceMap": true,
       "skipLibCheck": true,
       "inlineSources": true
     },
-    "include": [
-      "src/**/*"
-    ],
     "exclude": [
       "node_modules"
     ]

@@ -1,4 +1,5 @@
 import { AccessProvider } from './access-provider';
+import { ITrustpilotApiConfig } from './models';
 import { RequestHelper } from './request-helper';
 
 export class TrustpilotApi {
@@ -9,11 +10,11 @@ export class TrustpilotApi {
     this.requestHelper = new RequestHelper(accessProvider);
   }
 
-  get apiRequest(): Promise<any> {
+  get apiRequest() {
     return this.requestHelper.apiRequest;
   }
 
-  authenticate(): Promise<any> {
+  public authenticate() {
     return this.requestHelper.buildAuthenticatedRequest();
   }
 }

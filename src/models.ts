@@ -1,4 +1,4 @@
-interface ITrustpilotApiConfig {
+export interface ITrustpilotApiConfig {
   apiBaseUrl: string;
   apiKey: string;
   apiSecret: string;
