@@ -20,10 +20,8 @@ The trustpilot module is async/await based. It provides [request-promise-native]
 
 ```js
 import { TrustpilotApi } from "./trustpilot-api";
-import { ITrustpilotApiConfig } from "./models";
 
-const client = new TrustpilotApi(
-  {
+const client = new TrustpilotApi({
     apiKey: 'YOUR-API-KEY',
     apiSecret: 'YOUR-SECRET',
     apiUsername: 'YOUR-TRUSTPILOT-B2B-USERNAME',
@@ -45,10 +43,8 @@ object with everything you need.
 
 ```js
 import { TrustpilotApi } from "./trustpilot-api";
-import { ITrustpilotApiConfig } from "./models";
 
-const client = await new TrustpilotApi(
-  {
+const client = await new TrustpilotApi({
     apiKey: 'YOUR-API-KEY',
     apiSecret: 'YOUR-SECRET',
     apiUsername: 'YOUR-TRUSTPILOT-B2B-USERNAME',
@@ -72,10 +68,8 @@ The Invitations API methods have a different base URL. To override it, simply pa
 
 ```js
 import { TrustpilotApi } from "./trustpilot-api";
-import { ITrustpilotApiConfig } from "./models";
 
-const client = await new TrustpilotApi(
-  {
+const client = await new TrustpilotApi({
     apiKey: 'YOUR-API-KEY',
     apiSecret: 'YOUR-SECRET',
     apiUsername: 'YOUR-TRUSTPILOT-B2B-USERNAME',

@@ -1,4 +1,4 @@
-export interface ITrustpilotApiConfig {
+export type ITrustpilotApiConfig = Partial<{
   apiBaseUrl: string;
   apiKey: string;
   apiSecret: string;
@@ -6,4 +6,4 @@ export interface ITrustpilotApiConfig {
   apiPassword: string;
   apiTokenRequest: any;
   apiAccessToken: string;
-}
+}>

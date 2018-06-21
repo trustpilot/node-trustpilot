@@ -59,7 +59,6 @@ export class AccessProvider {
       delete this.apiAccessTokenPromise;
       return false;
     }
-
     return true;
   }
 }
