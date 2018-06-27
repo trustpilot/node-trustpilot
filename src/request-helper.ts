@@ -2,17 +2,19 @@ import * as rp from 'request-promise-native';
 import { AccessProvider } from './access-provider';
 
 export class RequestHelper {
-  public apiRequest: any;
-  private basicRequest: any;
+  constructor(private accessProvider: AccessProvider) {}
 
-  constructor(private accessProvider: AccessProvider) {
-    this.basicRequest = rp.defaults({
-      baseUrl: this.accessProvider.trustpilotApiConfig.apiBaseUrl,
+  get basicRequest() {
+    return rp.defaults({
+      baseUrl: this.accessProvider.trustpilotApiConfig.baseUrl,
       json: true,
     });
-    this.apiRequest = this.basicRequest.defaults({
+  }
+
+  get apiRequest() {
+    return this.basicRequest.defaults({
       headers: {
-        apikey: accessProvider.trustpilotApiConfig.apiKey,
+        apikey: this.accessProvider.trustpilotApiConfig.key,
       },
     });
   }
@@ -26,7 +28,7 @@ export class RequestHelper {
 
     return {
       headers: {
-        apikey: this.accessProvider.trustpilotApiConfig.apiKey,
+        apikey: this.accessProvider.trustpilotApiConfig.key,
         authorization: `Bearer ${response}`,
       },
     };

@@ -8,8 +8,8 @@ export class AccessProvider {
   constructor(public trustpilotApiConfig: Readonly<ITrustpilotApiConfig>) {}
 
   public async getApiAccessToken(): Promise<string> {
-    if (this.trustpilotApiConfig.apiAccessToken && this.trustpilotApiConfig.apiAccessToken.trim().length > 0) {
-      return this.trustpilotApiConfig.apiAccessToken;
+    if (this.trustpilotApiConfig.accessToken && this.trustpilotApiConfig.accessToken.trim().length > 0) {
+      return this.trustpilotApiConfig.accessToken;
     }
 
     if (this.isTokenValid()) {
@@ -22,26 +22,28 @@ export class AccessProvider {
     }
   }
 
-  private createApiTokenRequest(): any {
-    return this.trustpilotApiConfig.apiTokenRequest || {
+  private createApiTokenRequest() {
+    const defaultRequest = {
       form: {
         grant_type: 'password',
-        password: this.trustpilotApiConfig.apiPassword,
-        username: this.trustpilotApiConfig.apiUsername,
+        password: this.trustpilotApiConfig.password,
+        username: this.trustpilotApiConfig.username,
       },
       uri: '/v1/oauth/oauth-business-users-for-applications/accesstoken',
     };
+    return (this.trustpilotApiConfig.tokenRequest) as typeof defaultRequest || defaultRequest;
   }
 
   private async createApiAccessToken(): Promise<any> {
+    const request = this.createApiTokenRequest();
     this.apiAuthorization = await rp.defaults({
       auth: {
-        pass: this.trustpilotApiConfig.apiSecret,
-        user: this.trustpilotApiConfig.apiKey,
+        pass: this.trustpilotApiConfig.secret,
+        user: this.trustpilotApiConfig.key,
       },
-      baseUrl: this.trustpilotApiConfig.apiBaseUrl,
+      baseUrl: this.trustpilotApiConfig.baseUrl,
       json: true,
-    }).post(this.createApiTokenRequest());
+    }).post(request);
 
     return this.apiAuthorization;
   }

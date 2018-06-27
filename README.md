@@ -18,22 +18,24 @@ The trustpilot module is async/await based. It provides [request-promise-native]
 
 ### Basic Usage
 
-```js
+```ts
 import { TrustpilotApi } from "./trustpilot-api";
 
-const client = new TrustpilotApi({
-    apiKey: 'YOUR-API-KEY',
-    apiSecret: 'YOUR-SECRET',
-    apiUsername: 'YOUR-TRUSTPILOT-B2B-USERNAME',
-    apiPassword: 'YOUR-TRUSTPILOT-B2B-PASSWORD'
-  });
+async run() {
+  const client = new TrustpilotApi({
+      key: 'YOUR-API-KEY',
+      secret: 'YOUR-SECRET',
+      username: 'YOUR-TRUSTPILOT-B2B-USERNAME',
+      password: 'YOUR-TRUSTPILOT-B2B-PASSWORD'
+    });
 
-// For basic calls authentified by API key, use client.apiRequest
-try {
-  const response = await client.apiRequest('/v1/resources/images');
-} catch(error) {
-  // handle the error
-});
+  // For basic calls authentified by API key, use client.apiRequest
+  try {
+    const response = await client.apiRequest('/v1/resources/images');
+  } catch(error) {
+    // handle the error
+  });
+}
 ```
 
 ### Usage with OAuth
@@ -41,41 +43,43 @@ try {
 For calls authentified by OAuth token, use the `authenticate()` promise, which resolves with a `request-promise-native`
 object with everything you need.
 
-```js
+```ts
 import { TrustpilotApi } from "./trustpilot-api";
 
-const client = await new TrustpilotApi({
-    apiKey: 'YOUR-API-KEY',
-    apiSecret: 'YOUR-SECRET',
-    apiUsername: 'YOUR-TRUSTPILOT-B2B-USERNAME',
-    apiPassword: 'YOUR-TRUSTPILOT-B2B-PASSWORD'
-  }).authenticate();
+async run() {
+  const client = await new TrustpilotApi({
+      key: 'YOUR-API-KEY',
+      secret: 'YOUR-SECRET',
+      username: 'YOUR-TRUSTPILOT-B2B-USERNAME',
+      password: 'YOUR-TRUSTPILOT-B2B-PASSWORD'
+    }).authenticate();
 
-try {
-  client(`/v1/private/business-units/${YOUR_BUSINESS_UNIT_ID}/reviews`);
-  // same as
-  client.get(`/v1/private/business-units/${YOUR_BUSINESS_UNIT_ID}/reviews`);
-
-  client(`/v1/private/business-units/${YOUR_BUSINESS_UNIT_ID}/reviews`);
-} catch(error) {
-  // handle the error
-});
+  try {
+    await client(`/v1/private/business-units/${YOUR_BUSINESS_UNIT_ID}/reviews`);
+    // same as
+    await client.get(`/v1/private/business-units/${YOUR_BUSINESS_UNIT_ID}/reviews`);
+  } catch(error) {
+    // handle the error
+  });
+}
 ```
 
 ### Override API Base URL
 
 The Invitations API methods have a different base URL. To override it, simply pass the `apiBaseUrl`.
 
-```js
+```ts
 import { TrustpilotApi } from "./trustpilot-api";
 
-const client = await new TrustpilotApi({
-    apiKey: 'YOUR-API-KEY',
-    apiSecret: 'YOUR-SECRET',
-    apiUsername: 'YOUR-TRUSTPILOT-B2B-USERNAME',
-    apiPassword: 'YOUR-TRUSTPILOT-B2B-PASSWORD',
-    apiBaseUrl: 'https://invitations-api.trustpilot.com'
-  }).authenticate();
+async run() {
+  const client = await new TrustpilotApi({
+      key: 'YOUR-API-KEY',
+      secret: 'YOUR-SECRET',
+      username: 'YOUR-TRUSTPILOT-B2B-USERNAME',
+      password: 'YOUR-TRUSTPILOT-B2B-PASSWORD',
+      baseUrl: 'https://invitations-api.trustpilot.com'
+    }).authenticate();
 
-// Use client
+  // Use client
+}
 ```

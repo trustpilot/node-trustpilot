@@ -20,5 +20,5 @@ script:
 branches:
   only: master
 
-  notifications:
+notifications:
   email: false

@@ -12,11 +12,11 @@ let accessProvider: any;
 describe('Acesss Provider Api ', () => {
   beforeEach((done) => {
     accessProvider = new AccessProvider({
-      apiBaseUrl: 'http://fakeHost.com',
-      apiKey: 'fakeKey',
-      apiPassword: 'pass',
-      apiSecret: 'fakeSecret',
-      apiUsername: 'user',
+      baseUrl: 'http://fakeHost.com',
+      key: 'fakeKey',
+      password: 'pass',
+      secret: 'fakeSecret',
+      username: 'user',
     } as ITrustpilotApiConfig) as any;
     done();
   });
@@ -30,12 +30,12 @@ describe('Acesss Provider Api ', () => {
     describe('when access token is provided', () => {
       const accessToken = 'XXXXxa12xxXxXXxXxXXxXXXXXXXXX';
       const accessProviderWithToken = new AccessProvider({
-        apiAccessToken: accessToken,
-        apiBaseUrl: 'http://fakeHost.com',
-        apiKey: 'fakeKey',
-        apiPassword: 'pass',
-        apiSecret: 'fakeSecret',
-        apiUsername: 'user',
+        accessToken,
+        baseUrl: 'http://fakeHost.com',
+        key: 'fakeKey',
+        password: 'pass',
+        secret: 'fakeSecret',
+        username: 'user',
       } as ITrustpilotApiConfig);
       it('should resolve', async (done) => {
         const data = await accessProviderWithToken.getApiAccessToken();
