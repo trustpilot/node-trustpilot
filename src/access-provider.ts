@@ -34,7 +34,7 @@ export class AccessProvider {
     return (this.trustpilotApiConfig.tokenRequest) as typeof defaultRequest || defaultRequest;
   }
 
-  private async createApiAccessToken(): Promise<any> {
+  private async createApiAccessToken() {
     const request = this.createApiTokenRequest();
     this.apiAuthorization = await rp.defaults({
       auth: {
