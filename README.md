@@ -14,6 +14,7 @@ Install using `npm install trustpilot`
 
 ## Usage
 
+As of version 3, the project has been converted to Typescript.
 The trustpilot module is async/await based. It provides [request-promise-native](https://github.com/request/request-promise-native) objects with sane defaults.
 
 ### Basic Usage
