@@ -41,11 +41,16 @@ export class AccessProvider {
         pass: this.trustpilotApiConfig.secret,
         user: this.trustpilotApiConfig.key,
       },
-      baseUrl: this.trustpilotApiConfig.baseUrl,
+      baseUrl: this.getAccessTokenHost(),
       json: true,
     }).post(request);
 
     return this.apiAuthorization;
+  }
+
+  private getAccessTokenHost() {
+    const baseUrl = this.trustpilotApiConfig.baseUrl;
+    return baseUrl && baseUrl.replace(/https:\/\/invitations-api\./, 'https://api.');
   }
 
   private isTokenValid(): boolean {

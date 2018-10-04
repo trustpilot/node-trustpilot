@@ -66,7 +66,7 @@ async run() {
 
 ### Override API Base URL
 
-The Invitations API methods have a different base URL. To override it, simply pass the `apiBaseUrl`.
+The Invitations API methods have a different base URL. To override it, simply pass the `baseUrl`.
 
 ```ts
 import { TrustpilotApi } from "./trustpilot-api";
