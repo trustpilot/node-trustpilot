@@ -37,10 +37,9 @@ describe('Acesss Provider Api ', () => {
         secret: 'fakeSecret',
         username: 'user',
       } as ITrustpilotApiConfig);
-      it('should resolve', async (done) => {
+      it('should resolve', async () => {
         const data = await accessProviderWithToken.getApiAccessToken();
         expect(data).to.equal(accessToken);
-        done();
       });
     });
 
