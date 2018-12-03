@@ -1,0 +1,15 @@
+{
+    "extends": "./tsconfig",
+    "compileOnSave": true,
+    "compilerOptions": {
+      "rootDirs": [
+        "spec",
+        "src"
+      ]
+    },
+    "include": [
+      "spec/**/*.ts",
+      "src/**/*.ts"
+    ]
+  }
+

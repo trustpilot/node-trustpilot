@@ -1,8 +1,24 @@
 language: node_js
 node_js:
-  - '7'
-  - '6'
-  - '5'
-  - '4'
+  - '8.10'
 
-script: npm test
+cache:
+  directories:
+    - node_modules
+
+before_install:
+  - git clone -b v1 --depth 1 https://$GITHUB_TOKEN@github.com/trustpilot/build-scripts.git
+  - build-scripts/travis/init
+
+script:
+  - npm run build
+  - build-scripts/travis/build-zip dist
+  - build-scripts/travis/npm-package
+  - VERSION=$(node -p -e "require('./package.json').version")
+  - build-scripts/travis/release $VERSION
+
+branches:
+  only: master
+
+notifications:
+  email: false
