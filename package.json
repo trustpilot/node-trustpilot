@@ -20,9 +20,6 @@
     "build": "npm run tsc && npm run test && npm run lint",
     "start": "node dist/client.js"
   },
-  "engines": {
-    "node": ">=8.10.0"
-  },
   "dependencies": {
     "request": "^2.87.0",
     "request-promise-native": "^1.0.5"
@@ -38,9 +35,18 @@
     "@types/request-promise-native": "^1.0.15",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
+    "commitlint": "^7.2.1",
+    "conventional-changelog-eslint": "^3.0.1",
+    "husky": "^1.2.0",
     "mocha": "^5.2.0",
+    "semantic-release": "^15.12.3",
     "ts-node": "^6.1.2",
     "tslint": "^5.10.0",
     "typescript": "^2.9.2"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E GIT_PARAMS"
+    }
   }
 }
