@@ -1,3 +1,5 @@
+import { RequestAPI, UriOptions, UrlOptions } from 'request';
+import { RequestPromise, RequestPromiseOptions } from 'request-promise-native';
 import { AccessProvider } from './access-provider';
 import { ITrustpilotApiConfig } from './models';
 import { RequestHelper } from './request-helper';
