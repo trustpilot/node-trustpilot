@@ -13,10 +13,11 @@
     "review"
   ],
   "main": "./dist/trustpilot-api.js",
+  "types": "./dist/trustpilot-api.d.ts",
   "scripts": {
     "tsc": "tsc -p tsconfig.build.json",
     "test": "mocha --compilers ts:ts-node/register ./spec/*.spec.ts",
-    "lint": "tslint -c tslint.json --fix -e node_modules/** **/*.ts",
+    "lint": "tslint -c tslint.json --fix -e node_modules/** -e **/*.d.ts **/*.ts",
     "build": "npm run tsc && npm run test && npm run lint",
     "start": "node dist/client.js"
   },

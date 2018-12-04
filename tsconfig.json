@@ -9,7 +9,8 @@
       "removeComments": true,
       "sourceMap": true,
       "skipLibCheck": true,
-      "inlineSources": true
+      "inlineSources": true,
+      "declaration": true,
     },
     "exclude": [
       "node_modules"

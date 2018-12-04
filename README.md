@@ -20,7 +20,7 @@ The trustpilot module is async/await based. It provides [request-promise-native]
 ### Basic Usage
 
 ```ts
-import { TrustpilotApi } from "./trustpilot-api";
+import { TrustpilotApi } from "trustpilot";
 
 async run() {
   const client = new TrustpilotApi({
@@ -45,7 +45,7 @@ For calls authentified by OAuth token, use the `authenticate()` promise, which r
 object with everything you need.
 
 ```ts
-import { TrustpilotApi } from "./trustpilot-api";
+import { TrustpilotApi } from "trustpilot";
 
 async run() {
   const client = await new TrustpilotApi({
@@ -70,7 +70,7 @@ async run() {
 The Invitations API methods have a different base URL. To override it, simply pass the `baseUrl`.
 
 ```ts
-import { TrustpilotApi } from "./trustpilot-api";
+import { TrustpilotApi } from "trustpilot";
 
 async run() {
   const client = await new TrustpilotApi({
