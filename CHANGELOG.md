@@ -1,3 +1,10 @@
+## [3.1.1](https://github.com/trustpilot/node-trustpilot/compare/v3.1.0...v3.1.1) (2019-01-21)
+
+
+### Fix
+
+* Relaxing some linting rules ([ddd716b1fcd9c83053e635988c1b6ca131ecb0ad](https://github.com/trustpilot/node-trustpilot/commit/ddd716b1fcd9c83053e635988c1b6ca131ecb0ad))
+
 # [3.1.0](https://github.com/trustpilot/node-trustpilot/compare/v3.0.0...v3.1.0) (2018-12-04)
 
 
