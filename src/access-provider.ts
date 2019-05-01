@@ -1,4 +1,5 @@
 import * as rp from 'request-promise-native';
+
 import { ITrustpilotApiConfig } from './models';
 
 export class AccessProvider {
