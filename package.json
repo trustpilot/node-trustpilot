@@ -16,8 +16,9 @@
   "types": "./dist/trustpilot-api.d.ts",
   "scripts": {
     "tsc": "tsc -p tsconfig.build.json",
-    "test": "mocha --compilers ts:ts-node/register ./spec/*.spec.ts",
-    "lint": "tslint -c tslint.json --fix -e node_modules/** -e **/*.d.ts **/*.ts",
+    "test": "mocha --require ts-node/register ./spec/*.spec.ts",
+    "lint": "tslint --project .",
+    "lint:fix": "tslint --project . --fix",
     "build": "npm run tsc && npm run test && npm run lint",
     "start": "node dist/client.js"
   },
@@ -28,23 +29,23 @@
     "request-promise-native": "1.0.7"
   },
   "devDependencies": {
-    "@semantic-release/changelog": "^3.0.1",
-    "@semantic-release/git": "^7.0.5",
-    "@semantic-release/npm": "^5.1.1",
-    "@semantic-release/release-notes-generator": "^7.1.4",
-    "@types/chai": "^4.1.4",
+    "@semantic-release/changelog": "^3.0.2",
+    "@semantic-release/git": "^7.0.8",
+    "@semantic-release/npm": "^5.1.7",
+    "@semantic-release/release-notes-generator": "^7.1.6",
+    "@types/chai": "^4.1.7",
     "@types/chai-as-promised": "^7.1.0",
-    "@types/mocha": "^5.2.3",
-    "chai": "^4.1.2",
+    "@types/mocha": "^5.2.6",
+    "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
-    "commitlint": "^7.2.1",
+    "commitlint": "^7.5.2",
     "conventional-changelog-eslint": "^3.0.1",
-    "husky": "^1.2.0",
-    "mocha": "^5.2.0",
-    "semantic-release": "^15.12.3",
-    "ts-node": "^6.1.2",
-    "tslint": "^5.10.0",
-    "typescript": "^2.9.2"
+    "husky": "^2.1.0",
+    "mocha": "^6.1.4",
+    "semantic-release": "^15.13.12",
+    "ts-node": "^8.1.0",
+    "tslint": "^5.16.0",
+    "typescript": "^3.4.5"
   },
   "husky": {
     "hooks": {
