@@ -15,12 +15,11 @@
   "main": "./dist/trustpilot-api.js",
   "types": "./dist/trustpilot-api.d.ts",
   "scripts": {
-    "tsc": "tsc -p tsconfig.build.json",
-    "test": "mocha --require ts-node/register ./spec/*.spec.ts",
+    "build": "tsc --project tsconfig.build.json",
     "lint": "tslint --project .",
     "lint:fix": "tslint --project . --fix",
-    "build": "npm run tsc && npm run test && npm run lint",
-    "start": "node dist/client.js"
+    "start": "node dist/client.js",
+    "test": "mocha --require ts-node/register ./spec/*.spec.ts"
   },
   "dependencies": {
     "@types/request": "^2.48.1",
