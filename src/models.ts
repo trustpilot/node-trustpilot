@@ -1,4 +1,4 @@
-export type ITrustpilotApiConfig = Partial<{
+interface IConfig {
   baseUrl: string;
   key: string;
   secret: string;
@@ -6,4 +6,6 @@ export type ITrustpilotApiConfig = Partial<{
   password: string;
   tokenRequest: any;
   accessToken: string;
-}>;
+}
+
+export interface ITrustpilotApiConfig extends Partial<IConfig> {}

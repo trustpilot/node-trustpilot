@@ -1,5 +1,5 @@
-import { RequestAPI, UriOptions, UrlOptions } from 'request';
 import * as rp from 'request-promise-native';
+
 import { AccessProvider } from './access-provider';
 
 export class RequestHelper {
