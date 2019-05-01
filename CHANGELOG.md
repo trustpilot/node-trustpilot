@@ -1,3 +1,18 @@
+## [3.1.2](https://github.com/trustpilot/node-trustpilot/compare/v3.1.1...v3.1.2) (2019-05-01)
+
+
+### Build
+
+* Improve travis configuration ([5fd487b7153fa406c083adbe6227f5b8b7578c1d](https://github.com/trustpilot/node-trustpilot/commit/5fd487b7153fa406c083adbe6227f5b8b7578c1d))
+
+### Fix
+
+* Move @types as dependencies ([a27df71cd3147363a2c829bbc6aee58793bf0751](https://github.com/trustpilot/node-trustpilot/commit/a27df71cd3147363a2c829bbc6aee58793bf0751))
+
+### Upgrade
+
+* Update dependencies and fix vulnerabilities ([5e9c37b6ff6f2f0254c5d482b52682d7d64cf56b](https://github.com/trustpilot/node-trustpilot/commit/5e9c37b6ff6f2f0254c5d482b52682d7d64cf56b))
+
 ## [3.1.1](https://github.com/trustpilot/node-trustpilot/compare/v3.1.0...v3.1.1) (2019-01-21)
 
 
