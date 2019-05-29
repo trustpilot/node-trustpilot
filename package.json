@@ -41,7 +41,7 @@
     "conventional-changelog-eslint": "^3.0.1",
     "husky": "^2.1.0",
     "mocha": "^6.1.4",
-    "semantic-release": "^15.13.12",
+    "semantic-release": "^15.13.14",
     "ts-node": "^8.1.0",
     "tslint": "^5.16.0",
     "typescript": "^3.4.5"
