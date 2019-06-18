@@ -1,3 +1,7 @@
+interface IHeaders {
+  [header: string]: string;
+}
+
 interface IConfig {
   baseUrl: string;
   key: string;
@@ -6,6 +10,7 @@ interface IConfig {
   password: string;
   tokenRequest: any;
   accessToken: string;
+  defaultHeaders: IHeaders;
 }
 
 export interface ITrustpilotApiConfig extends Partial<IConfig> {}
