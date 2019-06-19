@@ -6,8 +6,11 @@ export class RequestHelper {
   constructor(private accessProvider: AccessProvider) {}
 
   get basicRequest() {
+    const headers = this.accessProvider.trustpilotApiConfig.defaultHeaders || {};
+
     return rp.defaults({
       baseUrl: this.accessProvider.trustpilotApiConfig.baseUrl,
+      headers,
       json: true,
     });
   }
