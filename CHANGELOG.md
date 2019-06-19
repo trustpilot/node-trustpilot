@@ -1,3 +1,15 @@
+# [3.2.0](https://github.com/trustpilot/node-trustpilot/compare/v3.1.2...v3.2.0) (2019-06-19)
+
+
+### Chore
+
+* Npm audit fix ([5134c77129dbbed8d57350bc1ed195187e56cd3b](https://github.com/trustpilot/node-trustpilot/commit/5134c77129dbbed8d57350bc1ed195187e56cd3b))
+* Npm audit fix with npm 6.9 ([99e11cbf42ef1f7e1c0e771e5f4f330e61836e30](https://github.com/trustpilot/node-trustpilot/commit/99e11cbf42ef1f7e1c0e771e5f4f330e61836e30))
+
+### Update
+
+* Added possibility to provide default request headers ([3785bd3114ae6a4402828f9a86d478551317dec4](https://github.com/trustpilot/node-trustpilot/commit/3785bd3114ae6a4402828f9a86d478551317dec4))
+
 ## [3.1.2](https://github.com/trustpilot/node-trustpilot/compare/v3.1.1...v3.1.2) (2019-05-01)
 
 
