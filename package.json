@@ -37,7 +37,7 @@
     "@types/mocha": "^5.2.6",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
-    "commitlint": "^7.5.2",
+    "commitlint": "^8.3.5",
     "conventional-changelog-eslint": "^3.0.1",
     "husky": "^2.1.0",
     "mocha": "^6.1.4",
