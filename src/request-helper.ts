@@ -1,9 +1,15 @@
 import * as rp from 'request-promise-native';
+import * as Agent from 'agentkeepalive';
 
 import { AccessProvider } from './access-provider';
 
 export class RequestHelper {
-  constructor(private accessProvider: AccessProvider) {}
+  private httpsAgent: Agent.HttpsAgent;
+
+  constructor(private accessProvider: AccessProvider) {
+    const keepAliveOptions = this.accessProvider.trustpilotApiConfig.keepAliveOptions as Agent.HttpsOptions;
+    this.httpsAgent =  keepAliveOptions ? new Agent.HttpsAgent(keepAliveOptions): new Agent.HttpsAgent({ keepAlive: true })
+  }
 
   get basicRequest() {
     const headers = this.accessProvider.trustpilotApiConfig.defaultHeaders || {};
@@ -12,6 +18,7 @@ export class RequestHelper {
       baseUrl: this.accessProvider.trustpilotApiConfig.baseUrl,
       headers,
       json: true,
+      agent: this.httpsAgent,
     });
   }
 
