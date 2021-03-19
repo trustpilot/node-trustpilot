@@ -1,9 +1,11 @@
 import * as rp from 'request-promise-native';
+import * as http from 'http';
+import * as https from 'https';
 
 import { AccessProvider } from './access-provider';
 
 export class RequestHelper {
-  constructor(private accessProvider: AccessProvider) {}
+  constructor(private accessProvider: AccessProvider, private agent?: http.Agent | https.Agent) {}
 
   get basicRequest() {
     const headers = this.accessProvider.trustpilotApiConfig.defaultHeaders || {};
@@ -12,6 +14,7 @@ export class RequestHelper {
       baseUrl: this.accessProvider.trustpilotApiConfig.baseUrl,
       headers,
       json: true,
+      agent: this.agent,
     });
   }
 
