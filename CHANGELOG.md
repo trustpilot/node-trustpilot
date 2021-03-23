@@ -1,3 +1,23 @@
+# [3.3.0](https://github.com/trustpilot/node-trustpilot/compare/v3.2.0...v3.3.0) (2021-03-23)
+
+
+### Build
+
+* Attempting to fix build by disabling node_modules caching ([73dd483](https://github.com/trustpilot/node-trustpilot/commit/73dd4835256b7c40a11517da47febc00af9670ec))
+
+### Chore
+
+* Close vulnerabilities ([4046da2](https://github.com/trustpilot/node-trustpilot/commit/4046da29423154ef12349b277d1b817ea01274df))
+
+### New
+
+* Opportunity to provide custom connection management agent for the client ([884004c](https://github.com/trustpilot/node-trustpilot/commit/884004c5a18111df464339be8ad0083844e59a29))
+
+### Upgrade
+
+* Upgrade dependencies and fix vulnerabilities ([c36bfe2](https://github.com/trustpilot/node-trustpilot/commit/c36bfe22890952579aa813b1a5fec1c9bf1037dc))
+* Upgrade dependencies and fix vulnerabilities ([71817c4](https://github.com/trustpilot/node-trustpilot/commit/71817c4ce07ae348c87df2247d9051717064cb57))
+
 # [3.2.0](https://github.com/trustpilot/node-trustpilot/compare/v3.1.2...v3.2.0) (2019-06-19)
 
 ### Chore
