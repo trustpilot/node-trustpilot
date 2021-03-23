@@ -25,8 +25,7 @@
     "@types/request": "^2.48.5",
     "@types/request-promise-native": "^1.0.17",
     "request": "2.88.2",
-    "request-promise-native": "1.0.9",
-    "agentkeepalive": "^4.1.4"
+    "request-promise-native": "1.0.9"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^5.0.1",
