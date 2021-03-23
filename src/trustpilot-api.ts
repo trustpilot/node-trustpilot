@@ -1,13 +1,12 @@
 import { AccessProvider } from './access-provider';
 import { ITrustpilotApiConfig } from './models';
 import { RequestHelper } from './request-helper';
-import * as http from 'http';
 import * as https from 'https';
 
 export class TrustpilotApi {
   private requestHelper: RequestHelper;
 
-  constructor(config: Readonly<ITrustpilotApiConfig>, agent?: http.Agent | https.Agent) {
+  constructor(config: Readonly<ITrustpilotApiConfig>, agent?: https.Agent) {
     const accessProvider = new AccessProvider(Object.freeze(config));
     this.requestHelper = new RequestHelper(accessProvider, agent);
   }
