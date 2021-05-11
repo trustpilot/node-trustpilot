@@ -3,15 +3,14 @@ import * as rp from 'request-promise-native';
 import { ITrustpilotApiConfig } from './models';
 
 export class AccessProvider {
+
   private apiAuthorization: any | undefined;
   private apiAccessTokenPromise: Promise<any> | undefined;
 
   constructor(public trustpilotApiConfig: Readonly<ITrustpilotApiConfig>) {}
 
   public async getApiAccessToken(): Promise<string> {
-    if (this.trustpilotApiConfig.accessToken && this.trustpilotApiConfig.accessToken.trim().length > 0) {
-      return this.trustpilotApiConfig.accessToken;
-    }
+    if (this.trustpilotApiConfig.accessToken && this.trustpilotApiConfig.accessToken.trim().length > 0) {return this.trustpilotApiConfig.accessToken;}
 
     if (this.isTokenValid()) {
       return this.apiAuthorization.access_token;
