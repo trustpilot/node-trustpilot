@@ -6,7 +6,7 @@ This a node API wrapper for accessing the Trustpilot APIs. You can learn all abo
 
 ## Installation
 
-This module is built using Typescript and Node.js `v8.10.x`.
+This module is built using Typescript and Node.js `v12.21.x`.
 
 If you are not using version 4 of Node, you'll have to transpile the code down to ES5 yourself.
 
@@ -62,6 +62,24 @@ async run() {
   } catch(error) {
     // handle the error
   });
+}
+```
+
+### Choose OAuth token grant type
+
+For service-to-service communication use 'client_credentials' grant type and API application key, secret combination to obtain an OAuth token. (Default grant type: password)
+
+```ts
+import { TrustpilotApi } from "trustpilot";
+
+async run() {
+  const client = await new TrustpilotApi({
+      key: 'YOUR-API-KEY',
+      secret: 'YOUR-SECRET',
+      grantType: 'client_credentials'
+    }).authenticate();
+
+  // Use client
 }
 ```
 

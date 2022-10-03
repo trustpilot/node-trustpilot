@@ -1,6 +1,6 @@
 import * as rp from 'request-promise-native';
 
-import { ITrustpilotApiConfig } from './models';
+import { GrantType, ITrustpilotApiConfig } from './models';
 
 export class AccessProvider {
   private apiAuthorization: any | undefined;
@@ -26,12 +26,13 @@ export class AccessProvider {
   private createApiTokenRequest() {
     const defaultRequest = {
       form: {
-        grant_type: 'password',
+        grant_type: this.trustpilotApiConfig.grantType || GrantType.password,
         password: this.trustpilotApiConfig.password,
         username: this.trustpilotApiConfig.username,
       },
       uri: '/v1/oauth/oauth-business-users-for-applications/accesstoken',
     };
+
     return (this.trustpilotApiConfig.tokenRequest) as typeof defaultRequest || defaultRequest;
   }
 
