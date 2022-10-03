@@ -76,7 +76,7 @@ async run() {
   const client = await new TrustpilotApi({
       key: 'YOUR-API-KEY',
       secret: 'YOUR-SECRET',
-      granttype: 'client_credentials'
+      grantType: 'client_credentials'
     }).authenticate();
 
   // Use client
