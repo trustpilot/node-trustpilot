@@ -1,6 +1,6 @@
 {
   "name": "trustpilot",
-  "version": "3.3.0",
+  "version": "3.4.0",
   "description": "HTTP client for Trustpilot",
   "homepage": "https://github.com/trustpilot/node-trustpilot",
   "repository": "https://github.com/trustpilot/node-trustpilot.git",

@@ -1,3 +1,14 @@
+# [3.4.0](https://github.com/trustpilot/node-trustpilot/compare/v3.3.0...v3.4.0) (2022-10-13)
+
+
+### New
+
+* Select OAuth grant type for authentication ([03b6d5a](https://github.com/trustpilot/node-trustpilot/commit/03b6d5ababcb200a40bef6bc685cd0efa0ac6c6a))
+
+### Upgrade
+
+* Bump handlebars from 4.7.6 to 4.7.7 ([2029977](https://github.com/trustpilot/node-trustpilot/commit/202997720447303b8d9af7630cc72574da54c859))
+
 # [3.3.0](https://github.com/trustpilot/node-trustpilot/compare/v3.2.0...v3.3.0) (2021-03-23)
 
 
