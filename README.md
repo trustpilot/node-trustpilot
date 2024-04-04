@@ -6,9 +6,7 @@ This a node API wrapper for accessing the Trustpilot APIs. You can learn all abo
 
 ## Installation
 
-This module is built using Typescript and Node.js `v12.21.x`.
-
-If you are not using version 4 of Node, you'll have to transpile the code down to ES5 yourself.
+This module is built using Typescript and Node.js `v20.x`.
 
 Install using `npm install trustpilot`
 

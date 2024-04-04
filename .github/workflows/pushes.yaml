@@ -1,0 +1,51 @@
+name: build-and-release
+
+"on":
+  push:
+    branches:
+      - master
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+permissions:
+  contents: write
+  id-token: write
+  packages: write
+  pull-requests: write
+
+jobs:
+  made-with-tpgha:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+    
+      - name: Setting up NodeJs
+        id: setup-node-js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+      
+      - name: npm ci
+        run: npm ci
+        shell: bash
+
+      - name: npm run lint
+        run: npm run lint
+        shell: bash
+      
+      - name: npm run test
+        run: npm run test
+        shell: bash
+
+      - name: npm run build
+        run: npm run build
+        shell: bash
+
+      - name: npm run release
+        run: npx semantic-release
+        shell: bash
