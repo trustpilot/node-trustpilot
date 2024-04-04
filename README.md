@@ -1,19 +1,17 @@
 # trustpilot
 
-[![Build Status](https://travis-ci.org/trustpilot/node-trustpilot.svg?branch=master)](https://travis-ci.org/trustpilot/node-trustpilot) [![npm](https://img.shields.io/npm/v/trustpilot.svg)](https://www.npmjs.com/package/trustpilot)
-
-This a node API wrapper for accessing the Trustpilot APIs. You can learn all about the Trustpilot API at [https://developers.trustpilot.com/](https://developers.trustpilot.com/).
+This a NodeJS API wrapper for accessing the Trustpilot APIs. You can learn all about the Trustpilot API at [https://developers.trustpilot.com/](https://developers.trustpilot.com/).
 
 ## Installation
 
-This module is built using Typescript and Node.js `v20.x`.
+This module is built using Typescript and NodeJS `v20.x`.
 
 Install using `npm install trustpilot`
 
 ## Usage
 
 As of version 3, the project has been converted to Typescript.
-The trustpilot module is async/await based. It provides [request-promise-native](https://github.com/request/request-promise-native) objects with sane defaults.
+The trustpilot module is async/await based. It provides an [axios instance](https://github.com/axios/axios?tab=readme-ov-file#creating-an-instance) with sane defaults.
 
 ### Basic Usage
 
@@ -31,6 +29,7 @@ async run() {
   // For basic calls authentified by API key, use client.apiRequest
   try {
     const response = await client.apiRequest('/v1/resources/images');
+    console.log(response.data);
   } catch(error) {
     // handle the error
   });
@@ -39,7 +38,7 @@ async run() {
 
 ### Usage with OAuth
 
-For calls authentified by OAuth token, use the `authenticate()` promise, which resolves with a `request-promise-native`
+For calls authentified by OAuth token, use the `authenticate()` promise, which resolves with an `axiosInstance`
 object with everything you need.
 
 ```ts
@@ -54,9 +53,8 @@ async run() {
     }).authenticate();
 
   try {
-    await client(`/v1/private/business-units/${YOUR_BUSINESS_UNIT_ID}/reviews`);
-    // same as
-    await client.get(`/v1/private/business-units/${YOUR_BUSINESS_UNIT_ID}/reviews`);
+    const response = await client.get(`/v1/private/business-units/${YOUR_BUSINESS_UNIT_ID}/reviews`);
+    console.log(response.data);
   } catch(error) {
     // handle the error
   });
@@ -99,4 +97,19 @@ async run() {
 
   // Use client
 }
+```
+
+### Migration from v3 to v4
+
+As of version 4, [request-promise-native](https://github.com/request/request-promise-native) has been replaced by [axios](https://github.com/axios/axios)
+
+This means all responses are now following [this response schema](https://github.com/axios/axios?tab=readme-ov-file#response-schema)
+so code that previously used the response body directly, will need to add a `.data`
+
+```ts
+const json = await client.apiRequest('...');
+```
+
+```ts
+const json = (await client.apiRequest('...')).data;
 ```
