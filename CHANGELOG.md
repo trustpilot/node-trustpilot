@@ -1,3 +1,10 @@
+## [4.0.1](https://github.com/trustpilot/node-trustpilot/compare/v4.0.0...v4.0.1) (2024-04-17)
+
+
+### Bug Fixes
+
+* update readme to include base url ([935c0e3](https://github.com/trustpilot/node-trustpilot/commit/935c0e3d267ece3c7ab900f893d6b6ad52518537))
+
 # [4.0.0](https://github.com/trustpilot/node-trustpilot/compare/v3.4.0...v4.0.0) (2024-04-17)
 
 
