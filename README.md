@@ -23,7 +23,8 @@ async run() {
       key: 'YOUR-API-KEY',
       secret: 'YOUR-SECRET',
       username: 'YOUR-TRUSTPILOT-B2B-USERNAME',
-      password: 'YOUR-TRUSTPILOT-B2B-PASSWORD'
+      password: 'YOUR-TRUSTPILOT-B2B-PASSWORD',
+      baseUrl: 'https://api.trustpilot.com'
     });
 
   // For basic calls authentified by API key, use client.apiRequest
@@ -49,7 +50,8 @@ async run() {
       key: 'YOUR-API-KEY',
       secret: 'YOUR-SECRET',
       username: 'YOUR-TRUSTPILOT-B2B-USERNAME',
-      password: 'YOUR-TRUSTPILOT-B2B-PASSWORD'
+      password: 'YOUR-TRUSTPILOT-B2B-PASSWORD',
+      baseUrl: 'https://api.trustpilot.com'
     }).authenticate();
 
   try {
@@ -72,7 +74,8 @@ async run() {
   const client = await new TrustpilotApi({
       key: 'YOUR-API-KEY',
       secret: 'YOUR-SECRET',
-      grantType: 'client_credentials'
+      grantType: 'client_credentials',
+      baseUrl: 'https://api.trustpilot.com'
     }).authenticate();
 
   // Use client
