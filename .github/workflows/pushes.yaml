@@ -48,3 +48,5 @@ jobs:
       - name: npm run release
         run: npx semantic-release
         shell: bash
+        env:
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
