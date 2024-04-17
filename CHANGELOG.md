@@ -1,3 +1,25 @@
+# [4.0.0](https://github.com/trustpilot/node-trustpilot/compare/v3.4.0...v4.0.0) (2024-04-17)
+
+
+### Bug Fixes
+
+* explicitly set github token as well ([337fcb9](https://github.com/trustpilot/node-trustpilot/commit/337fcb9d4ccd06eb2acc3af6d0bf955e3988aeec))
+* explicitly set the npm token ([25f45ec](https://github.com/trustpilot/node-trustpilot/commit/25f45ecf6eef1fdb3682b2f4c2cb88f4cf16caea))
+* remove oidc permission ([23a38f3](https://github.com/trustpilot/node-trustpilot/commit/23a38f30a0b9b27e1c7ce3cf23bf15d5836cdd9d))
+* switch to GHA ([ac94570](https://github.com/trustpilot/node-trustpilot/commit/ac945701b81ad3ffaf1c9a945da74666785d939a))
+* update semantic release ([880e074](https://github.com/trustpilot/node-trustpilot/commit/880e074569fadc5904ad0815104773edebc48990))
+* use correct token ([8530eb2](https://github.com/trustpilot/node-trustpilot/commit/8530eb2566a7bb4578ff651e9dd586a22ae25c2e))
+
+
+### Features
+
+* refactor lib to use axios ([16d7acf](https://github.com/trustpilot/node-trustpilot/commit/16d7acf8ec4a41ed30f4b1086c4888b890258db6))
+
+
+### BREAKING CHANGES
+
+* replaces request-promise with axios
+
 # [3.4.0](https://github.com/trustpilot/node-trustpilot/compare/v3.3.0...v3.4.0) (2022-10-13)
 
 
