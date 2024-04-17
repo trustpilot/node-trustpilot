@@ -1,4 +1,4 @@
-import * as rp from 'request-promise-native';
+import axios from 'axios';
 import * as http from 'http';
 import * as https from 'https';
 
@@ -9,35 +9,34 @@ export class RequestHelper {
 
   get basicRequest() {
     const headers = this.accessProvider.trustpilotApiConfig.defaultHeaders || {};
-
-    return rp.defaults({
-      baseUrl: this.accessProvider.trustpilotApiConfig.baseUrl,
+    return axios.create({
+      httpAgent: this.agent instanceof http.Agent ? this.agent : undefined,
+      httpsAgent: this.agent instanceof https.Agent ? this.agent : undefined,
       headers,
-      json: true,
-      agent: this.agent,
+      baseURL: this.accessProvider.trustpilotApiConfig.baseUrl,
     });
   }
 
   get apiRequest() {
-    return this.basicRequest.defaults({
-      headers: {
-        apikey: this.accessProvider.trustpilotApiConfig.key,
-      },
-    });
+    const instance = this.basicRequest;
+    if (this.accessProvider.trustpilotApiConfig.key) {
+      instance.defaults.headers.apikey = this.accessProvider.trustpilotApiConfig.key;
+    }
+    return instance;
   }
 
   public async buildAuthenticatedRequest() {
-    return this.basicRequest.defaults(await this.createBearerTokenHeader());
+    const instance = this.basicRequest;
+    if (this.accessProvider.trustpilotApiConfig.key) {
+      instance.defaults.headers.apikey = this.accessProvider.trustpilotApiConfig.key;
+    }
+    const authHeader = await this.createBearerTokenHeader();
+    instance.defaults.headers.authorization = authHeader;
+    return instance;
   }
 
   private async createBearerTokenHeader() {
     const response = await this.accessProvider.getApiAccessToken();
-
-    return {
-      headers: {
-        apikey: this.accessProvider.trustpilotApiConfig.key,
-        authorization: `Bearer ${response}`,
-      },
-    };
+    return `Bearer ${response}`;
   }
 }

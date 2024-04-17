@@ -1,10 +1,12 @@
-import * as rp from 'request-promise-native';
+import axios, { AxiosResponse } from 'axios';
 
 import { GrantType, ITrustpilotApiConfig } from './models';
 
+type AccessTokenResponse = { access_token: string; issued_at: string; expires_in: string };
+
 export class AccessProvider {
-  private apiAuthorization: any | undefined;
-  private apiAccessTokenPromise: Promise<any> | undefined;
+  private apiAuthorization: AccessTokenResponse | undefined;
+  private apiAccessTokenPromise: Promise<AxiosResponse<AccessTokenResponse, any>> | undefined;
 
   constructor(public trustpilotApiConfig: Readonly<ITrustpilotApiConfig>) {}
 
@@ -14,40 +16,47 @@ export class AccessProvider {
     }
 
     if (this.isTokenValid()) {
-      return this.apiAuthorization.access_token;
+      return this.apiAuthorization!.access_token;
     } else {
       // Make sure there's only ever one token request in flight
       this.apiAccessTokenPromise = this.apiAccessTokenPromise || this.createApiAccessToken();
       const response = await this.apiAccessTokenPromise;
-      return response.access_token;
+      this.apiAuthorization = response.data;
+      return response.data.access_token;
     }
   }
 
   private createApiTokenRequest() {
     const defaultRequest = {
-      form: {
+      form: new URLSearchParams({
         grant_type: this.trustpilotApiConfig.grantType || GrantType.password,
-        password: this.trustpilotApiConfig.password,
-        username: this.trustpilotApiConfig.username,
-      },
+      }),
       uri: '/v1/oauth/oauth-business-users-for-applications/accesstoken',
     };
-
-    return (this.trustpilotApiConfig.tokenRequest) as typeof defaultRequest || defaultRequest;
+    if (this.trustpilotApiConfig.password) {
+      defaultRequest.form.append('password', this.trustpilotApiConfig.password);
+    }
+    if (this.trustpilotApiConfig.username) {
+      defaultRequest.form.append('username', this.trustpilotApiConfig.username);
+    }
+    return this.trustpilotApiConfig.tokenRequest || defaultRequest;
   }
 
   private async createApiAccessToken() {
     const request = this.createApiTokenRequest();
-    this.apiAuthorization = await rp.defaults({
-      auth: {
-        pass: this.trustpilotApiConfig.secret,
-        user: this.trustpilotApiConfig.key,
-      },
-      baseUrl: this.getAccessTokenHost(),
-      json: true,
-    }).post(request);
-
-    return this.apiAuthorization;
+    const hasAuth = !!this.trustpilotApiConfig.key && !!this.trustpilotApiConfig.secret;
+    const response = await axios.post<AccessTokenResponse>(request.uri, request.form, {
+      ...(hasAuth
+        ? {
+            auth: {
+              username: this.trustpilotApiConfig.key!,
+              password: this.trustpilotApiConfig.secret!,
+            },
+          }
+        : {}),
+      baseURL: this.getAccessTokenHost(),
+    });
+    return response;
   }
 
   private getAccessTokenHost() {
@@ -63,7 +72,7 @@ export class AccessProvider {
     const shouldExpireBy = parseInt(this.apiAuthorization.issued_at) + parseInt(this.apiAuthorization.expires_in);
     const now = new Date().getTime();
 
-    if (now > (shouldExpireBy - 3600)) {
+    if (now > shouldExpireBy - 3600) {
       delete this.apiAuthorization;
       delete this.apiAccessTokenPromise;
       return false;

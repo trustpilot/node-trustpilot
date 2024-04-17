@@ -47,7 +47,7 @@ describe('Acesss Provider Api ', () => {
       it('should resolve with a token because one is made', async () => {
         accessProvider.createApiAccessToken = async () => {
           return {
-            access_token: 68465341496,
+            data: { access_token: 68465341496 },
           };
         };
 
@@ -70,7 +70,7 @@ describe('Acesss Provider Api ', () => {
       it('should re-use the same promise for all concurrent calls', async () => {
         accessProvider.createApiAccessToken = async () => {
           return {
-            access_token: Math.random(),
+            data: { access_token: Math.random() },
           };
         };
 

@@ -6,6 +6,6 @@ src
 .gitignore
 .nvmrc
 .releaserc
-.travis.yml
+.github
 tsconfig.*
 tslint.json
