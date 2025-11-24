@@ -69,10 +69,10 @@ export class AccessProvider {
       return false;
     }
 
-    const shouldExpireBy = parseInt(this.apiAuthorization.issued_at) + parseInt(this.apiAuthorization.expires_in);
-    const now = new Date().getTime();
+    const shouldExpireBySeconds = parseInt(this.apiAuthorization.issued_at) + parseInt(this.apiAuthorization.expires_in);
+    const nowSeconds = new Date().getTime() / 1000;
 
-    if (now > shouldExpireBy - 3600) {
+    if (nowSeconds > shouldExpireBySeconds - 3600) {
       delete this.apiAuthorization;
       delete this.apiAccessTokenPromise;
       return false;
